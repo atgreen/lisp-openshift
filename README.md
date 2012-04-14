@@ -12,9 +12,9 @@ Here are the installation steps:
 
 * Create an account on http://openshift.redhat.com.
 * Create a DIY app. Let's call it myapp-mynamespace.
-* Upload all of the persistent sbcl bits using the lisp-openshift  provided upload-sbcl script.
-* Checkout myapp-mynamespace app from openshift's git repo.
-* cd into that directory and run lisp-openshift's init-app script.
+* Upload all of the persistent sbcl bits by running lisp-openshift's upload-sbcl script.
+* Clone the myapp-mynamespace app from openshift's git repo.
+* cd into your app's directory, and run lisp-openshift's init-app script.
 * commit and push your app, then wait for it to build.
 
 Now point your browser at your app's URL (provided by openshift) and
