@@ -17,3 +17,4 @@ Here are the installation steps:
 Now point your browser at http://myapp-mynamespace.redhat.com and you
 should see the default hunchentoot web page.
 
+To see it in action, check out http://lisp2-atgreen.redhat.com.
