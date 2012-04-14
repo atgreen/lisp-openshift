@@ -2,7 +2,7 @@ lisp-openshift
 ==============
 
 This package provides everything you need to start hosting Common
-Lisp-based web applications on Red Hat free OpenShift Express hosting
+Lisp-based web applications on Red Hat's free OpenShift Express hosting
 platform.
 
 The default app template uses SBCL and a quicklisp-based dev platform
