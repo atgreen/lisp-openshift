@@ -27,6 +27,6 @@
     (hunchentoot:start 
      (make-instance 'hunchentoot:easy-acceptor 
  		    :address openshift-ip
- 		    :port openshift-port))
+ 		    :port (parse-integer openshift-port)))
     (loop
 	 (sleep 3000))))
