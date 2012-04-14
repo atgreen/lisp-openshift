@@ -15,7 +15,7 @@ Usage: $0
 
 Run this script in the root directory of your openshift app's git repo.
 
-Report bugs and patches to <green@moxielogic.com>."
+Report bugs and patches to <green@spindazzle.org."
 
 if test $# != 0; then
   echo "$0: too many arguments$usage" >&2
@@ -27,14 +27,56 @@ if ! test -d diy; then
   exit 1
 fi
 
-cd diy
 curl -O http://beta.quicklisp.org/quicklisp.lisp
 HOME=`pwd` sbcl --load quicklisp.lisp --eval "(quicklisp-quickstart:install)" --eval "(quicklisp:quickload :hunchentoot)" --eval "(quit)"
 
-cd ..
+cat > .openshift/action_hooks/pre_build <<EOF
+#!/bin/sh
+# Make sure we have decompressed the sbcl core file
+cd \$OPENSHIFT_REPO_DIR/../data
+if test -f sbcl-dist.core.gz; then
+  gzip -d sbcl-dist.core.gz
+fi
+EOF
+chmod +x .openshift/action_hooks/pre_build
 
 cat > .openshift/action_hooks/start <<EOF
 #!/bin/sh
-cd $OPENSHIFT_REPO_DIR/diy
-HOME=`pwd` ../../data/run-lisp.sh 
+cd \$OPENSHIFT_REPO_DIR
+HOME=\`pwd\` SBCL_HOME=\`(cd ../data; pwd)\` nohup ../data/sbcl \
+  --core ../data/sbcl-dist.core \
+  --load ../data/asdf.fasl \
+  --userinit ../data/sbclrc \
+  --eval "(require :webapp)" --eval "(webapp:start-webapp)" > \${OPENSHIFT_LOG_DIR}/webapp.log 2>&1 &
 EOF
+chmod +x .openshift/action_hooks/start
+
+cat > .openshift/action_hooks/build <<EOF
+#!/bin/sh
+if ! test -d \${OPENSHIFT_DATA_DIR}/.cache; then
+  mkdir -p \${OPENSHIFT_DATA_DIR}/.cache;
+fi
+cd \${OPENSHIFT_REPO_DIR}
+ln -s \${OPENSHIFT_DATA_DIR}/.cache .
+HOME=`pwd` SBCL_HOME=\${OPENSHIFT_DATA_DIR} \${OPENSHIFT_DATA_DIR}/sbcl --core \${OPENSHIFT_DATA_DIR}/sbcl-dist.core  --userinit \${OPENSHIFT_DATA_DIR}/sbclrc  --eval "(require :webapp)" --eval "(quit)"
+EOF
+chmod +x .openshift/action_hooks/build
+
+cat > .openshift/action_hooks/stop <<EOF
+#!/bin/sh
+kill \`ps -ef | grep sbcl | grep -v grep | awk '{ print \$2 }'\` > /dev/null 2>&1
+exit 0
+EOF
+chmod +x .openshift/action_hooks/stop
+
+SRCDIR=`dirname $0`
+
+cp $SRCDIR/*.lisp .
+cp $SRCDIR/*.asd .
+
+cat > .gitignore <<EOF
+.cache
+*~
+EOF
+
+git add .gitignore .openshift *
