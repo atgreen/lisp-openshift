@@ -11,7 +11,7 @@ with the hunchentoot web server.
 Here are the installation steps:
 
 * Create an account on http://openshift.redhat.com.
-* Create a DYI app. Let's call it myapp-mynamespace.
+* Create a DIY app. Let's call it myapp-mynamespace.
 * Upload all of the persistent sbcl bits using the lisp-openshift  provided upload-sbcl script.
 * Checkout myapp-mynamespace app from openshift's git repo.
 * cd into that directory and run lisp-openshift's init-app script.
