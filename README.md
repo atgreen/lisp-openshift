@@ -14,7 +14,7 @@ Here are the installation steps:
 * cd into that directory and run lisp-openshift's init-app script.
 * commit and push your app, then wait for it to build.
 
-Now point your browser at http://myapp-mynamespace.redhat.com and you
+Now point your browser at http://myapp-mynamespace.rhcloud.com and you
 should see the default hunchentoot web page.
 
-To see it in action, check out http://lisp2-atgreen.redhat.com.
+To see it in action, check out http://lisp2-atgreen.rhcloud.com.
