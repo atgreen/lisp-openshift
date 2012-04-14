@@ -45,7 +45,7 @@ chmod +x .openshift/action_hooks/pre_build
 
 cat > .openshift/action_hooks/start <<EOF
 #!/bin/sh
-export XDG_CACHE_DIR=\${OPENSHIFT_DATA_DIR}/cache
+export XDG_CACHE_HOME=\${OPENSHIFT_DATA_DIR}/cache
 cd \$OPENSHIFT_REPO_DIR
 HOME=\`pwd\` SBCL_HOME=\`(cd ${OPENSHIFT_DATA_DIR}; pwd)\` nohup ${OPENSHIFT_DATA_DIR}/sbcl \
   --core ${OPENSHIFT_DATA_DIR}/sbcl-dist.core \
@@ -57,7 +57,7 @@ chmod +x .openshift/action_hooks/start
 
 cat > .openshift/action_hooks/build <<EOF
 #!/bin/sh
-export XDG_CACHE_DIR=\${OPENSHIFT_DATA_DIR}/cache
+export XDG_CACHE_HOME=\${OPENSHIFT_DATA_DIR}/cache
 cd \${OPENSHIFT_REPO_DIR}
 HOME=\`pwd\` SBCL_HOME=\${OPENSHIFT_DATA_DIR} \${OPENSHIFT_DATA_DIR}/sbcl --core \${OPENSHIFT_DATA_DIR}/sbcl-dist.core  --userinit \${OPENSHIFT_DATA_DIR}/sbclrc  --eval "(require :webapp)" --eval "(quit)"
 EOF
