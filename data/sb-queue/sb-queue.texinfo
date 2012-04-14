@@ -1,0 +1,6 @@
+@node sb-queue
+@section sb-queue
+@cindex Queue, FIFO
+
+Since SBCL 1.0.38, the @code{sb-queue} module has been merged into the
+@code{sb-concurrency} module (@pxref{sb-concurrency}.)

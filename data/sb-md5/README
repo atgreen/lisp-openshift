@@ -1,0 +1,37 @@
+This module implements the RFC1321 "MD5" Message Digest Algorithm
+
+The implementation for CMUCL was largely done by Pierre Mai, with help
+from denizens of the cmucl-help mailing list.  Since CMUCL and SBCL
+are similar in many respects, it was not too difficult to extend the
+low-level implementation optimizations for CMUCL to SBCL;
+consequently, performance is within spitting distance of
+implementations of the algorithm in more static languages.
+
+Notes:
+  * the algorithm includes a bitwise rotation of a 32-bit field.
+    Here, this is implemented by using the SB-ROTATE-BYTE module,
+    providing functionality for rotation of arbitrary bitfields.
+    However, this will perform extremely badly unless a low-level
+    implementation is available on the target for rotation, either
+    natively, as on the x86, or synthetically (through two shifts and
+    a logical or) on the sparc.  At present, only the x86 has a fast
+    implementation; therefore, do not be surprised if computing
+    message digests takes a long time on other hardware.
+    Contributions or even requests for implementation of 32-bit
+    ROTATE-BYTE on other platforms are welcome.
+
+  * the algorithm includes an addition modulo 2^32.  This is
+    implemented here for SBCL by compiler transforms on the high-level
+    description of this modular arithmetic, so although the code looks
+    like a naive implementation it actually compiles to the obvious
+    machine code.  The abuse of EXT:TRULY-THE was not robust and
+    turned out not to work on platforms where the underlying hardware
+    was 64-bit.
+
+  * the "high-level" entry points to the md5 algorithm are
+    MD5SUM-FILE, MD5SUM-STREAM and MD5SUM-SEQUENCE (despite its name,
+    the last only acts on vectors).
+
+  * there are some more notes in the md5.lisp source file.
+
+Christophe Rhodes, 2003-05-16

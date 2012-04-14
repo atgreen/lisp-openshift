@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Initialize app
+# 
+# Invoke like so..
+# 
+# $ ./init-app
+#
+
+me=`echo "$0" | sed -e 's,.*/,,'`
+
+usage="
+
+Usage: $0
+
+Run this script in the root directory of your openshift app's git repo.
+
+Report bugs and patches to <green@moxielogic.com>."
+
+if test $# != 0; then
+  echo "$0: too many arguments$usage" >&2
+  exit 1
+fi
+
+if ! test -d diy; then
+  echo "$0: missing diy directory$usage" >&2
+  exit 1
+fi
+
+cd diy
+curl -O http://beta.quicklisp.org/quicklisp.lisp
+HOME=`pwd` sbcl --load quicklisp.lisp --eval "(quicklisp-quickstart:install)" --eval "(quicklisp:quickload :hunchentoot)" --eval "(quit)"
+
+cd ..
+
+cat > .openshift/action_hooks/start <<EOF
+#!/bin/sh
+cd $OPENSHIFT_REPO_DIR/diy
+HOME=`pwd` ../../data/run-lisp.sh 
+EOF

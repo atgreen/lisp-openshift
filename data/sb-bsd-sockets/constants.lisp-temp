@@ -1,0 +1,360 @@
+(cl:in-package #:SOCKINT)
+(cl:eval-when (:compile-toplevel)
+  (cl:defparameter *integer-sizes* (cl:make-hash-table))
+  (cl:setf (cl:gethash 1 *integer-sizes*) 'sb-alien:char)
+  (cl:setf (cl:gethash 2 *integer-sizes*) 'sb-alien:short)
+  (cl:setf (cl:gethash 8 *integer-sizes*) 'sb-alien:long)
+  (cl:setf (cl:gethash 4 *integer-sizes*) 'sb-alien:int)
+)
+(cl:defconstant AF-INET 2 "IP Protocol family")
+(cl:defconstant AF-UNSPEC 0 "Unspecified")
+(cl:defconstant AF-LOCAL 1 "Local to host (pipes and file-domain).")
+(cl:defconstant AF-INET6 10 "IP version 6")
+(cl:defconstant AF-ROUTE 16 "Alias to emulate 4.4BSD ")
+(cl:defconstant SOCK-STREAM 1 "Sequenced, reliable, connection-based byte streams.")
+(cl:defconstant SOCK-DGRAM 2 "Connectionless, unreliable datagrams of fixed maximum length.")
+(cl:defconstant SOCK-RAW 3 "Raw protocol interface.")
+(cl:defconstant SOCK-RDM 4 "Reliably-delivered messages.")
+(cl:defconstant SOCK-SEQPACKET 5 "Sequenced, reliable, connection-based, datagrams of fixed maximum length.")
+(cl:defconstant SOL-SOCKET 1 "NIL")
+(cl:defconstant SO-DEBUG 1 "Enable debugging in underlying protocol modules")
+(cl:defconstant SO-REUSEADDR 2 "Enable local address reuse")
+(cl:defconstant SO-TYPE 3 "NIL")
+(cl:defconstant SO-ERROR 4 "NIL")
+(cl:defconstant SO-DONTROUTE 5 "Bypass routing facilities: instead send direct to appropriate network interface for the network portion of the destination address")
+(cl:defconstant SO-BROADCAST 6 "Request permission to send broadcast datagrams")
+(cl:defconstant SO-SNDBUF 7 "NIL")
+(cl:defconstant SO-PASSCRED 16 "NIL")
+(cl:defconstant SO-RCVBUF 8 "NIL")
+(cl:defconstant SO-KEEPALIVE 9 "Send periodic keepalives: if peer does not respond, we get SIGPIPE")
+(cl:defconstant SO-OOBINLINE 10 "Put out-of-band data into the normal input queue when received")
+(cl:defconstant SO-NO-CHECK 11 "NIL")
+(cl:defconstant SO-PRIORITY 12 "NIL")
+(cl:defconstant SO-LINGER 13 "For reliable streams, pause a while on closing when unsent messages are queued")
+(cl:defconstant SO-BSDCOMPAT 14 "NIL")
+(cl:defconstant SO-SNDLOWAT 19 "NIL")
+(cl:defconstant SO-RCVLOWAT 18 "NIL")
+(cl:defconstant SO-SNDTIMEO 21 "NIL")
+(cl:defconstant SO-RCVTIMEO 20 "NIL")
+(cl:defconstant TCP-NODELAY 1 "NIL")
+(cl:defconstant SO-BINDTODEVICE 25 "NIL")
+(cl:defconstant IFNAMSIZ 16 "NIL")
+(cl:defconstant EADDRINUSE 98 "NIL")
+(cl:defconstant EAGAIN 11 "NIL")
+(cl:defconstant EBADF 9 "NIL")
+(cl:defconstant ECONNREFUSED 111 "NIL")
+(cl:defconstant ETIMEDOUT 110 "NIL")
+(cl:defconstant EINTR 4 "NIL")
+(cl:defconstant EINVAL 22 "NIL")
+(cl:defconstant ENOBUFS 105 "NIL")
+(cl:defconstant ENOMEM 12 "NIL")
+(cl:defconstant EOPNOTSUPP 95 "NIL")
+(cl:defconstant EPERM 1 "NIL")
+(cl:defconstant EPROTONOSUPPORT 93 "NIL")
+(cl:defconstant ESOCKTNOSUPPORT 94 "NIL")
+(cl:defconstant ENETUNREACH 101 "NIL")
+(cl:defconstant ENOTCONN 107 "NIL")
+(cl:defconstant NETDB-INTERNAL -1 "See errno.")
+(cl:defconstant NETDB-SUCCESS 0 "No problem.")
+(cl:defconstant HOST-NOT-FOUND 1 "Authoritative Answer Host not found.")
+(cl:defconstant TRY-AGAIN 2 "Non-Authoritative Host not found, or SERVERFAIL.")
+(cl:defconstant NO-RECOVERY 3 "Non recoverable errors, FORMERR, REFUSED, NOTIMP.")
+(cl:defconstant NO-DATA 4 "Valid name, no data record of requested type.")
+(cl:defconstant NO-ADDRESS 4 "No address, look for MX record.")
+(cl:declaim (cl:inline H-STRERROR))
+(sb-grovel::define-foreign-routine ("hstrerror" H-STRERROR)
+  C-STRING
+  (ERRNO INT))
+(cl:defconstant O-NONBLOCK 2048 "NIL")
+(cl:defconstant F-GETFL 3 "NIL")
+(cl:defconstant F-SETFL 4 "NIL")
+(cl:defconstant MSG-OOB 1 "NIL")
+(cl:defconstant MSG-PEEK 2 "NIL")
+(cl:defconstant MSG-TRUNC 32 "NIL")
+(cl:defconstant MSG-WAITALL 256 "NIL")
+(cl:defconstant MSG-EOR 128 "NIL")
+(cl:defconstant MSG-DONTROUTE 4 "NIL")
+(cl:defconstant MSG-DONTWAIT 64 "NIL")
+(cl:defconstant MSG-NOSIGNAL 16384 "NIL")
+(cl:defconstant MSG-CONFIRM 2048 "NIL")
+(cl:defconstant MSG-MORE 32768 "NIL")
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-alien:define-alien-type SOCKLEN-T (sb-alien:unsigned 32)))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-alien:define-alien-type SIZE-T (sb-alien:unsigned 64)))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-alien:define-alien-type SSIZE-T (sb-alien:signed 64)))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct PROTOENT 24
+ (NAME C-STRING-POINTER "char *"
+  0
+  8)
+ (ALIASES (* (* T)) "char **"
+  8
+  8)
+ (PROTO INTEGER "int"
+  16
+  4)
+))
+(cl:declaim (cl:inline GETPROTOBYNAME))
+(sb-grovel::define-foreign-routine ("getprotobyname" GETPROTOBYNAME)
+  (* PROTOENT)
+  (NAME C-STRING))
+(cl:declaim (cl:inline GETPROTOBYNUMBER))
+(sb-grovel::define-foreign-routine ("getprotobynumber" GETPROTOBYNUMBER)
+  (* PROTOENT)
+  (PROTO INT))
+(cl:defconstant INADDR-ANY 0 "NIL")
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct IN-ADDR 4
+ (ADDR (ARRAY (UNSIGNED 8)) "u_int32_t"
+  0
+  4)
+))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct SOCKADDR-IN 16
+ (FAMILY INTEGER "sa_family_t"
+  0
+  2)
+ (PORT (ARRAY (UNSIGNED 8)) "u_int16_t"
+  2
+  2)
+ (ADDR (ARRAY (UNSIGNED 8)) "struct in_addr"
+  4
+  4)
+))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct SOCKADDR-UN 110
+ (FAMILY INTEGER "sa_family_t"
+  0
+  2)
+ (PATH C-STRING "char"
+  2
+  108)
+))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct SOCKADDR-UN-ABSTRACT 110
+ (FAMILY INTEGER "sa_family_t"
+  0
+  2)
+ (PATH (ARRAY (UNSIGNED 8)) "char"
+  2
+  108)
+))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct HOSTENT 32
+ (NAME C-STRING-POINTER "char *"
+  0
+  8)
+ (ALIASES (* C-STRING) "char **"
+  8
+  8)
+ (TYPE INTEGER "int"
+  16
+  4)
+ (LENGTH INTEGER "int"
+  20
+  4)
+ (ADDRESSES (* (* (UNSIGNED 8))) "char **"
+  24
+  8)
+))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct MSGHDR 56
+ (NAME C-STRING-POINTER "void *"
+  0
+  8)
+ (NAMELEN INTEGER "socklen_t"
+  8
+  4)
+ (IOV (* T) "struct iovec"
+  16
+  8)
+ (IOVLEN INTEGER "size_t"
+  24
+  8)
+ (CONTROL (* T) "void *"
+  32
+  8)
+ (CONTROLLEN INTEGER "socklen_t"
+  40
+  8)
+ (FLAGS INTEGER "int"
+  48
+  4)
+))
+(cl:declaim (cl:inline SOCKET))
+(sb-grovel::define-foreign-routine ("socket" SOCKET)
+  INT
+  (DOMAIN INT)
+  (TYPE INT)
+  (PROTOCOL INT))
+(cl:declaim (cl:inline BIND))
+(sb-grovel::define-foreign-routine ("bind" BIND)
+  INT
+  (SOCKFD INT)
+  (MY-ADDR (* T))
+  (ADDRLEN SOCKLEN-T))
+(cl:declaim (cl:inline LISTEN))
+(sb-grovel::define-foreign-routine ("listen" LISTEN)
+  INT
+  (SOCKET INT)
+  (BACKLOG INT))
+(cl:declaim (cl:inline ACCEPT))
+(sb-grovel::define-foreign-routine ("accept" ACCEPT)
+  INT
+  (SOCKET INT)
+  (MY-ADDR (* T))
+  (ADDRLEN SOCKLEN-T :IN-OUT))
+(cl:declaim (cl:inline GETPEERNAME))
+(sb-grovel::define-foreign-routine ("getpeername" GETPEERNAME)
+  INT
+  (SOCKET INT)
+  (HER-ADDR (* T))
+  (ADDRLEN SOCKLEN-T :IN-OUT))
+(cl:declaim (cl:inline GETSOCKNAME))
+(sb-grovel::define-foreign-routine ("getsockname" GETSOCKNAME)
+  INT
+  (SOCKET INT)
+  (MY-ADDR (* T))
+  (ADDRLEN SOCKLEN-T :IN-OUT))
+(cl:declaim (cl:inline CONNECT))
+(sb-grovel::define-foreign-routine ("connect" CONNECT)
+  INT
+  (SOCKET INT)
+  (HIS-ADDR (* T))
+  (ADDRLEN SOCKLEN-T))
+(cl:declaim (cl:inline CLOSE))
+(sb-grovel::define-foreign-routine ("close" CLOSE)
+  INT
+  (FD INT))
+(cl:declaim (cl:inline RECVFROM))
+(sb-grovel::define-foreign-routine ("recvfrom" RECVFROM)
+  SSIZE-T
+  (SOCKET INT)
+  (BUF (* T))
+  (LEN INTEGER)
+  (FLAGS INT)
+  (SOCKADDR (* T))
+  (SOCKLEN (* SOCKLEN-T)))
+(cl:declaim (cl:inline RECVMSG))
+(sb-grovel::define-foreign-routine ("recvmsg" RECVMSG)
+  SSIZE-T
+  (SOCKET INT)
+  (MSG (* MSGHDR))
+  (FLAGS INT))
+(cl:declaim (cl:inline SEND))
+(sb-grovel::define-foreign-routine ("send" SEND)
+  SSIZE-T
+  (SOCKET INT)
+  (BUF (* T))
+  (LEN SIZE-T)
+  (FLAGS INT))
+(cl:declaim (cl:inline SENDTO))
+(sb-grovel::define-foreign-routine ("sendto" SENDTO)
+  INT
+  (SOCKET INT)
+  (BUF (* T))
+  (LEN SIZE-T)
+  (FLAGS INT)
+  (SOCKADDR (* T))
+  (SOCKLEN SOCKLEN-T))
+(cl:declaim (cl:inline SENDMSG))
+(sb-grovel::define-foreign-routine ("sendmsg" SENDMSG)
+  INT
+  (SOCKET INT)
+  (MSG (* MSGHDR))
+  (FLAGS INT))
+(cl:declaim (cl:inline GETHOSTBYNAME))
+(sb-grovel::define-foreign-routine ("gethostbyname" GETHOSTBYNAME)
+  (* HOSTENT)
+  (NAME C-STRING))
+(cl:declaim (cl:inline GETHOSTBYADDR))
+(sb-grovel::define-foreign-routine ("gethostbyaddr" GETHOSTBYADDR)
+  (* HOSTENT)
+  (ADDR (* T))
+  (LEN INT)
+  (AF INT))
+(cl:declaim (cl:inline GETHOSTBYNAME-R))
+(sb-grovel::define-foreign-routine ("gethostbyname_r" GETHOSTBYNAME-R)
+  INT
+  (NAME C-STRING)
+  (RET (* HOSTENT))
+  (BUF (* CHAR))
+  (BUFLEN LONG)
+  (RESULT (* (* HOSTENT)))
+  (H-ERRNOP (* INT)))
+(cl:eval-when (:compile-toplevel :load-toplevel :execute) (sb-grovel::define-c-struct ADDRINFO 48
+ (FLAGS INTEGER "int"
+  0
+  4)
+ (FAMILY INTEGER "int"
+  4
+  4)
+ (SOCKTYPE INTEGER "int"
+  8
+  4)
+ (PROTOCOL INTEGER "int"
+  12
+  4)
+ (ADDRLEN INTEGER "size_t"
+  16
+  4)
+ (ADDR (* SOCKADDR-IN) "struct sockaddr*"
+  24
+  8)
+ (CANONNAME C-STRING "char *"
+  32
+  8)
+ (NEXT (* T) "struct addrinfo*"
+  40
+  8)
+))
+(cl:declaim (cl:inline GETADDRINFO))
+(sb-grovel::define-foreign-routine ("getaddrinfo" GETADDRINFO)
+  INT
+  (NODE C-STRING)
+  (SERVICE C-STRING)
+  (HINTS (* ADDRINFO))
+  (RES (* (* ADDRINFO))))
+(cl:declaim (cl:inline FREEADDRINFO))
+(sb-grovel::define-foreign-routine ("freeaddrinfo" FREEADDRINFO)
+  VOID
+  (RES (* ADDRINFO)))
+(cl:declaim (cl:inline GAI-STRERROR))
+(sb-grovel::define-foreign-routine ("gai_strerror" GAI-STRERROR)
+  C-STRING
+  (ERROR-CODE INT))
+(cl:declaim (cl:inline GETNAMEINFO))
+(sb-grovel::define-foreign-routine ("getnameinfo" GETNAMEINFO)
+  INT
+  (ADDRESS (* SOCKADDR-IN))
+  (ADDRESS-LENGTH SIZE-T)
+  (HOST (* CHAR))
+  (HOST-LEN SIZE-T)
+  (SERVICE (* CHAR))
+  (SERVICE-LEN SIZE-T)
+  (FLAGS INT))
+(cl:defconstant EAI-FAMILY -6 "NIL")
+(cl:defconstant EAI-SOCKTYPE -7 "NIL")
+(cl:defconstant EAI-BADFLAGS -1 "NIL")
+(cl:defconstant EAI-NONAME -2 "NIL")
+(cl:defconstant EAI-SERVICE -8 "NIL")
+(sb-int:style-warn "Couldn't grovel for EAI_ADDRFAMILY (unknown to the C compiler).")
+(cl:defconstant EAI-MEMORY -10 "NIL")
+(cl:defconstant EAI-FAIL -4 "NIL")
+(cl:defconstant EAI-AGAIN -3 "NIL")
+(cl:defconstant EAI-SYSTEM -11 "NIL")
+(cl:defconstant NI-NAMEREQD 8 "NIL")
+(cl:declaim (cl:inline SETSOCKOPT))
+(sb-grovel::define-foreign-routine ("setsockopt" SETSOCKOPT)
+  INT
+  (SOCKET INT)
+  (LEVEL INT)
+  (OPTNAME INT)
+  (OPTVAL (* T))
+  (OPTLEN INT))
+(cl:declaim (cl:inline FCNTL))
+(sb-grovel::define-foreign-routine ("fcntl" FCNTL)
+  INT
+  (FD INT)
+  (CMD INT)
+  (ARG LONG))
+(cl:declaim (cl:inline GETSOCKOPT))
+(sb-grovel::define-foreign-routine ("getsockopt" GETSOCKOPT)
+  INT
+  (SOCKET INT)
+  (LEVEL INT)
+  (OPTNAME INT)
+  (OPTVAL (* T))
+  (OPTLEN (* INT)))
