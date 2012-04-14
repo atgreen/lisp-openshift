@@ -37,11 +37,15 @@ cd \$OPENSHIFT_DATA_DIR
 if test -f sbcl-dist.core.gz; then
   gzip -d sbcl-dist.core.gz
 fi
+if ! test -d sbcl-dist.core.gz; then
+  mkdir cache
+fi
 EOF
 chmod +x .openshift/action_hooks/pre_build
 
 cat > .openshift/action_hooks/start <<EOF
 #!/bin/sh
+export XDG_CACHE_DIR=\${OPENSHIFT_DATA_DIR}/cache
 cd \$OPENSHIFT_REPO_DIR
 HOME=\`pwd\` SBCL_HOME=\`(cd ${OPENSHIFT_DATA_DIR}; pwd)\` nohup ${OPENSHIFT_DATA_DIR}/sbcl \
   --core ${OPENSHIFT_DATA_DIR}/sbcl-dist.core \
@@ -53,11 +57,8 @@ chmod +x .openshift/action_hooks/start
 
 cat > .openshift/action_hooks/build <<EOF
 #!/bin/sh
-if ! test -d \${OPENSHIFT_DATA_DIR}/.cache; then
-  mkdir -p \${OPENSHIFT_DATA_DIR}/.cache;
-fi
+export XDG_CACHE_DIR=\${OPENSHIFT_DATA_DIR}/cache
 cd \${OPENSHIFT_REPO_DIR}
-ln -s \${OPENSHIFT_DATA_DIR}/.cache .
 HOME=\`pwd\` SBCL_HOME=\${OPENSHIFT_DATA_DIR} \${OPENSHIFT_DATA_DIR}/sbcl --core \${OPENSHIFT_DATA_DIR}/sbcl-dist.core  --userinit \${OPENSHIFT_DATA_DIR}/sbclrc  --eval "(require :webapp)" --eval "(quit)"
 EOF
 chmod +x .openshift/action_hooks/build
