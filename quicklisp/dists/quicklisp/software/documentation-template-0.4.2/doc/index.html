@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html> 
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>DOCUMENTATION-TEMPLATE - Prepare HTML documentation for Common Lisp libraries</title>
+  <style type="text/css">
+  pre { padding:5px; background-color:#e0e0e0 }
+  h3, h4 { text-decoration: underline; }
+  a { text-decoration: none; padding: 1px 2px 1px 2px; }
+  a:visited { text-decoration: none; padding: 1px 2px 1px 2px; }
+  a:hover { text-decoration: none; padding: 1px 1px 1px 1px; border: 1px solid #000000; } 
+  a:focus { text-decoration: none; padding: 1px 2px 1px 2px; border: none; }
+  a.none { text-decoration: none; padding: 0; }
+  a.none:visited { text-decoration: none; padding: 0; } 
+  a.none:hover { text-decoration: none; border: none; padding: 0; } 
+  a.none:focus { text-decoration: none; border: none; padding: 0; } 
+  a.noborder { text-decoration: none; padding: 0; } 
+  a.noborder:visited { text-decoration: none; padding: 0; } 
+  a.noborder:hover { text-decoration: none; border: none; padding: 0; } 
+  a.noborder:focus { text-decoration: none; border: none; padding: 0; }  
+  pre.none { padding:5px; background-color:#ffffff }
+  </style>
+</head>
+
+<body bgcolor=white>
+
+<h2> DOCUMENTATION-TEMPLATE - Prepare HTML documentation for Common Lisp libraries</h2>
+
+<blockquote>
+<br>&nbsp;<br><h3><a name=abstract class=none>Abstract</a></h3> This
+is a quick hack which helps to build HTML pages that look
+like <a href="http://weitz.de/fm-plugin-tools/">this one</a> or like
+the one you're currently looking at.  It hasn't been tested
+thoroughly, it isn't properly documented, it only works
+with <a href="http://www.lispworks.com/">LispWorks</a>,
+<a href="http://www.sbcl.org/">SBCL</a>, and <a href="http://franz.com/products/allegrocl/">AllegroCL</a>, and it most likely doesn't do
+what you expect.
+<p>
+The code comes with
+a <a
+href="http://www.opensource.org/licenses/bsd-license.php">BSD-style
+license</a> so you can basically do with it whatever you want.
+
+<p>
+<font color=red>Download shortcut:</font> <a href="http://weitz.de/files/documentation-template.tar.gz">http://weitz.de/files/documentation-template.tar.gz</a>.
+</blockquote>
+
+<br>&nbsp;<br><h3><a class=none name="contents">Contents</a></h3>
+<ol>
+  <li><a href="#download">Download</a>
+  <li><a href="#dictionary">The DOCUMENTATION-TEMPLATE dictionary</a>
+    <ol>
+      <li><a href="#create-template"><code>create-template</code></a>
+      <li><a href="#*target*"><code>*target*</code></a>
+      <li><a href="#*maybe-skip-methods-p*"><code>*maybe-skip-methods-p*</code></a>
+    </ol>
+  <li><a href="#ack">Acknowledgements</a>
+</ol>
+
+<br>&nbsp;<br><h3><a class=none name="download">Download</a></h3>
+
+DOCUMENTATION-TEMPLATE together with this documentation can be downloaded from <a
+href="http://weitz.de/files/documentation-template.tar.gz">http://weitz.de/files/documentation-template.tar.gz</a>. The
+current version is 0.4.2.
+<p>
+If you want to send patches, please <a href="http://weitz.de/patches.html">read this first</a>.
+
+<br>&nbsp;<br><h3><a class=none name="dictionary">The DOCUMENTATION-TEMPLATE dictionary</a></h3>
+
+The following symbols are exported:
+
+<!-- Entry for CREATE-TEMPLATE -->
+
+<p><br>[Function]<br><a class=none name='create-template'><b>create-template</b> <i>package <tt>&amp;key</tt> target maybe-skip-methods-p subtitle if-exists if-does-not-exist</i> =&gt; <i>result</i></a>
+<blockquote><br>
+
+Writes an HTML page with preliminary documentation entries and
+an index for all exported symbols of the package <code><i>package</i></code> to the
+file <code><i>target</i></code>.
+If <code><i>maybe-skip-methods-p</i></code> is true, documentation entries for
+inidividual methods are skipped if the corresponding generic function
+has a documentation string
+
+</blockquote>
+
+<!-- End of entry for CREATE-TEMPLATE -->
+
+<!-- Entry for *TARGET* -->
+
+<p><br>[Special variable]<br><a class=none name='*target*'><b>*target*</b></a>
+<blockquote><br>
+
+Where to output the HTML page.  If this value is not <code>NIL</code>, it will
+be the default target for <a href="#create-template"><code>CREATE-TEMPLATE</code></a>.  <a href="#create-template"><code>CREATE-TEMPLATE</code></a> will also
+set this value.
+
+</blockquote>
+
+<!-- End of entry for *TARGET* -->
+
+<p><br>[Special variable]<br><a class=none name='*maybe-skip-methods-p*'><b>*maybe-skip-methods-p*</b></a>
+<blockquote><br>
+
+This is the default value for the <code>:MAYBE-SKIP-METHODS-P</code> keyword
+argument of <a href="#create-template"><code>CREATE-TEMPLATE</code></a> and its initial value is <code>NIL</code>.
+</blockquote>
+
+
+<br>&nbsp;<br><h3><a class=none name="ack">Acknowledgements</a></h3>
+
+<p>
+This documentation was prepared with, you guessed it, <a href="http://weitz.de/documentation-template/">DOCUMENTATION-TEMPLATE</a>.  Thanks to <a href="http://foldr.org/~michaelw/">Michael Weber</a> for the SBCL patches and to Willem Broekema for the AllegroCL patches.
+</p>
+<p>
+$Header: /usr/local/cvsrep/documentation-template/doc/index.html,v 1.13 2010/08/05 19:24:29 edi Exp $
+<p><a href="http://weitz.de/index.html">BACK TO MY HOMEPAGE</a>
+
+</body>
+</html>

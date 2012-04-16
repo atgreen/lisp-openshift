@@ -1,0 +1,62 @@
+cl-md5 (1.8.5-2) unstable; urgency=low
+
+  * Build with debhelper extension dh-lisp
+  * debian/watch: New file
+  * debian/control: Require debhelper 7. Change to new lisp section.
+    Added Vcs-Git, Vcs-Browser and Homepage fields.
+  * debian/compat: Update to version 7
+  * debian/rules: Update for debhelper 7, architecture-independent build
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Mon, 03 Aug 2009 14:28:20 -0600
+
+cl-md5 (1.8.5-1) unstable; urgency=low
+
+  * Patch from John Desoi for Lispworks compatibility
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Sat,  4 Dec 2004 11:27:47 -0700
+
+cl-md5 (1.8.4-1) unstable; urgency=medium
+
+  * Patch from Andreas Fuchs on sbcl-devel which fixes segfault on sbcl
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Tue, 31 Aug 2004 16:17:58 -0600
+
+cl-md5 (1.8.3-1) unstable; urgency=low
+
+  * Patch from pmai sent by Matthew Kennedy
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Wed, 11 Feb 2004 15:45:58 -0700
+
+cl-md5 (1.8.2-1) unstable; urgency=low
+
+  * Fix compilation on Allegro's case sensitive mode
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Thu, 17 Jul 2003 12:59:34 -0600
+
+cl-md5 (1.8.1-1) unstable; urgency=low
+
+  * Improve .asd file
+  * Add two eval-when for compatibility with allegrocl,lispworks
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Mon,  5 May 2003 22:56:32 -0600
+
+cl-md5 (1.8-1) unstable; urgency=low
+
+  * New upstream
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Sun,  4 May 2003 13:13:05 -0600
+
+cl-md5 (1.0.1-1) unstable; urgency=low
+
+  * Move .asd file in the source
+  * Update standards-version to 3.5.9.0 
+  * Take upstream changes out of copyright file
+      - Added .asd file for use with Common Lisp Controller
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Tue, 29 Apr 2003 03:59:02 -0600
+
+cl-md5 (1.0-1) unstable; urgency=low
+
+  * Initial Debian upload.
+
+ -- Kevin M. Rosenberg <kmr@debian.org>  Fri,  8 Nov 2002 09:46:00 -0700

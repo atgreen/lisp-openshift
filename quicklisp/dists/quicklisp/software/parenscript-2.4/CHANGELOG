@@ -1,0 +1,4515 @@
+commit 27f8cafd820ed6f34bf9863bb7d047576acfd7e2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Jan 7 20:37:30 2012 -0500
+
+    Made hex escaping of char codes in strings always print alphabetic hex digits in upper case (fixes test failures on Allegro).
+
+commit 1ae59473dc7b3cdc8cafa925a96d4d6ec13b83d8
+Author: Scott Bell <scott@skysheet.com>
+Date:   Mon Dec 26 11:45:11 2011 -0700
+
+    Define BIND macro for destructuring and property binding.
+    
+    Destructuring lists in the LOOP macro now use BIND rather than
+    DESTRUCTURING-BIND.
+
+commit ac14e3993f5b288f8e98a1b0f5af4a06ec2fb02e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Dec 24 12:26:42 2011 -0500
+
+    Fixed up bug where defuns were getting wrapped in lambdas because toplevel form checking weren't getting macroexpanded.
+
+commit fc2d901749d28d3d002a32ade5aee8fb6067d996
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 21 14:41:51 2011 -0500
+
+    Fixed bug where expressionize-if macroexpansion attempts would throw errors.
+
+commit 9235eed0d45a3598d097c9300e7092e479aa7105
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 21 13:48:15 2011 -0500
+
+    Fixed bug where top-level defuns and defvars inside toplevel lets were being wrapped in lambdas and not defined at the toplevel.
+
+commit 83f4ea341bc304157863e1a5f313c79a54119948
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 18 21:09:48 2011 -0500
+
+    Made returns from CL loops (implicit nil blocks) work.
+
+commit 08bdb03942ff27949bffac3dbe4d626001874915
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 18 20:00:33 2011 -0500
+
+    Made output of variable declarations prettier in some cases.
+
+commit 9ee771f41132fa918f18304304ac17d0e2bb61a7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 18 19:48:35 2011 -0500
+
+    Fixed the behavior of return in case clauses
+
+commit bff7e7db51f3546c0bfd12c64bd9b5fc949774db
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 18 17:57:27 2011 -0500
+
+    Fixed compilation of return from blocks, (return (if ...))
+
+commit 8f9011e6c9266950406f8374c49b14bab836f181
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Dec 17 15:20:28 2011 -0500
+
+    Fixed up unit tests for changes in 205715d298cdb6920
+
+commit 162b28ef6c69dc32c4a7f525d0a0916fe7f6e97d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Dec 17 13:09:32 2011 -0500
+
+    Labels/flet now lambda wrapped as well.
+
+commit e22f34beb210d857ff284a0952351f2ba5c9fbe5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 16 18:24:09 2011 -0500
+
+    Wrap let in lambda when there is no outer lexical scope to introduce one, and avoid spurious global variables.
+
+commit ee545a0210f3b74fa046c8868b60af70444aae27
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 16 16:05:46 2011 -0500
+
+    Made sure returns from LABELS functions work properly.
+    Thanks to Daniel Gackle for the bug report.
+
+commit c5a3b2b854c09ef4da8aad27ce5497164fad80cd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 16 15:50:22 2011 -0500
+
+    Fix for closures using the same variable name.
+    Got rid of duplicate calls to the printer when compiling.
+    Thanks to Canhua and Scott Bell for the bug reports.
+
+commit d91c2037c929ed5b73ab4eaadad940f061a127b2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 16 11:55:38 2011 -0500
+
+    Refactored let code
+
+commit 205715d298cdb6920d143ce9df3a7e0a580a0341
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Dec 14 16:24:10 2011 -0700
+
+    Use the standard JS idiom for detecting undefinedness. Its advantage
+    is that it doesn't crash if you give it an undefined symbol.
+
+commit ce3c7457c54bf3692b2fabef6427a088e88f2397
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Dec 12 23:37:24 2011 -0700
+
+    Added an ignore for an unused variable.
+
+commit ae093417db848a1f4b0b85534c00a9ae73fa21f4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 12 16:30:29 2011 -0500
+
+    Made return-from and statement expressionization work better.
+
+commit abc59cee49202266df5dec01102c1694850a3419
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 11 15:31:13 2011 -0500
+
+    Restored fcb936231d by Daniel Gackle for now.
+
+commit 88c61599074dfaa40fae285f62f8910e0a201561
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 11 14:10:29 2011 -0500
+
+    Made toplevel lambda forms print with parentheses around them so JS parsers work (thanks to Scott Bell for the bug report).
+
+commit a3a4157decc41fddce043af8057214c107b9b3e7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 11 13:45:03 2011 -0500
+
+    Made structures printed at toplevel be wrapped in parentheses to prevent parsing bugs in JS implementations (thanks to Scott Bell for the bug report).
+
+commit 72c36c63f38f1deb8c39c430c7a2372d2c0a24d7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 9 21:11:04 2011 -0500
+
+    Fixed "return break" bug in fall-through case statements (thanks to Scott Bell for the bug report).
+
+commit 86b2456a40b577b46298031676abd072c666d371
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 9 20:41:23 2011 -0500
+
+    Fixed problem with operator associativity and parenthesizing (thanks to Canhua for the bug report).
+
+commit 40e996886cb03174fa63563faf6e8738153cc416
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Dec 8 17:25:53 2011 -0500
+
+    Undid fcb936231da by Daniel Gackle for now; will fix later after smaller bugs.
+
+commit fcb936231dadb9c644795ff7972a32ca87f51935
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Sep 15 17:16:51 2011 -0600
+
+    Fixed bug: return-from value was not being returned.
+    
+    This fix is still wrong, because a warning is generated, but it's less
+    wrong than the preceding behavior.
+
+commit 9e1ff1435f4e6a0aacc65e7ca308a2442600f644
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Sep 13 14:02:23 2011 -0400
+
+    [Scott Bell] Eliminate STYLE-WARNINGs during compilation
+
+commit 0e2eef3d2abe3f3c81f39b3ced52f9ce92d46c7e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Sep 13 13:56:35 2011 -0400
+
+    Fixed bug with function arguments not being respected for renaming by LET. Thanks to Scott Bell for the bug report.
+
+commit f1009119146f86654c82a7f86c3dc58372b036f3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Sep 6 14:56:02 2011 -0400
+
+    Fixed division bug introduced in abf27a29f. Thanks to Scott Bell and Daniel Gackle for the bug report.
+
+commit cfacf8e9866e70741a581dc1c35b62a42cdaae43
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 25 17:19:24 2011 -0400
+
+    Fixed who-ps-html bug. Thanks to Canhua for the report.
+
+commit f1e4052153e58a13fcf0314422bbc7d94071c3b9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 25 16:50:35 2011 -0400
+
+    Fixed problem with CL-side definition of VAR having an optional instead of required value. Thanks to Erik Huelsmann for the bug report.
+
+commit c7db51f5cd5c6b144709f2f03e63119e949c09b5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Aug 9 22:15:32 2011 -0400
+
+    Fixed bug w/division non-associativity (thanks to Anthony Fairchild for the bug report).
+
+commit abf27a29f4bc6b42a48547e523785a5dbe5308ba
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 12 19:21:01 2011 -0400
+
+    Fixed behavior for one-arg / operator (thanks to Leslie Polzer for the bug report).
+
+commit 8ce6825481263e165326ae13703f7915073db092
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue May 31 20:58:07 2011 -0400
+
+    Synced js-expander.el with latest SLIME (thanks to Andy Peterson for the fix).
+
+commit e047abd42326a51e8f8074e655ef87bf6133e8dc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed May 4 17:37:57 2011 -0400
+
+    Fixed up bogus returns in ps-runtime-lib.
+
+commit ad2c9d7f90bb4fdc528e9f3860d2dae7913b160e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Mar 12 21:41:08 2011 -0500
+
+    Added CL-JavaScript test stubs.
+
+commit e8b88332c720396801b635497d2d25f4c5207876
+Author: Red Daly <reddaly@gmail.com>
+Date:   Thu Jun 24 19:57:34 2010 -0500
+
+    SLIME plugin
+
+commit bbb56f2ba0a136e0fdf1302fcc1327339f4bdc0a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 28 22:32:05 2011 -0500
+
+    Fixed issue w/failing unit test because of differences in order of list elements after remove-duplicates in different implementations.
+
+commit da85932825c5b5f39cbb2ccbee3926e3438feb59
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 28 21:28:56 2011 -0500
+
+    Fixed error with symbol-macrolet overriding lexical bindings introduced by functions. Thanks to Scott Bell for the bug report.
+
+commit 0f79f2f7524be00d2537f3b602d6cfd76fafcead
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Feb 25 15:33:21 2011 -0500
+
+    Fixed output in CLisp: specified integer printing as decimal (in CLisp, with-standard-io-syntax set *print-readably* to t, which caused number like 123 to print like 123. with a trailing dot). This does not print a trailing dot.
+
+commit 60da4083d6ada8bcc98848ba29426b94879c3575
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Feb 22 22:16:35 2011 -0500
+
+    Fixed test execution order dependency bug in package system tests.
+
+commit 41f43694e07d0ef7685e4c7710ae4cdc64f56655
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Feb 2 22:30:06 2011 -0500
+
+    Fixed case of cond fallthrough (thanks to Daniel Gackle for the bug report)
+
+commit 8b217edda29bf26ca20ca17d65715bd47a0522ec
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Feb 2 22:13:11 2011 -0500
+
+    Fixed file loading order so ps-js-symbols get re-exported before other files use them.
+
+commit 8ed5f164fc090f9aa19175a36933c1109c43d29f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Feb 2 17:00:43 2011 -0500
+
+    Added case-sensitive exports to DOM symbol packages, described them and case-sensitivity in the reference manual.
+
+commit 9ed62a28d452b56a9c45d136e9ae6fa3dac8d037
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Feb 2 16:19:08 2011 -0500
+
+    Fixed error w/all upper-case inverted symbols not being printed in uppercase.
+
+commit 0fade878b121c81cb9a1926ebc444d89efdf564c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 31 00:12:13 2011 -0500
+
+    Replaced FiveAM with EOS (EOS is a drop-in replacement with better code and no dependencies on Arnesi, which breaks in recent Lispworks and probably other implementations).
+
+commit 2421d28fe1a1828855a91d61e0b8c8557e291060
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jan 30 22:49:24 2011 -0500
+
+    Fixed equality operators not being parenthesized.
+
+commit 7be00914c3ac871c95ef8d0fcd6fc57184ec2c52
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jan 30 21:47:49 2011 -0500
+
+    Fixed error with |,| operator precedence and CREATE.
+
+commit 0a4aaebb91c758ced8d1c4ac969c8fd424def3f5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jan 30 21:18:42 2011 -0500
+
+    Documented use/in-package, explained obfuscation.
+
+commit 25726eced67129824b741ae3993d6e6d4e150d0b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jan 30 20:57:20 2011 -0500
+
+    API for PS version and defined operators info.
+
+commit f94aec0a68ed4131f70bbea97d0e2b40a1c09ab2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jan 30 18:31:44 2011 -0500
+
+    Made lambda/flet/labels/defun share code for compiling their bodies, which should eliminate a lot of bugs.
+
+commit 1d21185041f920762c31b2a66f7e8d48c9603169
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jan 20 01:34:29 2011 -0500
+
+    Changed special operator redefinition and deprecated warnings to issue a real 'style warning' which should hopefully not mess w/compilation in compilers like SBCL.
+
+commit 88f9a21c33d6f0d440f69fb501f5e1f54e399f81
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jan 20 01:19:42 2011 -0500
+
+    Fixed broken multiple-value-bind. Thanks to Daniel Gackle for the bug report.
+
+commit 15d060ae3f0f84744dee0724a00d4286aa81a941
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jan 20 01:10:22 2011 -0500
+
+    Fixed bug w/flet and labels not parsing extended lambda lists. Thanks to Daniel Gackle for the bug report.
+
+commit 23adb285838421ddb353b4f41e7afba45ff29549
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 17 23:25:16 2011 -0500
+
+    Fixed bug in return of conditional inside a case.
+
+commit 86b452affd0f4dd5ad3e9b19eebb2922be7a7c83
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 17 23:24:42 2011 -0500
+
+    Fixed unit tests for change to keyword handling.
+
+commit 47122e847fed123a10a8c5a0c598744b9dbc3cd8
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Jan 11 15:04:18 2011 -0700
+
+    Fixed bug: only assign INIT-FORM to keyword arg if it is
+    undefined. (It is incorrect to assign it when the arg was supplied
+    with null, 0, or false.)
+
+commit 433fbcf3b60652fe90ff392b2d2bc50b664cfb9f
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Jan 11 12:36:03 2011 -0700
+
+    Use a gensym for error variable in IGNORE-ERRORS.
+
+commit 25667126ac7c3df4d7e03009ef384caf23aa9e4a
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri Jan 7 22:36:25 2011 -0700
+
+    Added caret to the characters PS translates in symbols.
+
+commit 8e756a42758fb7257fc36570628ebaa2911bb0f7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 10 23:26:39 2010 -0500
+
+    Changed heuristic for deciding to compile a conditional to a statement or expression to examine the hypothetical output instead of measuring s-exp depth.
+
+commit 2fa7da255ad3be57faed0f71132d508d14662e34
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 10 01:40:36 2010 -0500
+
+    Fixed &key default argument handling not to evaluate default value all the time. Thanks to Daniel Gackle for the bug report.
+
+commit be2031e8db266433037c459f7d913e9ceb7ac687
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Dec 9 23:18:07 2010 -0500
+
+    Fixed throw compiling into an expression (thanks to Daniel Gackle for the bug report).
+
+commit ec4fd8107af0d34102fdc2cc312f355455c2de1e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Dec 9 01:51:21 2010 -0500
+
+    Made top-level blocks in function bodies work correctly wrt return-from.
+
+commit 6d8c8ab097a9756d56cdce5ca6a789b200a64b19
+Merge: 86dcc1f 5a5ee8e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 7 01:51:42 2010 -0500
+
+    Merge branch 'master' of ssh://common-lisp.net/project/parenscript/public_html/git/parenscript
+
+commit 86dcc1fe227b13ce6dae10bb10b29495cd2aad05
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 7 01:51:27 2010 -0500
+
+    Fixed bug with last nil value in expression progn (thanks to Daniel Gackle for the bug report)
+
+commit 5a5ee8e06fdd74bdbe661ef60a08e464e227d037
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Dec 6 17:15:16 2010 -0700
+
+    Fixed call to PS-GENSYM that was triggering an assertion failure.
+
+commit ea299916ed02b82e0adb4b4802a972017ced3c06
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 6 01:00:32 2010 -0500
+
+    Added Scott Bell's implementation of ASH.
+
+commit 482c3036010b16ca4ac82873c54e05b46a5c35f9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Nov 23 00:47:40 2010 -0500
+
+    No longer defining ps:f as a special variable in Lisp.
+
+commit 4d833e721f78796943d0f4a5be33734c839e3c1a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Nov 22 01:30:04 2010 -0500
+
+    Added support for case-sensitive symbols via readtable-case :invert (thanks to Matthias Benkard for the idea)
+
+commit 20ef0787954af2f414a0d6890679ea1f1d6da5af
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 21 21:55:45 2010 -0500
+
+    Put output tests code into its own package, put that under GNU all-permissive license.
+
+commit 5955c9f8cca5ed8343170c8db11d4fc777f284ae
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 21 20:40:06 2010 -0500
+
+    Renamed package JS to PS-JS to avoid possible future conflicts (I know CL-JavaScript at one point wanted to use JS)
+
+commit c76f5ad295c0baf099f95bd33d4b27c9e7fb4dcc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 21 20:27:00 2010 -0500
+
+    Moved PS-specific exported macros and special forms to their own file (easier to keep track of them to provide CL equivalent implementations, and for future deprecation)
+
+commit 9c333a313225657b0ea3cc1bf3d23a13b581bb71
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 21 17:48:43 2010 -0500
+
+    Added warnings when redefining Parenscript operators or macros, provided a list of operators and macros defined by Parenscript. Thanks to John Fremlin for the request.
+
+commit 591bc6c88b84ef28da73da75401ea5b9c53d833a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 21 16:28:54 2010 -0500
+
+    Fixed bug with BLOCK erroneously interpreting lexical returns as dynamic, added more RETURN tests.
+
+commit 0e01e555f404a7dcb8befb7587288c38abf526c2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Nov 13 16:07:23 2010 -0500
+
+    Added lexical and dynamic extent RETURN-FROM support.
+
+commit d273af214093f3f92fdb82d5424656fee056d188
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Nov 12 23:51:07 2010 -0500
+
+    Implemented implicit blocks for defun/flet/labels and for loops.
+
+commit 74b5afcad0bc69be4085e5962fe886abcdff7226
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Nov 10 23:17:00 2010 -0500
+
+    Deprecated WITH special operator.
+
+commit d3f544cd32bed5dcfa665be25af18c400a53c173
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Nov 9 00:22:58 2010 -0500
+
+    Fixed bug with compiling dotted lists (thanks to Scott Bell for the bug report)
+
+commit e067f2f21160efb597e057f51e2df1fa0e3d801d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Nov 8 01:28:55 2010 -0500
+
+    Made closures capture loop variables properly (that is, closures over variables introduced in loops should close over a new binding of those variables for each loop iteration), with a 'with' scoping trick borrowed from Scheme2JS.
+
+commit 645d12596967ea9f2a92b79d6ad4cf8e8d6039ed
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 7 22:26:38 2010 -0500
+
+    Wrapped the printer in a with-standard-io-syntax to hopefully prevent surprises (I hope this doesn't cause any).
+
+commit e9fe7019fea9d1b161baaaaeeb259819387d1117
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 7 22:14:20 2010 -0500
+
+    Made &optional parameter not generate null assignment code when default value is null.
+
+commit 26aa77677c91ad2cb80d5b28bf3798d62b61b4cd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Nov 6 19:54:17 2010 -0400
+
+    Implemented IN-PACKAGE and USE-PACKAGE. Thanks to Red Daly and Alessio Stalla for providing pieces of the implementation.
+
+commit 5124ffb496aa220844a257593c248736fe26532b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Nov 6 18:32:42 2010 -0400
+
+    Fixed bug in RETURN-FROM (thanks to Scott Bell for the bug report).
+
+commit 12fe010c1cc207d5beb5e16bea194dbe513a4e0c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 4 01:15:45 2010 -0400
+
+    Removed trailing whitespace in reference manual.
+
+commit 546fc46f8e7b674f6ecf3348e182a2e6a4c374b3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 4 01:15:29 2010 -0400
+
+    Reimplemented special operator handling to better handle the expression/statement dichotomy.
+
+commit ec9b058dd2f950195b6979ef4c7561383259e145
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Oct 17 12:10:15 2010 -0400
+
+    Changed str back to stringify (conflict w/CL-WHO)
+
+commit b9dc8d1a007860c938ab98e26771d3c3a60e76f5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 25 00:56:04 2010 -0400
+
+    Rename stringify to str (clojure influence).
+
+commit a28cf8d71a07dc38ea0615c3ab41d70d7441b72f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 25 00:49:25 2010 -0400
+
+    Added docstring output for var and defun when *js-print-pretty* is t.
+
+commit 9838e5a5039abb299c66916a590b17a9e5878a96
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Aug 24 00:05:33 2010 -0400
+
+    Removed JS 1.6 specific keyword arg handling since it was broken, and fixing it would make it uglier than using the regular keyword handling.
+
+commit 8510ebaf9b5d13c0e216b1a341d65f8c36a1d12c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 22 21:14:29 2010 -0400
+
+    Renamed concat-string to stringify
+
+commit e8913af7247de7c7609d40cc79ae2f2f5a08f99f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 22 19:59:41 2010 -0400
+
+    Removed test-op method from parenscript.asd
+
+commit c420a337166df0290626d6f00f7bdc100d7621d0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 18 01:33:41 2010 -0400
+
+    Push :parenscript onto features instead of provide to undo change in fe16b36557f (read the CLHS a bit and realized the latter is not a good idea).
+
+commit 0f23e8be7539a82fb521ca873a99b960537f0b1b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 18 01:30:39 2010 -0400
+
+    Cleaned up generated code for processing &key and &optional parameters.
+
+commit 1d5a849dd5aa0a4c8b171bffad46b1eee8681e9f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Aug 17 00:43:16 2010 -0400
+
+    Fixed duplicate hoisted lexical variable declaration (thanks to Daniel Gackle for bug report).
+
+commit 58771a88d6eb11a88aec71d6b1b98c5f9ad061db
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 13 23:40:14 2010 -0400
+
+    Changed package designators to uninterned symbols (should protect against reader changes and enable safe usage with case-sensitive lisps)
+
+commit fe16b36557f03cc3c823707900c76f4e4a7a48a6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 13 23:22:02 2010 -0400
+
+    Changed ASD system definitions to conform to some of Juanjo Garcia
+    Ripoll's recommendations (see
+    http://tream.dreamhosters.com/tream/musings/49-lisp/76-analysis-of-existing-asdf-files)
+
+commit b2af280d3fcd9b5ef0e754ee7856ced074136b16
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 13 21:14:06 2010 -0400
+
+    Deprecated DO-SET-TIMEOUT.
+
+commit 2f9fa1976a2e7b451a673c84d8d7e5b54b965d6c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 13 21:07:29 2010 -0400
+
+    Fixed compilation of LET forms without bodies (thanks to Maciej
+    Katafiasz <mathrick@gmail.com> for the bug report).
+    
+    Simplified implicit-return code, generalized expressionizing of
+    statements (should be possible to use this for things like loops
+    inside expressions etc. without too much work now).
+
+commit 402331f71f9a9bf7e187049262df4c15fc099502
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 12 23:50:13 2010 -0400
+
+    Changed package system tests to use deterministic obfuscator to make
+    unit tests work independent of which order they are executed.
+
+commit 405d1c40d23225155f6338c77a163cb351931471
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jul 11 23:19:53 2010 -0400
+
+    Removed state dependencies between different unit tests (this was
+    causing test failures in different CL implementations).
+
+commit e88be371f14a1812656a09dc2b37028e9befaa26
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jul 11 14:50:19 2010 -0400
+
+    Updated unit tests for new HTML string concatenation scheme.
+
+commit f7bfb6e818d85a3f817d97fa9d46f72ea932b743
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jun 21 15:53:34 2010 -0400
+
+    Fixed compilation of COND clauses with unspecified consequents, empty PROGN expressions.
+    
+    Thanks to Daniel Gackle for the bug report.
+
+commit fbfeb4211767c8f46be9c0adfaca035a25e9cd8e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jun 21 15:11:08 2010 -0400
+
+    Fixed PS-INLINE (thanks to Olof-Joachim Frahm <Olof.Frahm@web.de> for the patch).
+
+commit ac4080140c9c151f88729c59d608b2c6a5adbabc
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun Jun 20 19:30:21 2010 -0600
+
+    Extended the amount of compile-time string concatentation PS can do
+    when emitting HTML.
+
+commit 9bedd4cdac509ee2f73e8329a363fe460489c294
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun Jun 20 18:04:44 2010 -0600
+
+    Made CONCAT-STRING use the buffer join technique rather than the +
+    operator which is notoriously slow for string concatenation in some
+    browsers.
+
+commit 64289a08c8c06598a87424bb998e8383ecaa41df
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Jun 17 12:38:44 2010 -0600
+
+    Added HCENTER and VCENTER keys to the OFFSET macro.
+
+commit 89babcc1972faa88c5c749f3ca20194e58d3a40a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jun 15 13:19:16 2010 -0400
+
+    Fixed bug with +/- precedence (thanks to Daniel Gackle for the bug report).
+
+commit 6dd084bbc11f54ec31334efa6268b0ba1d4657f4
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun May 23 14:42:28 2010 -0600
+
+    Fixed bug in PS-LOOP: variable names like COUNT were being converted
+    to LOOP keywords inappropriately, causing them to be compiled
+    incorrectly.
+
+commit 189c4d8c37bcab8cfc8a06e276b21a8ecca77d45
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun May 23 12:47:51 2010 -0600
+
+    Fixed bug in DESTRUCTURING-BIND: the default when binding to the tail
+    of a list should be [], not null.
+
+commit 1f5e04d1c7f4a9de9594cdbb1f0b38f8df87c487
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun May 23 01:06:42 2010 -0600
+
+    Replaced deprecated % with REM in ODDP.
+
+commit 9c6dffb4678dfd79645807681376c902aa1f6481
+Author: Chew Theam Yong <chew.theam.yong@gmail.com>
+Date:   Fri May 14 20:44:15 2010 +1200
+
+    Operator precedence - fixed parenthesizing for comma in arrays.
+
+commit 772e1ea1be904894b2421170473c9d36c549aee4
+Author: Chew Theam Yong <chew.theam.yong@gmail.com>
+Date:   Fri May 14 20:42:41 2010 +1200
+
+    Operator precedence - fixed handling of nested lets.
+
+commit d000493fd21f08048bd6ce0686697ff5358aa9a8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed May 19 13:37:15 2010 -0400
+
+    Undid last patch (didn't really think through how it would work with arrays).
+
+commit 077c34cb01f02ce21067f415ce32339d0090846d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed May 19 13:30:44 2010 -0400
+
+    Changed random not to floor all numbers (thanks to Chew Theam Yong
+    <senatorzergling@gmail.com>) for the suggestion).
+
+commit 9e9df2f9a00e4450350836d6b3cf3d94346bbeac
+Author: Chew Theam Yong <senatorzergling@gmail.com>
+Date:   Tue May 11 21:38:55 2010 +1200
+
+    Changed gensym to ps-gensym for consistency/replicable gensyms.
+
+commit 7e44e7623f561740298236629f90df4bae90d306
+Author: Chew Theam Yong <senatorzergling@gmail.com>
+Date:   Tue May 11 21:38:29 2010 +1200
+
+    Renamed function argument 'as' to 'arrs' for consistency, just like in nconc. (PS ok, it's really because 'as' is an Actionscript 3 keyword).
+
+commit dedc684db07109db05cc9f09fd87322155d1b405
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed May 19 12:44:50 2010 -0400
+
+    Fixed problem with calling methods on anonymous functions (thanks to
+    Daniel Gackle for the bug report).
+
+commit 05c6599a1eac0e08be2999b6db4009e4a119f15f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed May 19 12:37:36 2010 -0400
+
+    Use funcall instead of Scheme-like function calling convention in macros.lisp
+
+commit e4cde7439865d69880c7b2564ee68d99fba13c50
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed May 19 12:37:15 2010 -0400
+
+    Slight fix to reference doc.
+
+commit bbb5fcc7f61e81711f2389ebe9d2df21367cc0ae
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon May 3 10:12:18 2010 -0400
+
+    Fixed typo in docs/reference.html
+
+commit 2bc3dd18bcaaf784ab6d4511d0f34d79d70497a0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Apr 28 23:08:54 2010 -0400
+
+    Made syntax of js:switch less ugly.
+
+commit 62563f5a383311947870e8d5ac7b958af7592a11
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 27 15:48:37 2010 -0400
+
+    Simplified handling of character literals.
+
+commit 8dc356f7d3ddce6bd9dd9648cae38a11c714e543
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 27 09:51:45 2010 -0400
+
+    Stopped defpsmacro/define-ps-symbol-macro from clobbering special forms.
+
+commit d82ba967e288a4bbbe1f76809bb2be8630fbf8c3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 27 09:45:53 2010 -0400
+
+    Removed %check-once-only type check.
+
+commit 5b78ce69503b22c0a703f7cff7ca693607aa0b9b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 25 16:28:27 2010 -0400
+
+    Fixed operator associativity printing bug (thanks to Daniel Gackle for
+    the bug report).
+
+commit c9be821b9410818692c906f72040aafee6cc5763
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Apr 23 22:42:14 2010 -0400
+
+    Added != and !== to deprecated interface.
+
+commit c5f9adacd1d15f4426c41606c477ee1122eff8b1
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Apr 22 01:42:07 2010 -0600
+
+    Fixed &=, |=, and ^=.
+
+commit e89e38e4f40509b19d224a56db63bfdba012f209
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Apr 21 23:24:16 2010 -0400
+
+    Moved ps-macro-lisp into macros.lisp
+
+commit caa3d68d4e3531d36b775c9f3ca18974fd65566d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Apr 21 21:18:31 2010 -0400
+
+    Removed EQUALP (it really needs to be a runtime function).
+
+commit 2550491092a560f16bdad85cc07497fa9af69755
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Apr 21 17:04:44 2010 -0400
+
+    Changed EQUAL and EQUALP to compile to '==', added STRING=.
+
+commit e7e018cfd9d322c569056e00895bd000281814e1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 20 20:51:28 2010 -0400
+
+    Fixed %/REM. Thanks to Daniel Gackle for the bug report.
+
+commit be0cde84d446827e9c197528552184afb3218d8b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 20 20:50:59 2010 -0400
+
+    Fixed unit tests for NULL patch.
+
+commit 1582dbba30623f2445bf0fd187ba63a84349e8b0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 20 17:40:10 2010 -0400
+
+    Made NULL treat 'undefined' properly.
+
+commit 63cfad161d1723355ff4c3d79146029d1bbbe7be
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 19 17:39:35 2010 -0400
+
+    Fixed vector literal printing.
+
+commit 514d022f3afb3dcd0ad6e5ca5051e712efaf5ae0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 19 14:19:46 2010 -0400
+
+    Fixed *= (thanks to Daniel Gackle for the bug report).
+
+commit 41daaf149064b4a3fa71ed9bf2759e62a764ec18
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 18 19:32:54 2010 -0400
+
+    Fixed bug where FUNCALL wasn't properly accessing lexical variables
+    (thanks to Daniel Gackle for the bug report).
+
+commit c569e5049522b04aecf76f99fee1437419b6e09f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 18 19:15:41 2010 -0400
+
+    Made LABEL work w/ new compiler.
+
+commit 0d1fe779ce7df97e683875c475fa4cc39a58a048
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 18 13:14:20 2010 -0400
+
+    Fixed FOR special form to work w/ compiler rewrite.
+
+commit 2215876faaf2b447eaa2526c76f5bae98eefa10d
+Merge: 4e60256 3789e74
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 18 13:07:45 2010 -0400
+
+    Merge branch 'master' of ssh://vsedach@common-lisp.net/project/parenscript/public_html/git/parenscript
+
+commit 4e602569fa56b07f0d622e8b3d5c10049cd59a68
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 17 20:33:13 2010 -0400
+
+    Giant compiler rewrite.
+
+commit bb072dea50582ce3352845391333bed4f933d3c0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 17 20:30:07 2010 -0400
+
+    Refactored symbol name mangling code.
+
+commit 3b84c6c5643b030ed8ed3604b2a2c853b2a5762d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 17 20:27:14 2010 -0400
+
+    Fixed equality abuse in ps-macro-lib.
+
+commit 9cb8d0dd16c5aa94939099d8db0e4e2a800fe9a9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 17 20:25:52 2010 -0400
+
+    Refactored symbol-to-js-string function.
+
+commit 39ea2e4cb27bb5ae7de6ffb4666a075c5e4463d0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 17 20:24:07 2010 -0400
+
+    Put == and === into deprecated interface.
+
+commit a06776b2c5fdd9820a4cdd68211aaed62cd9f5ea
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 17 20:20:57 2010 -0400
+
+    Removed VOID from reference.
+
+commit 3789e74e7a0e4a5f343dbddd791ce8c740078481
+Author: Scott Bell <scott@skysheet.com>
+Date:   Thu Apr 8 17:08:10 2010 -0600
+
+    Define new special form LABEL to provide general JavaScript labels.
+    
+    LABELED-FOR is now deprecated in favour of LABEL and FOR.
+
+commit e0146173f4a7cb8684b02196c9228d2a8f7de798
+Author: Scott Bell <scott@skysheet.com>
+Date:   Wed Feb 24 10:06:03 2010 -0700
+
+    Add common fasl suffixes to new file .gitignore
+    
+    This is because git (> 1.7.0) reports submodules as modified if their
+    working trees are considered `dirty', which happens when fasls are
+    generated.
+
+commit 88238d914ae4f91537a85606a397f756304b2873
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Mar 10 10:11:35 2010 -0500
+
+    Fixed '=' comparison of more than two expressions.
+
+commit 5a5a58e53dcc2b174b0a2095eccb049a0ae4d06b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Mar 6 20:48:32 2010 -0500
+
+    Added NCONC to the runtime lib (thanks to Daniel Gackle for the
+    implementation).
+
+commit 48de7bb52676c13a93ff375272a6b29d63b6b7da
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Feb 26 21:39:06 2010 -0500
+
+    Fixed PS-COMPILE-STREAM breakage (was trying to compile forms one at a
+    time as they were read, which would make sense for an interpreter, but
+    the desired behavior is to read all the forms in first and then
+    compile them at once - that caused some problems with printing).
+    
+    Thanks to Yong <senatorzergling@gmail.com> for the bug report.
+
+commit 6de6cc9fb42568ce1ca99366d91b1171e9fdb1ad
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Feb 24 17:25:38 2010 -0500
+
+    Changed OBFUSCATE-PACKAGE to take closures for symbol-maps only.
+
+commit 6779b4e1a2667c1f2b1262014c497da0a97164bc
+Merge: 2e8fac0 5c9d6a8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Feb 13 02:44:59 2010 -0500
+
+    Merge branch 'master' of ssh://vsedach@common-lisp.net/project/parenscript/public_html/git/parenscript
+
+commit 2e8fac0170bf3632fe31588472ca1a55bf6b220f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Feb 13 02:44:22 2010 -0500
+
+    Fixed shadowing of symbol macros by LET.
+
+commit f67b84714ebbc1089013a028843a1ea13514e5d8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Feb 13 02:43:49 2010 -0500
+
+    Removed defmacro/ps from reference doc.
+
+commit 5c9d6a8be6ebe805b08c4661ad59bd05e045cf8d
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Jan 21 20:48:28 2010 -0700
+
+    Fixed bug in PS LOOP: iteration variables weren't being declared when their initial value happened to be null.
+
+commit c844cbcf3513ea9a5e95c4c35ed7db1e94b2e163
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 1 00:57:10 2010 -0500
+
+    Supressed top-level "null"s being output.
+
+commit 0581b46b5f53fa0b85ffa1d30412ffc5db19e554
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 25 01:15:16 2010 -0500
+
+    Added code to handle SPECIAL declarations.
+
+commit 417f0a10cd9ce56779a270109ef1aa85444887e3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 4 20:40:47 2010 -0500
+
+    Made WHEN/UNLESS return null in situations where a return statement
+    was expected (switch, try statements).
+
+commit a0efe39fc620733fd24cba68c98b41f0d27c7bf0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 4 18:43:54 2010 -0500
+
+    Made FLET and LABELS not gensym new names when it's not necessary.
+
+commit 05a67e1649e131b2852fa44472ddc8b64094f15b
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Jan 4 15:48:54 2010 -0700
+
+    Deprecated DEFMACRO/PS as described on parenscript-devel email list, 2009.12.28.
+
+commit 46565f0fc3e01a3c4b3007228aa806231af5aeef
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Jan 4 15:41:14 2010 -0700
+
+    Deleted trailing whitespace.
+
+commit e49530982308a5e2dff442b47ad6e679e80fe575
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Jan 2 16:35:59 2010 -0500
+
+    Changed RETURN of conditionals not to return spurious nulls.
+
+commit 0b46ae5469019c11abe685714bc97a23ee8a4c6b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 29 14:36:11 2009 -0500
+
+    Made the obfuscator not obfuscate exported symbols.
+
+commit 632cfb017cdd4cbb5a0d5c73bbc414ec16bf6254
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Dec 28 11:56:11 2009 -0700
+
+    Fixed bug: loop accumulation was broken after the removal of WITH-LAMBDA macro in c08b0525.
+
+commit cd7017c6c95889ff271aae4e31fae125221d938e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 28 03:49:54 2009 -0500
+
+    Made DEFUN SETF work correctly for &rest parameters in argument
+    signatures. However, this means that the store-form now gets evaluated
+    before the arguments to the updating function.
+
+commit 56d3732b834d212c71b7516c3f536d469cb611f5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 27 05:34:49 2009 -0500
+
+    Removed "internal" documentation.
+
+commit 22ea044be555cfc2407cf7539bd848e4eea31365
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 27 05:31:33 2009 -0500
+
+    Removed unneeded EVAL-WHEN from around macro environment definitions.
+
+commit 8ddc6dc1495a03a73473d149f778ae6b0af5679c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 27 05:24:36 2009 -0500
+
+    Removed EVAL-WHEN crud from test suite definitions.
+
+commit e65551b8af3f60ee8220af994d1d5981674857bc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 27 05:19:03 2009 -0500
+
+    Cleaned up ASD file a bit.
+
+commit a3253c915c5c617f5f406ad99aa5d074d8926a79
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 27 05:13:28 2009 -0500
+
+    Removed EVAL-WHEN and #. stuff from packages.lisp
+
+commit 1588dea298f6350af313886a63b67dca13cb3acc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 25 02:59:07 2009 -0500
+
+    Made RETURN of TRY handle the :CATCH clause correctly.
+
+commit f15a36f4e8ee98191318bfc8ac97710162b9c087
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 25 02:39:54 2009 -0500
+
+    Rewrote reference manual in HTML.
+
+commit c08b0525459cc4e99f91dd0db6bb2c9d281545b2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Dec 24 00:07:06 2009 -0500
+
+    Removed WITH-LAMBDA macro.
+
+commit c882341145b67f5ca3d06a14431ba611929c6d28
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 13 03:56:02 2009 -0500
+
+    Removed IE specific CC-IF form.
+
+commit fda8b8f38dd311cbf361256f973adc39b355a4a6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Dec 12 21:05:34 2009 -0500
+
+    Improved doc for js-expander.el, added more recent dates to COPYING
+    copyright notice.
+
+commit 41a009891a8165c019dc0bc3f94baa3067a25079
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 7 03:56:56 2009 -0500
+
+    Removed MAP-UNTIL from runtime lib.
+
+commit 71adc9d25402701717ca3b5a82eccc31057a845d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 7 03:15:53 2009 -0500
+
+    Rearraged ps-macro-lib.lisp to make more sense, removed MEMOIZE function.
+
+commit 75fe832e2f21e4454bd3a23b406177af2b68b3c2
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri Dec 4 20:09:55 2009 -0700
+
+    Added < and > to the list of symbols PS accepts in identifiers and mangles into legal JS.
+
+commit b400cf8cc727ec65024ba0227ebd03a0414fb68f
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Dec 3 14:52:09 2009 -0700
+
+    Omit superfluous space after DEFAULT.
+
+commit 4b39ce9d4e06ea17da8720def57c19be92d91208
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun Nov 8 13:05:09 2009 -0700
+
+    Fixed bug in PS LOOP: bindings should be destructured *after* testing whether or not the loop is over. This bug was obscured by the fact that it was only activated in the comparatively rare FOR-ON clause, because FOR-IN puts bindings in a second iteration object than the end-test.
+
+commit 9f0d0a5dcbccb8a75e0729f485d92c3bc666a7c8
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Nov 4 11:27:05 2009 -0700
+
+    Added PS implementations of PROG1 and PROG2.
+
+commit 9a5ca7f3a665ad7258cbcf6e3863ae88ef1e823a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 2 22:21:23 2009 -0500
+
+    Renamed GET-PROPERTY to GETPROP.
+
+commit 5a6d617b1f4d85b1ef17e7ab9ffc2188a4dce802
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 1 02:38:55 2009 -0500
+
+    Fixed return of iteration special forms.
+
+commit 5dc7efcba1212fd6e1af1ee6d904abf7dab546fa
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Nov 30 02:52:28 2009 -0500
+
+    SETF now correctly looks up SETF expansions of places before
+    attempting macroexpansion.
+
+commit 211f9bede1236b41d856b8e17224b6c03b65764c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 29 21:07:46 2009 -0500
+
+    Made SWITCH flatten blocks in case statements. This prevents redundant
+    brackets from being printed.
+
+commit cb444f251760ea517ebdaae3d037fac3107f3d04
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 29 20:28:13 2009 -0500
+
+    Removed redundant PROGN in DO* statement.
+
+commit 555aa5fed7426447cbb71cb69f70994f61d56e6c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 29 00:13:54 2009 -0500
+
+    Changed PS-DOC* to take multiple arguments (implicit progn) to make it
+    consistent with PS*.
+
+commit 8958c027d7f1a6c6ebf06fdcd0741c7dee69ced9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Nov 27 02:15:13 2009 -0500
+
+    Fixed RETURN of COND.
+
+commit 2e7be7ff292e5e2d41cca455995c62f319b42ffd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 26 19:46:03 2009 -0500
+
+    Fixed RETURN of SYMBOL-MACROLET.
+
+commit 47f149e552ef278d65fab623092ad6d26c4a561d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 26 01:20:05 2009 -0500
+
+    Added VALUES and MULTIPLE-VALUE-BIND. Thanks to Red Daly and Daniel
+    Gackle for the code.
+
+commit 619c833b607c54e4886f82ce8bbd137c729e0572
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Nov 23 00:28:06 2009 -0500
+
+    Exported *PARENSCRIPT-STREAM* special variable, used to control output
+    of PS*.
+
+commit a23adeb2e58b5ef83a21496aae1980f708de653a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 22 02:20:09 2009 -0500
+
+    Better RETURN handling of conditionals and statements.
+
+commit fee127d958d32f3af37049174034d57dd1b76e63
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Nov 18 22:50:37 2009 -0500
+
+    Make NIL the value (the last form in enclosing PROGN) of a LOOP macro
+    with no default accumulator. (Patch from Scott Bell)
+
+commit da2f37c137a47f07077d0cf8dfd9795ee347ced2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 5 00:56:07 2009 -0500
+
+    Renamed SLOT-VALUE to GET-PROPERTY (and added the former to the
+    deprecated interface).
+
+commit 16e527d4019cc2532e49531276a5ee826ac6c414
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 5 00:45:24 2009 -0500
+
+    Fixed symbol-to-js-string of things like A++ and A**.
+    
+    Thanks to Daniel Gackle for the bug report.
+
+commit 3f0245a295fb4583008f4c3b34508fe2a8971251
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 5 00:32:34 2009 -0500
+
+    Fixed RETURN of CASE.
+
+commit 9d8ee82cca163e178dfac572d2f78bb901f73a37
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 5 00:08:36 2009 -0500
+
+    DOLIST no longer generates a gensym for the array argument if it's not needed.
+
+commit e0787e92b22fe6cb82eef56366310b7e9ec79fb6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 5 00:00:32 2009 -0500
+
+    Fixed FLET expression compilation.
+
+commit 6c1701e37f08026eac0ce904c9091f644b2da8c3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Nov 4 14:53:41 2009 -0500
+
+    Added implicit return to function bodies.
+
+commit 7c417818c261e05b4fc38b98009aa6beee5d8841
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Oct 28 15:34:01 2009 -0600
+
+    The RETURN special operator now throws an error if it encounters the syntax error of (RETURN (RETURN FOO)).
+
+commit 8f40bebda4daf67bf45c462842032fce105c91a5
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Oct 28 15:23:52 2009 -0600
+
+    Extended the optimizations in the NOT special form to convert double-negatives into positives, as in (PS (NOT (NOT X))) => "x".
+
+commit afbaec3cf9074a489065d1079498ae229a8c8679
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Oct 28 14:17:32 2009 -0600
+
+    Made :WHILE and :UNTIL into first-class clauses in PS LOOP (they weren't working properly in conjunction with :FOR clauses).
+
+commit 5504b0adadd07127e4ba02db2780d5f896a27c70
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Oct 27 17:40:46 2009 -0600
+
+    Added support for :APPEND clauses to PS LOOP.
+
+commit 1914e110351ea7d56358c8af0b18d65de4ec6ca3
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Oct 27 17:12:16 2009 -0600
+
+    Added support for :WITH clauses to PS LOOP.
+
+commit 4acb7e886a1f77ea4870f160186ad6f53511a621
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Oct 27 15:08:37 2009 -0600
+
+    Fixed bugs involving :INITIALLY and :FINALLY in PS LOOP. They weren't working properly in cases where the main body of the loop doesn't execute. When that happens, iteration variables should still be in scope, just null. (An exception is for iteration variables in :FROM clauses, which get set to their init-form at declaration time. This behavior is drawn from CL's LOOP, or at least CCL's implementation thereof.)
+
+commit 9e41cb3a9c100c0954ab77d38012c38cf36004a9
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Oct 27 00:02:54 2009 -0600
+
+    Removed three nonstandard clauses in PS LOOP (:INDEX, :FIRST-TIME, and :LAST-TIME) which date back to the experimental origins of this code and which, as far as I know, are unused.
+
+commit 54088f002771707f902495eead0ded367c4e1405
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Oct 26 17:49:02 2009 -0600
+
+    Literal vector notation is now supported; treated exactly like literal lists.
+
+commit 68d11126903eefbccaf373b797a30ca08f185bc8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Oct 13 09:55:25 2009 -0600
+
+    Changed the CREATE special form to treat its key arguments as
+    constants.
+
+commit 96f55721757b51f3767573ded5ce46560acd6fa2
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Sep 21 23:29:31 2009 -0600
+
+    Fixed bug: dotted lists weren't being destructured properly.
+
+commit 87dd91e6ae779ae293c78bd0e61173683a72c416
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Mon Sep 21 18:20:50 2009 -0600
+
+    Fixed a bug in PS LOOP: the :INITIALLY and :FINALLY clauses should execute whether or not the loop body is executed.
+
+commit fe2d3a36bd86cf549a43c8f3f603cfba564861b4
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Sep 17 17:47:52 2009 -0600
+
+    Added &OPTIONAL to DESTRUCTURING-BIND. Currently it's just ignored (next step woudl be to support default values).
+
+commit 46ec1155f794c572af5940e676683b6fee8886ba
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Sep 15 11:54:59 2009 -0600
+
+    DESTRUCTURING-BIND now supports &REST.
+
+commit 87857891ba9b683885ae5cc00f6596c06f33e6ac
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Sep 17 12:18:51 2009 -0600
+
+    Fixed symbol macro bug (thanks to Daniel Gackle for the bug report).
+
+commit aa68b4fa9a94a5f9a9f4b1ea12395770ab363845
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Sep 14 12:12:00 2009 -0600
+
+    Replaced redundant string functions in utils.lisp with
+    standard/library ones.
+
+commit 2471a2cf648569db98e3a89a15849f9164edd1b4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Sep 13 16:19:11 2009 -0600
+
+    Fixed the CHAIN macro to correctly chain plain slot values.
+    
+    Thanks to Daniel White <daniel@whitehouse.id.au> for the patch.
+
+commit 4a56eb79eed989dcfa42988b53d271b0627a3908
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Sep 13 16:04:53 2009 -0600
+
+    Changed op-precedence back to a memoized table (performance tweaks).
+
+commit 212df8c4310856ed21b17548ec4f1999616d2484
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Sep 13 15:49:27 2009 -0600
+
+    Memoized SYMBOL-NAME-TO-JS-STRING (performance improvement).
+
+commit 62baa0d890d0a61b939828517582f9ba21d6e44d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Sep 11 13:21:57 2009 -0600
+
+    Added symbolp check before the use of lookup-macro-def in
+    ps-macroexpand (more low-hanging performance fruit).
+
+commit 888a9bd35010b8ef68822d7e5870b433a7d53af1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Sep 11 13:13:35 2009 -0600
+
+    Refactored SYMBOL-NAME-TO-JS-STRING.
+
+commit d434e1d5d12d734270eea083b27ac08f29084015
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Sep 11 12:56:40 2009 -0600
+
+    Changed printing subsystem interface to allow direct output to
+    streams. Added 'ps-to-stream' function.
+
+commit 4e6c3ba16e65b748f07dc46545e4ce73f150693f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Sep 11 10:58:11 2009 -0600
+
+    Refactored compile-parenscript-form code.
+
+commit 6f79326b34a372c997a397ae456f729d4e401b74
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Sep 11 03:37:03 2009 -0600
+
+    Refactored ps-compiler method name for symbols.
+
+commit 4cc463aff9dd83c8af232a532e051349cfd28c06
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Aug 19 13:34:38 2009 -0700
+
+    Factored out duplication between simple and parallel loops.
+
+commit da51b0e00892d23a322c4a5c6d5f153db8a59c19
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Aug 18 16:58:31 2009 -0700
+
+    Correcting how parallel loop handles destructuring lists.
+
+commit ab0f47a9ef8dcf3f8c21e37d526d39468f7e36b1
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Aug 18 16:22:10 2009 -0700
+
+    Separated the processing of single and parallel loops.
+
+commit 5e632069774dd1282f46a5ebe1c7589b74008908
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Aug 18 14:54:41 2009 -0700
+
+    Fixed problem with destructuring-lists in multiple-for clauses (they need binding before the first execution of the loop). This solution is not optimal, because it creates new bindings for the variable inside the loop, and emits the pre-loop bindings even when they aren't being used.
+
+commit 5f5acd45e789666bb523b12bb16e0582076db5a0
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Aug 15 17:24:14 2009 -0700
+
+    Removed trailing whitespace.
+
+commit d6cd10e2e90a91e03f771dfc7dcc80d1e374267d
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Aug 15 17:22:36 2009 -0700
+
+    Eliminated unused local variables that caused compiler warnings in CCL.
+
+commit 56ae43a5af872395a56fd3ce556660dc4c046550
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri Aug 14 01:13:09 2009 -0700
+
+    Made PS LOOP conform to LOOP's semantics regarding parallel FOR clauses. A clause's end-test should take place before the next clause's step form.
+
+commit 2100b87b090527861690b5a97119fed89f78c59c
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Aug 13 13:04:19 2009 -0700
+
+    Broke up loop parsing by pushing local functions to top level and passing a state object around.
+
+commit fc772f726fef4f366bf0a2529db348a554a092fa
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 12 15:01:51 2009 -0600
+
+    Fixed a bug where 'create' was special-casing keywords in
+    inappropriate ways.
+    
+    (slot-value (create :foo-bar 1) :foo-bar) was being translated as
+    ({ fooBar : 1 })['foo-bar']
+
+commit 8e5d6db86745860ded789f169dc82159ed5ab365
+Merge: a14fb2c 614df90
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 6 22:22:20 2009 -0600
+
+    Merge branch 'master' of ssh://vsedach@common-lisp.net/project/parenscript/public_html/git/parenscript
+
+commit a14fb2cb9bce1d6956cc9be3a7e7b67451b7032f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 6 22:21:11 2009 -0600
+
+    Fixed nary comparison operators (ex: (< 1 2 3) should translate to (1
+    < 2) && (2 < 3) instead of 1 < 2 < 3).
+
+commit 614df9005025355d7d4129b3ef593d75cf2452f3
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Aug 5 17:51:32 2009 -0600
+
+    Made the COUNT clause in PS LOOP evaluate its term before counting (and skip nil)
+     like CL does.
+
+commit 578e856583a471b35bb4e2404a6618f04c380022
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri Jul 31 14:20:15 2009 -0600
+
+    Added :REPEAT clauses to PS's LOOP.
+
+commit 90f33220fa33bd9eafc6d09584375143ca246685
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Aug 1 13:15:23 2009 -0600
+
+    Exported 'chain' helper macro.
+
+commit 3b4f81fbfaf80ce282708ce4c138cddeb288fdad
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 27 14:10:51 2009 -0600
+
+    Changed 'slot-value' to print keyword slot names as strings.
+
+commit 0f5e99ffaa8e22e253c44ccc52bb2e46da62723c
+Author: Red Daly <reddaly@gmail.com>
+Date:   Sun Jul 26 20:22:54 2009 +0000
+
+    Fixed eval-when special form and added tests to prevent future breakage.
+
+commit 837bcc37c5a8727b89a99523d215f6769ff38389
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Jul 25 16:01:37 2009 -0600
+
+    Changed 'create' and 'slot-value' to treat reserved JS keywords as
+    strings.
+    
+    Thanks to Alexey Lebedeff for the idea.
+    http://common-lisp.net/pipermail/parenscript-devel/2009-July/000558.html
+
+commit b934060d22a778851ed64596e0aa19a18f1337c8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Jul 25 15:43:00 2009 -0600
+
+    Revised PS literal mechanism to use 'symbol-name-to-js-string' instead
+    of 'symbol-name' to check symbol names for conflicts with reserved JS
+    keywords. Added list of currently reserved JS keyword names.
+
+commit 70c34384f0cfaa33f9eb93fd597d7a50f4434fdf
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri Jul 10 19:17:39 2009 -0600
+
+    PS LOOP now supports ON.
+
+commit c407915cee65f99209f9e603314bf8a6e9a085f8
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri Jul 10 16:31:55 2009 -0600
+
+    DESTRUCTURING-BIND can now handle dotted and nested binding lists.
+
+commit 0303b5f2d97a95d7ca2b7f2443ddf64ef2d6e054
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Jun 30 19:52:12 2009 -0600
+
+    Added support for COUNT, MINIMIZE and MAXIMIZE to PS-LOOP.
+
+commit 8fdf8d6ae664a5ed2909f315614fc65276de1b87
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Tue Jun 30 19:29:44 2009 -0600
+
+    Extended PS-LOOP to allow explicit accumulation variables (declared by INTO as in "sum x into y").
+
+commit 5b87316b9e5691f21e8cdca3f97a2058a074ad7c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 6 14:13:15 2009 -0600
+
+    Rewrote 'ps' macro to expand into 'with-output-to-string' instead of
+    'concatenate,' which gives better runtime performance.
+
+commit d9d9a9705bdfd0559ee1bbf9caa1733d0b3f142b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jun 18 17:11:56 2009 -0600
+
+    Added the 'chain' convenience macro for method call chaining (ex:
+    (chain ($ "foo") (bar x z) (baz 5)) => $('foo').bar(x, z).baz(5);)
+
+commit 998d9a7d1746bd3a0eaa2437722943b1d6604f0c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jun 7 23:30:52 2009 -0600
+
+    Changed destructuring-bind to use let* instead of let in its
+    macroexpansion.
+    
+    Bug report due to Scott
+    Bell. http://common-lisp.net/pipermail/parenscript-devel/2009-June/000532.html
+
+commit ead240bb2f6e1e1d7a174a5c3843618bc0baaa3d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jun 7 23:27:47 2009 -0600
+
+    Fixed several special forms that were not macroexpanding their
+    arguments.
+    
+    Bug reports thanks to Scott
+    Bell. http://common-lisp.net/pipermail/parenscript-devel/2009-June/000530.html
+
+commit c8d008ad070b9d28ab90c4da73a920ad52c847d3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jun 7 22:52:58 2009 -0600
+
+    Introduced 'function' special form to further help with faking Lisp2
+    in JavaScript.
+    
+    Previously, 'apply,' among others, did not recognize the second
+    namespace as introduced by flet/labels. Thanks to Scott Bell for the
+    bug report:
+    http://common-lisp.net/pipermail/parenscript-devel/2009-June/000529.html
+
+commit 604b5bbea9dd9eff7a21a59f2236f0d9374a13db
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Jun 7 22:35:05 2009 -0600
+
+    Fixed 'flatten' to correctly handle lists with non-nil cdr (ie '(1 . 2)).
+    
+    Thanks to Scott Bell for the bug report.
+    http://common-lisp.net/pipermail/parenscript-devel/2009-June/000528.html
+
+commit 467e94fdca82df268844ed880beffdda040a46f1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun May 24 18:53:03 2009 -0600
+
+    Changed process-html-forms-lhtml loop in lib/ps-html.lisp from 'loop'
+    to 'do' due to bug in CLISP's 'loop' implementation (this also made
+    the code shorter).
+    
+    Thanks to Olaf Ruppert <oruppert@googlemail.com> for the bug report.
+
+commit 6dce8f773e92022971ed493610b18e5b6a23ad96
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri May 15 16:04:33 2009 -0600
+
+    Fixed some special forms that weren't macro-expanding their arguments.
+
+commit 16151f19dc3ade7da3195fd7cc08ad3bff135d3f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu May 14 18:38:10 2009 -0600
+
+    let/let* no longer gensym variable names when they are not bound in
+    enclosing lexical scopes, resulting in prettier output ("var x = 1",
+    instead of "var x1 = 1") in typical usage of let.
+
+commit 9831d514e9cd52a133bb3c66ea26d67b0e7d08b0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun May 10 11:39:02 2009 -0600
+
+    Made compiled-form-to-string use write-string instead of printc, which
+    results in a much more efficient ps*.
+
+commit a090d1e5890778d100fdf9bad29c8c747d9ea847
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri May 8 15:13:18 2009 -0600
+
+    Added support for supplied-p parameters to optional and keyword arguments.
+
+commit 6e135d5caec3096c8ce072c8f34a1610e7007bf0
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Fri May 8 14:59:05 2009 -0600
+
+    Extended DESTRUCTURING-BIND to allow NIL bindings to indicate a place should be ignored, the way that CL LOOP does.
+
+commit 5a69278ca017c4f1fe5c31f540bbed7c5777db84
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat May 9 17:24:22 2009 -0600
+
+    Substantially modified the way Parenscript compilation and
+    macro-expansion take place. This gives control of macroexpansion to
+    special forms, and lets Parenscript do things like fake being a Lisp2
+    (different function and variable namespaces), and overall makes
+    Parenscript compilation look a lot more like CL compilation.
+
+commit 3bfb836ac8dccc16eac4dbd6116535b2d50e8f2e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri May 8 22:54:07 2009 -0600
+
+    Fixed bug where macrolet and symbol-macrolet special forms were always
+    compiling their implicit progn bodies to statements.
+
+commit 058f137f675cd287a83ee28b97d088af98d3e939
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun May 3 15:31:16 2009 -0600
+
+    Reimplemented flet and labels to use the same renaming tricks as the
+    let/let* patch to correctly implement lexical scoping.
+
+commit 5ffb1ebaaff5e8f899fd4b1bd91b015f2c52d656
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun May 3 14:42:12 2009 -0600
+
+    Implemented LET and LET* by variable renaming, which provides the
+    correct scoping semantics, and simplifies both the producing and the
+    produced code.
+    
+    Removed the "." and "[]" name-mangling conventions from
+    symbol-to-js-string. Any code that uses symbols such as "foo.bar[baz]"
+    will now issue a warning, and needs to be rewritten to use standard
+    Lisp accessors. This is needed for variable renaming to work, and is
+    an extension of the patch that eliminated the ".method" method-calling
+    convention.
+    
+    Thanks to Daniel Gackle and Dough Hoyte for opening my eyes to this
+    technique, which was right in front of me all along.
+
+commit d7fe9ef286c622d33c1f43dbae72694efad6a711
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun May 3 11:01:20 2009 -0600
+
+    Removed unused function val-to-string from utils.lisp
+
+commit 8877a38061a5144815315e8028d401c093ee0234
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Apr 29 00:20:48 2009 -0600
+
+    Added file compilation and eval-when facilities (patch from Red Daly).
+
+commit 20ba6d7aaf65cac1180ae98fcb67c7acd6ea141d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 28 20:17:34 2009 -0600
+
+    Fixed bug with incorrectly parenthesized if expressions.
+    
+    Thanks to Daniel Gackle for the bug report.
+
+commit dd4442b8973fe8b2c19b44f94f244934aa418ae8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Apr 28 19:22:36 2009 -0600
+
+    Fixed non-uniform handling of quoted symbols that manifested itself in
+    broken package obfuscation.
+    
+    Thanks to Red Daly for the bug report.
+
+commit 62ddca2303bd31a1597eaa57e1d7cef37caef2a3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 27 15:52:55 2009 -0600
+
+    Fixed bug in keyword argument handling (patch thanks to Red Daly).
+
+commit efe8a33ff5b19ae538486055561fc1f70b6fc1c2
+Author: Kelly McDonald <kelly@jehu.(none)>
+Date:   Wed Apr 22 14:38:14 2009 -0400
+
+    method trick was yanked in 79630c82ac03066ceb1dac50015eb6b7a2151bbe but the documentation makes it look as if you can still do this.
+    
+    A further note with something about a backwards incompatible change
+    might also be useful
+
+commit 98b0b2441e3195f944c5cf1351dc438da6def2ff
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 19 21:24:23 2009 -0600
+
+    Fixed typo in ps-macro-lib.lisp
+
+commit 4508ae85b210c4cb4b4ff83090d369fb2182f9c0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 13 19:43:15 2009 -0600
+
+    Added the colon character (:) to the list of special characters that have special translations in symbol-to-js-string.
+
+commit 4525e3cd399d31c86b12d62281f7502310944644
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 13 15:31:07 2009 -0600
+
+    Introduced the *js-target-version* special variable, which is designed
+    to control which version of JavaScript Parenscript is emitting code
+    for. This can be used to emit shorter code for certain constructs
+    (this patch uses this facility to generate shorter keyword-handling
+    code for JS version 1.6 and later).
+
+commit b39a6394ce82020e88d34cf72d64ff257b9917b4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 13 14:05:10 2009 -0600
+
+    Got rid of 'ensure-ps-symbol' internal function (at this point all it was doing was polluting the PS package).
+
+commit 512017c660d3e3f3e5d4fe6fa4b21941b4e81aeb
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sun Apr 12 12:49:41 2009 -0700
+
+    Added destructuring lists to PS-LOOP.
+
+commit a8b6752ef0581ae04e6663dcea4764aa6d9a99d8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 12 22:35:15 2009 -0600
+
+    Removed some unnecessary code that ignored an anaphor in define-ps-special-form (declare (ignorable sufficed.
+
+commit fdfa77fca5143d3c7a242458a2bbc41d60aad6ae
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 12 22:33:29 2009 -0600
+
+    Changed representation of expression blocks and 'if' to look more like JS in intermediate code.
+
+commit fd79b4d33ebc48ea9c549bc9d65936d2e9e66bab
+Merge: ba41710 3ba8ae8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 12 17:17:31 2009 -0600
+
+    Merge branch 'master' of ssh://vsedach@common-lisp.net/project/parenscript/public_html/git/parenscript
+
+commit ba417109ddd2303e50b21d4ad8371ebe923abf46
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 12 17:16:12 2009 -0600
+
+    Removed 'append' from runtime lib since Daniel Gackle provided a more concise macro version in 83a26b36c.
+
+commit 170ee9ab90690ebe89cade2bae25ecbdf7472c11
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 23:51:27 2009 -0700
+
+    Added a file PS-DOM with handy utility macros for DOM functionality, e.g. Lispy ways of accessing offsetWidth, offsetHeight, etc.
+
+commit 83a26b36c6dca2251154740769c8e68749045fc1
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 23:15:41 2009 -0700
+
+    Added several new utility macros, including a primitive DESTRUCTURING-BIND.
+
+commit a3939827a0ab3cd4a8415d7174c4b33fb2654761
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 22:12:51 2009 -0700
+
+    Modified the way the PS-LOOP does SUM (it now gensyms an accumulation var rather than accepting INTO) and added COLLECT to work the same way.
+
+commit f61db7bb7ff0702f52a6b8f02d9a3ec86b264df3
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 22:11:55 2009 -0700
+
+    Added a macro WITH-LAMBDA that's useful for wrapping one or more statements up into an expression.
+
+commit 1cd3540fde3362c266e33eaa6b00e8ff1506d8ab
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 11 20:25:18 2009 -0600
+
+    Updated tests to reflect changes in latest patches from Daniel Gackle.
+
+commit ceb1f27744cc30486b34835220ec09dea235ea6a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 11 19:57:19 2009 -0600
+
+    Fixed 'lisp' form to produce code that captures enclosing lexical scope correctly in 'ps' macro (broke it in my previous patch 0ce67a33), added unit tests to check for expansion in correct environment.
+
+commit 618fb20901b0f3627ea8b4d87222e21f223b52c8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 11 19:56:46 2009 -0600
+
+    Exported 'loop' from Parenscript package, moved utility functions to src/utils.lisp.
+
+commit 3ba8ae8ba1745de307c55e78638ea8b41b3c26ec
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 11 20:25:18 2009 -0600
+
+    Updated tests to reflect changes in latest patches from Daniel Gackle.
+
+commit 0aa90f66141dc4dd0c1253f8f98d33898632953b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 11 19:57:19 2009 -0600
+
+    Fixed 'lisp' form to produce code that captures enclosing lexical scope correctly in 'ps' macro (broke it in my previous patch 0ce67a33), added unit tests to check for expansion in correct environment.
+
+commit 09a3438eebb856bfd71e40459c9c9096d3cd4e3e
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 11 19:56:46 2009 -0600
+
+    Exported 'loop' from Parenscript package, moved utility functions to src/utils.lisp.
+
+commit 840732111165384487992a8f2a030652568bda43
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 15:55:05 2009 -0700
+
+    Restored the old psmacro for LISP evaluation, because the new special form wasn't working.
+
+commit b4bb2beddbbcda4eb886c72e23cf067b80dd64b4
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 15:51:29 2009 -0700
+
+    When turning a quoted list into a JS array, compile elements that are NIL as "null", not "[]". There is no way to make JS completely consistent with Lisp here, because NIL means two different things in JS (null or an empty list) where it means only one thing in Lisp. We have to pick one thing in this context, and "[null]" is more common than "[[]]".
+
+commit 48ea6dd2196d3859b0d4d9d7a92181bb00f3e4bd
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 15:48:02 2009 -0700
+
+    Quoted symbols should be emitted as literal strings, not converted first to JS symbols, otherwise symbols with characters like * and ? will be emitted as "star" and "what", which makes sense only if you're trying to define a function or variable name, but not if you're generating arbitrary strings.
+
+commit 3e29db27eda5fce01361d840fe789edc5d48b6ea
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 15:47:17 2009 -0700
+
+    Generate "[]" rather than "new Array()" for concision.
+
+commit ee03fd807de479827959d3cb060b54278647c16c
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 15:40:30 2009 -0700
+
+    Changed PS-LOOP to emit DO* (i.e. normal JS for-loop code) rather than DO. It was originally written when DO meant DO* (in today's terms). Using DO here makes the generated code slower and breaks a bunch of our existing cases. Also, DO* produces more idiomatic JS code and should be the default case (there is unfortunately no single default here that gives all the desired behavior, but this is a better tradeoff).
+
+commit 84338ee6abb9b5023204d5fd13bb4872a32349dc
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Apr 11 15:39:31 2009 -0700
+
+    Use WITH-OUTPUT-TO-STRING instead of CONCATENATE, because the latter fails when there are too many arguments (this happens in Clozure more often than SBCL).
+
+commit 0ce67a33228383888a07b968ce978c170a112cc8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Apr 6 20:46:19 2009 -0600
+
+    Modified the PS compiler to produce an intermediate representation that looks like raw JavaScript in s-exp notation.
+    
+    Removed the doeach macro.
+
+commit c7716e671d52625ecddb45f318007d2211696daa
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 5 18:16:17 2009 -0600
+
+    Changed tests to reflect Daniel Gackle's keyword arguments patch.
+
+commit 66acaf33da3d230f2a94193c935d44378c0d05c5
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Thu Apr 2 15:05:28 2009 -0700
+
+    Initialize keyword arguments from js ARGUMENTS, allowing keywords to also be passed as normal function arguments without an error being thrown.
+
+commit e4ee1b866d62afebddbb8153b5bfcc276bdfd585
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Wed Apr 1 21:01:03 2009 -0700
+
+    Added a partial implementation of LOOP to PS.
+
+commit cf4cbdbd7db0584c2b8456bbe6c27a7dbd717979
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Apr 5 17:50:15 2009 -0600
+
+    Made the ignore declaration in define-ps-special-form be generated on the condition that 'expecting is used in the body. While it's not an error to use variables previously declared ignored, it does raise annoying compiler warnings in some Lisps.
+
+commit 496ef8be52f3e6c22ffdb72a36b4fdc0ed3cd93f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Apr 4 16:39:15 2009 -0600
+
+    Removed compile-time constant string concatenation from the Parenscript printer, which was significantly slowing down compilation.
+
+commit e8fdcce782ec8e421ea47c7da2b8670898be170d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Mar 31 13:36:32 2009 -0600
+
+    Changed the definition of define-ps-special-form to make "expecting" an anaphor.
+
+commit fb4692854ead699944b83234577a2f7b42bd8630
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Mar 30 18:42:31 2009 -0600
+
+    Changed the implementation of quote from being special cased in several Parenscript internal functions to a Parenscript macro. This makes the code simpler and allows for extensibility of how quoted forms are translated. One example is quoted strings being translated to JavaScript array literals.
+
+commit 6c9687e95f1eae8542cfb72dbbadd6af76b74187
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 12 02:07:39 2009 -0600
+
+    Renamed *html-empty-tag-aware-p* to *ps-html-empty-tag-aware-p* and *html-mode* to *ps-html-mode* to not clash with CL-WHO symbols, but still follow the same naming convention.
+
+commit 19719c462494052b526338f9c241ac4cfa65750d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 12 02:04:06 2009 -0600
+
+    Removed tutorial.lisp from repository (it is now updated and placed online in HTML format: http://common-lisp.net/project/parenscript/tutorial.html)
+
+commit 0734b390e374e8c06cd58b7f321a40ad5c8c7e9d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 5 21:38:08 2009 -0700
+
+    Changed ps-html generators to behave more like CL-WHO when it comes to XML/SGML, self-closing/empty tags. Changed the name of *self-closing-tags-p* flag to *html-empty-tag-aware-p*, added *html-mode* parameter.
+
+commit f3b59421fadbb85bd5b91a2c737facd811b17bf9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 5 21:37:00 2009 -0700
+
+    Regenerated reference-tests.lisp from reference doc with latest changes.
+
+commit 5af33a2769f147b6541d667719a9a5bae83b93de
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 5 20:09:54 2009 -0700
+
+    Rewrote some unit tests to simplify code.
+
+commit 157cb2d6775145cf26bd7d9e198c2df733dd6306
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 5 20:09:21 2009 -0700
+
+    Added ps-doc* function to PS compilation interface.
+
+commit 7b8a74eefa83ced405aef8e0980796c9b8840064
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 5 20:08:00 2009 -0700
+
+    Added example of closure symbol-map usage for obfuscate-package in reference doc.
+
+commit b994e529c74d2238209329c18333d60f8b449e4c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Mar 5 20:05:29 2009 -0700
+
+    Removed literal backspace character from the JS escape sequence part of the reference doc since it caused an error when generating PDFs.
+
+commit ed954200c5072db239b261e1e1090df16bcbf238
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Feb 28 12:39:06 2009 -0700
+
+    Added note about printing special characters to escape sequences to the reference.
+
+commit 62fe754b677e5eada7414892be414a2f87d981d3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 23 02:34:35 2009 -0700
+
+    Added all symbols from DOM levels 1 and 2, Window working draft to the
+    DOM symbol export convenience packages (used with obfuscation). Moved
+    non-standard DOM symbols to their own package. Removed the Prototype
+    symbol export convenience package.
+
+commit 5288d66661b2912d2c6f6ee5746438771d23c537
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Feb 20 16:47:08 2009 -0700
+
+    Fixed the 'pi' symbol-macro.
+
+commit 59217e4c2d54555d56dfec8e891557bfa35aa2b3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 9 17:01:55 2009 -0700
+
+    Introduced the "funcall" macro (which really doesn't do anything - only CL needs it because of the weird way it treats form evaluation).
+
+commit eb680245fe415702a61f30f2b7ea23cde8dd6617
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 9 16:44:41 2009 -0700
+
+    Updated js-expander to work with the latest CVS version of SLIME.
+
+commit c68c2dc7ff67b45001c88b76cb06cc1d6e8691cf
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Feb 8 01:13:11 2009 -0700
+
+    Added 'reduce' function to runtime lib.
+
+commit 083b7f89d502756ecc7c6ab70c87b8f790bd6905
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Feb 8 00:24:17 2009 -0700
+
+    Fixed a bug where variable initializations inside for loops were being compiled as statements instead of expressions.
+
+commit ef3be63e540ed9b5361a534cfa2cf3f8a992deef
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Feb 6 22:02:19 2009 -0700
+
+    Implemented 'flet' and 'labels' as PS macros.
+
+commit dde6e656f2d292b66143f1406e4df24803dc10ce
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Feb 5 19:02:03 2009 -0700
+
+    Made who-ps-html handle multiple html forms correctly (ie - things like (:ul (:li) (:li))).
+
+commit 93296a3dc1109efc6de26487b819631ebe6b9584
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 2 18:14:32 2009 -0700
+
+    Changed let to not introduce any extra variables (for parallel
+    binding) when only one variable is being bound.
+
+commit 79630c82ac03066ceb1dac50015eb6b7a2151bbe
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 2 14:14:21 2009 -0700
+
+    Got rid of the "(.method-name object args)" method-calling
+    convention. It breaks package prefixing/obfuscation, and while
+    sometimes a handy shortcut it obscures how method calls are really
+    done, and introduces a redundant way of doing them which complicates
+    code-walkers and (future) attempts at Parenscript compiler
+    open-implementation facilities.
+
+commit 7ac25d0ddd4a9472ccc0ed2fb6931f1ec7645471
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 2 13:27:00 2009 -0700
+
+    Changed the @ (slot-value composition macro) not to do the dollar sign
+    thing if the first argument is a string ('$' is a Prototype library
+    function), and not to do spurious macroexpansion.
+
+commit e69d0a12d668dab0e91e419498d0c9444a354403
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Feb 2 00:31:52 2009 -0700
+
+    Defined ps-inline as a PS macro in addition to a CL macro.
+
+commit 9496b3a4caa79d9a833b92689582c2bad691e16c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Feb 1 23:15:41 2009 -0700
+
+    Fixed bug where expressions could not be applied correctly (ex - ((or a b) c) did not compile to "(a||b)(c)").
+
+commit 8cfc6fe9fa7e68bcacac97fa2fcbf2ff668f0810
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Feb 1 00:18:34 2009 -0700
+
+    Modified the Parenscript macro facilities so that defpsmacro and
+    define-ps-symbol-macro define their macros in their lexical
+    environment (previously they were always defining in the null lexical
+    environment).
+    
+    This cleared up the implementation of the macro facilities, and now
+    defmacro and define-symbol-macro explicitly define macros in the null
+    lexical environment inside Parenscript code (the behavior is unchanged
+    and the only one that makes sense since Parenscript code is translated
+    and not evaluated, but previously this was not obvious from looking at
+    the implementation).
+
+commit 73d9136207fe7eabed2be3a81f120851fd60e8f1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Jan 28 13:13:54 2009 -0700
+
+    Added Daniel Gackle and William Halliburton to the list of contributors.
+
+commit ffb6d06146c614b66d4769800fa2fc45f386986f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Jan 28 13:07:09 2009 -0700
+
+    Added symbol-to-js to the deprecated interface since it was used in several 3rd party libraries (despite not being exported).
+
+commit 11a0e241697421d797e229ef632aef0a4b0d326a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Jan 21 22:14:15 2009 -0700
+
+    Made the ps-html macros generate self-closing tags.
+
+commit 4dae66e8a4095e0557240889fb5074c6891e6826
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 19 12:48:39 2009 -0700
+
+    Made the package symbol obfuscator be able to take closures, for more interesting obfuscation possibilities (ex: using various Unicode characters).
+
+commit 7b65de0b36df53923de7c558e8fed04577fb81ca
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jan 19 12:47:02 2009 -0700
+
+    Added convenience packages that export JS and browser DOM symbols, to be used to make package obfuscation work.
+
+commit f037cd4ca18a00d5fbff3b993f3fc8aa962efcbe
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 30 14:13:50 2008 -0700
+
+    Changed the capitalization of "ParenScript" to "Parenscript" in the reference.
+
+commit cb8f8e58295db370220ad7c2f0f3d8d48fdc2442
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 30 14:11:47 2008 -0700
+
+    Modified the printer so that PS and PS-INLINE compile and print
+    Parenscript code at macro-expansion time. Renamed COMPILE-SCRIPT to
+    PS1* and got rid of its output-stream argument.
+
+commit ce44c98c339f0956ea7fe0963e36d13bbbc00b8c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 30 14:10:47 2008 -0700
+
+    Added an implementation of 'elt' to ps-macro-lib.
+
+commit 550c36c80b1162677ca050263d09e49c1d1b17a6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 30 13:48:25 2008 -0700
+
+    Added a "runtime" directory for runtime libs and moved ps-runtime-lib there.
+
+commit 9c9534cbec54fc3295bc49bb783c13982e3ecc81
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 12 18:27:47 2008 -0700
+
+    Fixed content handling in ps-who-html.
+
+commit 06ed0d3a6146fa726de19491745e4eabb58a90b4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 7 19:40:57 2008 -0700
+
+    Added Daniel Gackle <danielgackle@gmail.com>'s contributed [] (nested) array literal macro to the macro library.
+
+commit af344c9b5db5aaf0dbfb797983f44ec873bc4679
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 7 15:48:17 2008 -0700
+
+    Changed extras/js-expander.el to work with the latest CVS snapshot of SLIME.
+
+commit 53a346c2f3178fd11834519581a139a0b67ef9c7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 7 15:12:12 2008 -0700
+
+    Added William Halliburton <whalliburton@gmail.com>'s tracing macro to extras folder.
+
+commit f3847d1cb9baf8afd9a854f2230f70fb57dc8a9f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Dec 7 13:50:36 2008 -0700
+
+    Made operator precedence handling not throw away symbol package information.
+    
+    This fixed a bug where for example (ps (#:new)) => ";" instead of "new();".
+
+commit 9b31227fbeab4cdbfe294de579d7e63f87f54880
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Dec 6 00:17:27 2008 -0700
+
+    Added a few more unit tests related to fixes in previous patches.
+
+commit f2bb932ef8b1481d8e0d2cbc1409470670bbdd6f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 5 22:20:44 2008 -0700
+
+    Fixed compilation of caller argument lists. Changed the handling of keyword symbols in the process. Now they are no longer output as JavaScript variables, but as strings. The former behavior was a hack introduced to get around some (in hindsight) deficient macrology in an application that used Parenscript, while the latter behavior is more CL-like in that it compiles a self-evaluating object to a self-evaluating object. Thanks to Daniel Gackle for the suggestion on the treatment of keywords.
+
+commit 72044f33f065e890d6fdbbded154b47f8b026fcd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Dec 5 14:23:04 2008 -0700
+
+    Got rid of parenscript-symbol object; special forms and macros are now
+    regular Common Lisp symbols so that the package system works as
+    expected.
+
+commit bb8ba95abc2c3c525c362e0d73957fbc7dabbc34
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 3 23:35:10 2008 -0700
+
+    Exported concat-string CL/PS utility function/macro.
+
+commit 7b47461b25b8716498d2ef2fb20db2dd2bc08f7b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 3 23:34:26 2008 -0700
+
+    Fixed unterminating recursion in who-ps-html when element has attributes but no content.
+
+commit 6274a448675366ab4871bf5d8de90cf10f3cf868
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 3 22:50:17 2008 -0700
+
+    Renamed symbol-to-js to symbol-to-js-string and exported it.
+
+commit bd363c962a5a8bbb02a9c762449cb33839d3a7d3
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 3 22:49:19 2008 -0700
+
+    Corrected reference doc to explain 'var' special form as 'global variable' instead of 'function variable.'
+
+commit 1937c30a73058fff719dc060354326863448c4fc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Nov 25 22:50:18 2008 -0700
+
+    Implemented who-ps-html, which is like the ps-html macro but taking CL-WHO like syntax. Changed the behavior of ps-html to preserve the case of tag and attribute symbols when printing.
+
+commit 7be02bedcc7fb0233815caca95aeb4f121b87876
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Nov 17 13:54:50 2008 -0700
+
+    Added a bunch of unit tests from recent bug reports.
+
+commit 6a46e1efbb1439d8138da86b6b86b354bdf689ec
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Nov 15 19:28:52 2008 +0000
+
+    Overhauled operator precedence handling.
+    
+    In particular the changes here cleaned up unary operator handling,
+    which was badly broken.
+
+commit 0e198f662f3196d5b8f79fc20393ce394faca6a5
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Nov 15 05:40:25 2008 +0000
+
+    Corrected the defaultf psmacro for cases where the rhs value is false in JS.
+    
+    This affected &optional and &key default parameters in lambda lists.
+    
+    Thanks to Daniel Gackle for the bug report.
+
+commit 88350c69ff170bb28191f10eb4aae686687fe940
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 29 00:47:51 2008 +0000
+
+    Revise slot-value fix to not print useless parens.
+    
+    Now prints: "foo.bar.baz" rather than "(foo.bar).baz"
+
+commit d78b985834bb6410287aef8ddc40892867dd99cf
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 13:39:52 2008 +0000
+
+    js-slot-value printer now handles generic operators passed as the object.
+    
+    (slot-value (or a b c) 'd) now works correctly.
+
+commit 2ee6879d3931f4db7556fc30f64660e618eb621e
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 13:31:56 2008 +0000
+
+    Updated js-aref for expression-precedence fixes.
+
+commit 1222b32336206004f87df6676d3f96d512b122ce
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 13:30:06 2008 +0000
+
+    Updated operator-precedence to handle more cases.
+    
+    It now correctly deals with aref, slot-value and unary operators.
+
+commit cb1e91d099536066445fe9d7ac1b04cdbb44b0fa
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 13:23:10 2008 +0000
+
+    Reordered expression-precedence clauses to match precedence.
+
+commit d43d746efb22f4fb999a269bf324dd5511a06197
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 07:07:07 2008 +0000
+
+    Fixed AREF when an expression is passed as the array.
+    
+    (aref (or a b c) 0) now works.
+    
+    Thanks to Daniel Gackle for the bug report.
+
+commit 356992f3da52655e60478e3d3c2826c896361980
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 06:25:57 2008 +0000
+
+    Compile anything that follows a unary JS operator as an expression.
+    
+    Thanks to: Daniel Gackle <danielgackle@gmail.com>
+
+commit 587f3aa0c05247fb934e3f6122b1ee47622fd62e
+Author: Travis Cross <tc@traviscross.com>
+Date:   Fri Aug 22 05:57:56 2008 +0000
+
+    Improved handling of quoted symbols in CASE.
+    
+    (case val ('a (b)))      ; now produces an error, just like:
+    (case val (('a 'b) (c))) ; did before.
+    
+    Thanks to: Daniel Gackle <danielgackle@gmail.com>
+
+commit 3366794f7625928fcab3a124a8d7f6d821b55cb8
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Aug 17 09:56:55 2008 +0000
+
+    Corrected the definition of ps:length.
+    
+    Thanks to Daniel Gackle for pointing out the problem and the most
+    obvious solution.
+
+commit 2d2c6dc21a7af16348346afdd3e7081ef9c5a16a
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon May 12 08:26:03 2008 +0000
+
+    Added a test for correct output of the JS:in operator.
+
+commit 3b008f324171844435d6f5ea641def8576cd813d
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon May 12 08:25:26 2008 +0000
+
+    Output JS operators in lowercase.
+
+commit 8cf7de80a289353bee32ef8f0b94b67deb61c70b
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 09:16:56 2008 +0000
+
+    Updated so as to ps-intern fewer extraneous symbols.
+
+commit b65b21c22e922876d119a9dc77bde7f66ed242af
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 08:59:22 2008 +0000
+
+    Deprecated define-script-symbol-macro since it was part of the public interface.
+
+commit 386ecd2fd26d0f72828187af7cbb7af348d18b15
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 08:51:55 2008 +0000
+
+    Updated the define-script-symbol-macro export to define-ps-symbol-macro.
+
+commit b73376a520a4216ea7ba748043ac2909c40f258a
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 08:48:42 2008 +0000
+
+    Reorganized the package exports.
+
+commit ea7a2f5721984579dddd15422a7604b8bbe2926c
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 08:39:27 2008 +0000
+
+    Corrected parameter docstring.
+
+commit 3b16a7f3d31bbf3360c4a44f487e9a501c0aa235
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 08:16:59 2008 +0000
+
+    Moved the definition of ps-convert-op-name since we compile compile.lisp before printer.lisp.
+
+commit 675edae3529e7db7b32af561621c6f45e2fad67f
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 08:15:11 2008 +0000
+
+    Added some symbol mangling fixes.
+
+commit f417daebbbccb2506ecb9e627ba2cd514db8f2e2
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 07:19:13 2008 +0000
+
+    Fixed one remaining define-script-symbol-macro.
+
+commit c88be949a62fa49c6e9824089a26a8d43f5366e7
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 07:07:37 2008 +0000
+
+    Introduced ps-symbols and removed use of :parenscript-special-forms package.
+    
+    The idea here is to stop abusing the CL package system while still
+    allowing the user control of the PS environment.
+
+commit f13947295aeb639cf9bc2a1af296eaeca851fd7f
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 06:38:39 2008 +0000
+
+    Whitespace fix.
+
+commit 462ca01040900d2864460969f5597018c5c87446
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 06:36:29 2008 +0000
+
+    Changed script-* to ps-* across the board for consistency.
+
+commit 83b5a0cc4c605783d6d487bd5915aad887216a7c
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sat Apr 5 05:43:00 2008 +0000
+
+    Quoted parens in a docstring to make Emacs happy.
+
+commit 4577df1ca423af1b940be6cf79647e2f84c0e867
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 15:30:22 2008 +0000
+
+    Intern all special form symbols in the :parenscript-special-forms package.
+
+commit 58f3113d5a07156bed6cacbc228c475243de6ce8
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 08:37:39 2008 +0000
+
+    Exported PI.
+
+commit 7a5c62dc9046222136af59e4217fad8731c6d538
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 08:36:41 2008 +0000
+
+    Exported hyperbolic trig symbols.
+
+commit 4b6e50d2069f0e01f244ed875dfcb390c4242749
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 08:35:57 2008 +0000
+
+    Rearranged math-related exports.
+
+commit 11fd716c568eae7c9e8cabd72b8a4da4b305ca04
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 08:30:07 2008 +0000
+
+    Added handling for PI.
+
+commit 8b9d8bc717c7b1ba1aa324b6ef98682707ac13ee
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 08:18:01 2008 +0000
+
+    Relocated the definitions for the 1+ and 1- psmacros with the other math functions.
+
+commit a1abb4e4b00f46a7fac350933113916f87edc8fb
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 08:13:07 2008 +0000
+
+    Implemented equivalents for the CL hyperbolic trigometric functions.
+
+commit 6ae0633666ed17c90049bee38e4c2891a1cace61
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Apr 1 07:59:04 2008 +0000
+
+    Added PS-ONCE-ONLY macro building helper.
+
+commit 9b89687a19fdc351061b219c588584d6aa972117
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 23:03:58 2008 +0000
+
+    Rearranged math psmacros to match the order that the corresponding functions appear in the HyperSpec.
+
+commit a7b7afae9ae3bae282bcd941e098b8e6f5e6dd7f
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 22:48:10 2008 +0000
+
+    Added support for SQRT function.
+
+commit 9a2c0f23eab269d50d82eb5a435f512161d9bfa9
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 22:46:13 2008 +0000
+
+    Added support for LOG function.
+    
+    Thanks to: Daniel Gackle <danielgackle@gmail.com>
+
+commit e7ae49797b5d438da2d76eb533f5582e3096e122
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 22:43:45 2008 +0000
+
+    Updated atan to support two arguments as in CL.
+    
+    ATAN with two arguments translates into atan2 in JS.
+
+commit d91b35a23937247b3865cf1cc78b4f09094add20
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 22:08:55 2008 +0000
+
+    Added a couple of test cases for object literals.
+
+commit 667e3784b97243a2af6e19772ec7f474fe21fa60
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 22:02:31 2008 +0000
+
+    Updated the blank-object-literal test for the now correct behavior.
+
+commit f0e3839b5fc655c4aeddcb6ac4e365c1f5083cc6
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 22:02:00 2008 +0000
+
+    Added {} to *ps-literals*.
+    
+    Using {} as a literal to create an empty object literal was only
+    working by accident previously.  When not in the function position, {}
+    was being compiled as a JS variable rather than an object-literal,
+    which just happened to work sometimes.  In concert with correctly
+    checking symbols that aren't in the parenscript package, this should
+    provide for more reliable behavior.
+
+commit d46ffbf2a688c7fb91231325760b58f5494ad72f
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 21:51:58 2008 +0000
+
+    Updated ps-literal-p to correctly identify literal symbols without regard to the symbol's package.
+
+commit 4331a991a8733f6d7dc1278641975907b8afb629
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 21:27:33 2008 +0000
+
+    Silence an unused variable warning.
+
+commit 57761a1442ddc970f77a8f30b19faf9d800b16fc
+Author: Travis Cross <tc@traviscross.com>
+Date:   Mon Mar 31 02:13:23 2008 +0000
+
+    Updated ps-special-form-p to correctly identify a special form even if the symbol identifying the special form is in the wrong package.
+
+commit 31c5dbdea39eb8a232adcea8a49a52be565dc6d2
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 23:39:49 2008 +0000
+
+    Cleaned up and standardized indentation of JS code in the reference documentation.
+
+commit 70c9692496d0eb8631effc7469e49df07c937006
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 22:53:08 2008 +0000
+
+    Added myself to the list of contributors.
+
+commit c11d6a09923121657dcfea4cf52366df4336c99a
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 22:51:16 2008 +0000
+
+    Added a mechanism for expanding parenscript forms in a clean environment.
+
+commit 651fe1ed79fa7dc55df4ae75893d0605ef9ae9b6
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 22:38:31 2008 +0000
+
+    Removed deprecated exports that are no longer implemented.
+
+commit 613457a06ef36bbda9f2e7184558f0af14b1ed58
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 22:35:50 2008 +0000
+
+    Cleaned up and rearranged the package exports a bit.
+
+commit d777a40578e87bcdb547fa7da36c94fd7603b43a
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 22:28:56 2008 +0000
+
+    Updated the documentation and test cases.
+
+commit 45c9f9c2082b970f86eba7d6cd84c62d87f08daa
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 20:11:34 2008 +0000
+
+    Some minor comment and whitespace cleanup.
+
+commit b508414b6cd9c16a811fd24c26085186d6d70215
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 19:57:12 2008 +0000
+
+    Whitespaceification: removed indentation tabs throughout project.
+    
+    ...and replaced each tab with 8 spaces.  Tab indentation had
+    previously been used inconsistently and was dominated by space-based
+    indentation.
+    
+    In the future, disable indent-tabs-mode in emacs!
+    
+    (setq indent-tabs-mode nil)
+
+commit 6a2ce72d8a5cfa7af9e940969ed3fbf083a87ef7
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 19:35:12 2008 +0000
+
+    Improved, extended, and refactored iteration special forms.
+    
+     * Added support for DO*.
+    
+     * DO now does parallel assignment.
+    
+     * DO/DO* now correctly support init-forms such as:
+    
+         (do (a (b) (c 1) (d 1 (1+ d))) ...)
+    
+     * DO/DO*/DOTIMES/DOLIST/DOEACH now support return values via a lambda
+       transform.
+    
+     * DOEACH now supports implicit key/value destructuring, e.g.:
+    
+         (doeach ((key val) arr res) ...)
+    
+     * Added labeled-for to facilitate creating labeled for loops.
+    
+     * Restructured low level printer operators to better match the
+       underlying JS.
+
+commit 915342fba4ea71bcc7b2140ca691c6fd4455a6c0
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:33:34 2008 +0000
+
+    Updated let1-dynamic to clean up its temporary stack variable after use.
+
+commit ec227186c4ef0152d47efbbec639362205c17b3e
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:27:55 2008 +0000
+
+    Added setq and psetq.
+
+commit 1fe28ee1da4a5cda38ca2bbf99786a2391f2c85d
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:25:53 2008 +0000
+
+    Added psetf.
+
+commit da7ec1c005673a36f6d240b858b039a27e81ae33
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:23:16 2008 +0000
+
+    Aliased let to simple-let.
+
+commit ca25a40e2c3260cf5d9470989ea64ab2bd1eabe0
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:22:18 2008 +0000
+
+    Added simple-let, which does parallel binding without a lambda.
+
+commit b5cf9e718c1ea282648d7ff47936b24ecd27fbd6
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:14:00 2008 +0000
+
+    Added simple-let* and aliased let* to it.
+
+commit 3530f5e1fae52a90bade32f83506f0582592b8a1
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:08:29 2008 +0000
+
+    Added lexical-let.
+
+commit 241c2c5b90098e3971052f4bcc86698312b9d8b1
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 02:05:25 2008 +0000
+
+    Greatly simplified implementation of lexical-let*.
+
+commit c452748e0093562bb21ccee1c087d59205259466
+Author: Travis Cross <tc@traviscross.com>
+Date:   Sun Mar 30 01:46:18 2008 +0000
+
+    Added support for breaking and continuing to arbitrary labels.
+
+commit d3c4afa28673319d2e83a989a05665a55cc8218b
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Feb 26 23:09:02 2008 +0000
+
+    Whitespace standardization in src/package.lisp.
+
+commit b05f59ea2eb8043a9cdb07cbee548968bc7629a3
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Feb 26 22:59:53 2008 +0000
+
+    Corrected spelling error.
+
+commit 93e997203b7ee8bcc44657bd3056a9506e0d9997
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Feb 1 15:30:49 2008 +0000
+
+    Added #\= to *special-chars*.
+    
+    Now you can write boolean= function names.
+    
+    As requested by Daniel Gackle.
+
+commit d89456ee61df26991fd5b50467252bb211d4f850
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Feb 1 06:25:58 2008 +0000
+
+    Fixed bug where (setf x (- x 1 2)) yielded x -= 1 - 2.
+
+commit 3ecdb7540fe4ab88ad0b8d95e5c265a33ffb4ab6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 26 03:33:44 2007 +0000
+
+    Made the ps-html facility work both in Parenscript and in Common Lisp.
+
+commit d5c9059a64d320d38e99ac22be1ca7e604df0633
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 26 03:31:40 2007 +0000
+
+    Added 'concatenate' to Parenscript macro utilities.
+
+commit 30a9b64a7426644f155c5b8c1cc3e956893c82eb
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 26 03:08:10 2007 +0000
+
+    Renamed src/lib Parenscript library files, got rid of Parenscript CSS system.
+
+commit 352621e168ea254a305248f1067ad2a445633c13
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Dec 26 01:23:06 2007 +0000
+
+    Moved functional runtime PS utilities from src/libs/functional.lisp into *ps-lisp-library* in src/lib/js-lib.lisp.
+
+commit 5ac906958ba5481190e87bc8ca3321a80b0e746d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 25 04:32:14 2007 +0000
+
+    Fixed literals error.
+    
+    Introduced by patch: Mon Dec 24 17:02:17 MST 2007 Vladimir Sedach <vsedach@gmail.com>
+
+commit 58c4ef4f70ba26bcdbced5fa32c80fbae5909541
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 25 00:08:13 2007 +0000
+
+    Introduced special global variables to Parenscript; renamed let and lexical-let to let* and lexical-let*, and made let itself expand to let* until parallel assignment let is implemented.
+
+commit f326f929d8e55c67eeba53af23ed3ec959afb526
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Dec 25 00:02:17 2007 +0000
+
+    Made special forms be compiled into named functions in a new package, parenscript-special-forms, and introduced literal special forms.
+    
+    The literal special forms should improve error messages and debugging.
+
+commit b5e0bcb74ebb9b02f69a10eb6a946ebbaf249bf4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 24 23:58:15 2007 +0000
+
+    Made with-ps-gensyms prefix the given gensym with the symbol-to-js name of the given gensym variable binding if an explicit prefix was not provided.
+    
+    (the rationale for this is to save a little typing)
+
+commit 1bfa6fabc0eb603bc7bedc70f9a763566a8912a7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Dec 24 23:46:17 2007 +0000
+
+    Got rid of js-keyword form.
+
+commit 18dd299a04d155cd7da7f39ff568b090f3fc0061
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 15 02:17:42 2007 +0000
+
+    Moved code from js/ps-macrology.lisp to special-forms.lisp; straightened out parenscript.asd to use serial file dependencies; unexported defaultf; rewrote rebind as lexical-let and exported it.
+
+commit e0032a96e398268a106208d8010851bcdf7ed7cc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 11 18:10:33 2007 +0000
+
+    Fixed problems with expressions being compiled to statements inside expression progns; introduced mechanism for declaring variables in expression scopes; refactored function compilation.
+
+commit 301aaafe004b9570811df8e70bcbbd8bcd6574e6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 4 18:45:45 2007 +0000
+
+    Removed outdated internal documentation.
+
+commit 27b752ffa7ed595886bb096abc6c206db75d4a0f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 4 18:18:42 2007 +0000
+
+    Fixed definition of *ps-lisp-library*.
+
+commit c72e87d8951cdb4bf9315c2dfae99b99d91a3a60
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Nov 4 18:05:53 2007 +0000
+
+    Added length, @, mapcar utility functions, exported all library function symbols.
+
+commit 1af04ae56277989d39b46f5924c8f8a90bf4c6e0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 1 01:53:15 2007 +0000
+
+    Added define-symbol-macro unit test.
+
+commit 7626bb834537152ca59b2163ce44e0be888dfe6d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Nov 1 01:46:03 2007 +0000
+
+    Fixed define-symbol-macro.
+
+commit 83d10fe4d7841d1a56cec54f9ce79d81dba03e7f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Oct 31 07:03:59 2007 +0000
+
+    Prettied up whitespace and comments in parse-lambda-list, ref2test.
+
+commit c4ad06ac0a794c63c07321a77555ae4dcd8c6f28
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Oct 31 07:01:32 2007 +0000
+
+    Got rid of unused functions in util.lisp, slight refactoring.
+
+commit c639fe7f74eeee60f36e21c82d0ac0ce1b2fdfda
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Oct 29 19:45:21 2007 +0000
+
+    More refactorings to the printer, exported symbols that control printer behavior.
+
+commit 4ff112cbf304e47a630897316e4d8fd5ac2454b1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Oct 26 06:06:25 2007 +0000
+
+    Refactored Parenscript printer code.
+
+commit 9fbb3004e436d19344dddad84e0b68f298653cb8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Oct 16 22:04:45 2007 +0000
+
+    Changed ps-inline to take a form instead of an implicit progn as a parameter; gave ps-inline and ps-inline* optional arguments.
+    
+    The optional arguments bind *js-quote-char* to make it more convenient
+    to use the two functions with different html generation macros (which
+    may use single or double quotes to delimit attribute values).
+
+commit 89aa7077fb4863ce6d0c3dbb4b05834d7084ab04
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Oct 16 21:54:53 2007 +0000
+
+    Further ignore declarations for unused variables.
+    
+    Thanks to: Kevin Layer <layer@known.net>
+
+commit c3f0c22a6a4fd58cfa2ece4b737b43fff04b08bf
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Oct 14 18:18:11 2007 +0000
+
+    In parse-lambda-list, made the need-symbol function work.
+    
+    Otherwise the conditional always evaluated to nil.
+
+commit 6f09362378ce5438c3f0f7a1f87ab19f1a3915f4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Oct 14 18:17:22 2007 +0000
+
+    In package definition, instead of exporting "NIL", exported (symbol-name 'nil).
+    
+    The latter causes a problem in case-sensitive Allegro.
+    
+    Thanks to Kevin Layer for the patch.
+
+commit 45f8fec1aa8186a273ae3e233a615c41c0a7c2ff
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Oct 14 18:16:20 2007 +0000
+
+    Declared unused "expecting" variables in ps-special-form definitions ignorable.
+    
+    Thanks to: Kevin Layer <layer@known.net>
+
+commit e91e192da7fb2ebd9cfb6934c087ba3f1d5a69b5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Oct 14 18:15:19 2007 +0000
+
+    Made ps-macrology depend on utils in parenscript asdf definition.
+    
+    Thanks to: Kevin Layer <layer@known.net>
+
+commit 43a1d5c3aecf79d64971b751a62c285e631b003a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Oct 11 02:27:40 2007 +0000
+
+    Fixed a bug in how symbol-macros were defined, expanded, and used by 'with-slots'.
+
+commit f26808d89b551abb4f2397a5b7b602848586f85b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Oct 10 23:12:57 2007 +0000
+
+    Made defun, defvar and doeach expect a symbol as the "name" argument instead of trying to compile-parenscript-form :expecting :expression.
+
+commit 6e8ff19898356570a90bfefd03301ec6c74cb036
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Oct 10 23:12:10 2007 +0000
+
+    Made the handling of keyword symbols across Parenscript be consistent with the treatment of other symbols.
+    
+    Previously a keyword symbol was being treated as a quoted symbol by
+    Parenscript.
+
+commit 921f2e022a59aba6acd8d036a73d7608c8b7a6c7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Sep 23 06:07:26 2007 +0000
+
+    Added support for &whole arguments in ps macro lambda lists; renamed parser.lisp to compiler.lisp.
+
+commit efe35e12f4138132b6b849f94daac357a5c76192
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Sep 20 23:49:34 2007 +0000
+
+    Added macro environment unit test that tests for bug "inconsistent expansion of local macro".
+
+commit cb27f8ac63c7e63fd4aff45d00bb6f25b5348416
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Sep 20 23:33:14 2007 +0000
+
+    Eliminated unwinding of macro environment for macro expansions.
+    
+    This fixed bug:
+    
+      "Bug: inconsistent expansion of local macro" submitted by Daniel
+      Gackle on 2007-09-12
+
+commit a961cbd8400443e394ddc12f6dddfb199039569b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Aug 28 23:04:38 2007 +0000
+
+    Updated description of PS-HTML in the tutorial.
+
+commit 0c542be0fc8a26edc1b3dbd7f9ef16702ab50168
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 21:32:01 2007 +0000
+
+    Revised obfuscation facility, added its description to the reference, and added more unit tests.
+
+commit 5e74b5ce1955261ad14bc72ece957df0252ee746
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 20:43:13 2007 +0000
+
+    Added description of namespace system to the reference.
+
+commit 49c50da4df7956d8d4e5285ddf987ab0eeebb774
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 20:16:51 2007 +0000
+
+    Fixed problem with (- 1). Unary operator "-" didn't like number constants.
+
+commit a2a9eab0efd5f48a2063e1acc2f1e6a3b8ba16fa
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 20:01:23 2007 +0000
+
+    Added defsetf and (defun (setf examples to the reference.
+
+commit 53a1beace93dfc53e00eb9de46eb9f02f1f0723b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 20:00:41 2007 +0000
+
+    Added ps-print method specialized on null to ignore printing of nils.
+
+commit 13b8268eb0501de67d4663db2edca53be8e139ad
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 19:39:30 2007 +0000
+
+    Added code to remove unreachable constant forms from progn.
+
+commit cf1e6300adcd16502591ea73f25fe3628124f9a1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 18:20:47 2007 +0000
+
+    Updated the introduction doc.
+
+commit ecc3218c3ceda1282626aa7b744b56ef14479e15
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 24 18:15:29 2007 +0000
+
+    Updated the ParenScript reference.
+
+commit 6291b5059452722ff5ed5b88e7b7659542e87a58
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 23:10:54 2007 +0000
+
+    Updated the ParenScript tutorial.
+
+commit 9596f84d7a1b4fbe6991374473896ddd6ab353f5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 23:09:39 2007 +0000
+
+    Removed js-file and js-script from deprecated interface.
+    
+    These were helper macros for net.html.generator from AllegroServe,
+    which really don't belong in ParenScript.
+
+commit e5253c5bbe2ced620062faa6e212cac38dca56fa
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 23:08:02 2007 +0000
+
+    Fixed error where function call arguments weren't getting compiled to expressions.
+
+commit 0949f0727609e710d398294b970e89d108afda3d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 21:35:15 2007 +0000
+
+    Added the ability to compile cond to expressions.
+
+commit b10172184eec82e29e38857c44f321a57e761380
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 21:22:37 2007 +0000
+
+    Made progn expressions with a single statement print as that statement alone (without parens).
+
+commit 5705b542a3a974a3e0f14f97bf83eda5c7d5cbf6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 21:22:16 2007 +0000
+
+    Made if-expressions return null instead of undefined when else clause wasn't specified.
+
+commit b0f64e9b50c27fa44388a51660d97d28a89dcb71
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 23 20:58:53 2007 +0000
+
+    Fixed cond.
+
+commit a589bb4339fbe5b6a4edbb8234196f0c99af13c9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 22 22:46:33 2007 +0000
+
+    Fixed the problem with compile-parenscript-form not being called with the right "expecting" value if a macroexpansion took place.
+
+commit 0d971f14ca62b809b913b27b48f0f182d3c702dd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Aug 20 21:10:13 2007 +0000
+
+    Updated and fixed the deprecated interface.
+
+commit 8bb28ead6855630f27fc89eb7256f772b8405451
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Aug 20 21:08:58 2007 +0000
+
+    Updated the documentation and test suite to reflect the fact that html is now ps-html and the ps-inline special form no longer exists.
+
+commit 2f068b1a0791ad00e46317d7d49fdc92500819eb
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Aug 20 21:08:16 2007 +0000
+
+    Removed mention of old package system from tutorial.lisp.
+
+commit 33c100f0b943e70554e83bd3a8883c5c70dc295d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Aug 20 21:07:48 2007 +0000
+
+    Removed js and ps-inline as special forms; added ps-inline and ps-inline*.
+    
+    js and ps-inline didn't make any sense as special forms.
+
+commit d31d0bc7cd170cccda90c46655b513d5e68c904b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Aug 20 20:40:42 2007 +0000
+
+    Changed html -> ps-html; reorganized packages.lisp exports.
+    
+    Using 'html' creates a conflict with any number of existing html
+    generation libraries.
+
+commit 2e593e4c004f3cf6e31c0cf10b0c038423160ed0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 15 23:51:13 2007 +0000
+
+    Replaced optional-args as the keyword-object-handling parameter with a gensym.
+
+commit 4493475161a1ca90f8fc4793594338c8578e7486
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 15 23:02:41 2007 +0000
+
+    Added in-line code to support &rest arguments.
+
+commit 116f74509d5284f3b2ccd608f086fa19cd069b83
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 15 21:58:46 2007 +0000
+
+    Added correct indentation to the printer.
+
+commit c35020d67ebaf2aeeeda2a1235b3e4e43eef8bf2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 15 20:39:29 2007 +0000
+
+    Removed js-ugly-translation.
+
+commit b44afd8fa79e05dca28eec73f9ac6d3775e8d5d2
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 15 01:08:33 2007 +0000
+
+    Updated the reference and tests to reflect some small changes in the new printing code.
+    
+    ...such as the current lack of line breaks and spaces before some
+    opening parens.
+    
+    Also added a few new unit tests.
+
+commit 839600e94160ca2775931e5f7a2fe23903a7ddf7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 15 01:07:08 2007 +0000
+
+    Reworked printing implementation to get rid of dwim-join and gratuitious consing.
+    
+    Now everything gets written to a stream.
+
+commit a805b30df61ee5948d349b25a1d7f100929a83a4
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 16:56:22 2007 +0000
+
+    Fixed type bug with printing slot-value with obj/slot being a non-list.
+
+commit 319d266376fc2cad235dc7b5f1cf802daf4df8fc
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 15:43:11 2007 +0000
+
+    Redid package system unit tests.
+
+commit edfaa07b55cbcf67da9cd254c64fc53d8ea752ce
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 15:42:40 2007 +0000
+
+    Exported the new naming and namespace interface functions and variables in package.lisp.
+
+commit 07afea3890beb0df5d2a64cbf377b5a32e1aebbf
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 01:23:49 2007 +0000
+
+    Modified ParenScript tests to reflect the big compiler refactoring.
+
+commit f7c2734ae0083e0c7dd98b2f1500d8786bf8b255
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 01:22:42 2007 +0000
+
+    Updated reference.lisp to reflect recent changes.
+
+commit 4a987e2b1f035d2d794e8343849719e6cd5b1a34
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 01:19:48 2007 +0000
+
+    Big refactoring of the ParenScript compiler.
+
+commit 12c7e19ce51d71d3940473bbac192eb29a6bb3a8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sun Aug 12 01:18:09 2007 +0000
+
+    Updated js-expander to use ps:ps instead of js:js.
+
+commit 218b8ec81f9e54cdc509dd037881dd23a61b7ada
+Author: Red Daly <reddaly@gmail.com>
+Date:   Mon Aug 6 21:31:19 2007 +0000
+
+    remove lingering format string
+
+commit e22d923b700301c574e34b35437a22007e78f2eb
+Author: Red Daly <reddaly@gmail.com>
+Date:   Mon Aug 6 21:10:54 2007 +0000
+
+    fixed DEFSCRIPTMACRO evaluation problem that caused load/compilation problems
+    
+    DEFSCRIPTMACRO and other similar macros were not expanding into but
+    were instead side-effecting macro definitions.
+
+commit df091e0fb4eb30d8620141ff963589cf0e9cc65c
+Author: Red Daly <reddaly@gmail.com>
+Date:   Mon Aug 6 21:10:19 2007 +0000
+
+    removed file compilation exports for now
+
+commit 135308252c6afe8f66b4b305157af61f7705fade
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Aug 4 06:16:51 2007 +0000
+
+    Removed parenscript.asdf
+
+commit f5d36fb80deafa96b8130aade39d8033b5f11dd8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Aug 4 06:10:50 2007 +0000
+
+    Removed parenscript.reader
+
+commit 06babcf5f602cc4e16b07f45dfd8f53a8dc85aa9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Aug 4 00:59:48 2007 +0000
+
+    Moved package-related code to namespace.lisp, added back *enable-package-system*.
+
+commit dbb7017bbdefbfdcfead59719df0b5a6c852e5d6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 22:59:22 2007 +0000
+
+    Added (defun (setf...
+
+commit cdf9ab0e8107d306244a3c10ee02b10ce4d8c629
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 21:59:17 2007 +0000
+
+    Stopped abuse of set-difference implementation-dependent ordering in defsetf.
+
+commit 03eedaa55b7dcada6b8ba067d10ac102af92b21b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 21:19:00 2007 +0000
+
+    Fixed order of evaluation in defsetf long form.
+
+commit 750651b0ac6d9e1267d1b861d3e68cd61d2d4f3b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 21:03:32 2007 +0000
+
+    Added short-form defsetf.
+
+commit a24347343de625cd06106093c37d198c5deb312b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 20:19:36 2007 +0000
+
+    Fixed (return).
+
+commit d989d711165b33aa54f428c9b2255bfa4beab24a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 20:12:58 2007 +0000
+
+    Renamed options to optional-args, added unit test for defun foo (&optional...
+
+commit b506b81bdfbf6860f4e1c778ca62ccb85d3ddaaf
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 19:31:23 2007 +0000
+
+    Restored special-form getting and setting by symbol-na.
+
+commit 5e0e55bed9a9bf4343c67da1a2fd1bec41f6722d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 18:35:35 2007 +0000
+
+    Added a more meaningful error message to compile-to-expression.
+
+commit d9fc64c9a9c1ed70f5f076c47c75dbb558569bef
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 18:32:17 2007 +0000
+
+    Cleaned up macro-defining code, fixed handling of special forms in script-expand-form.
+
+commit b8307869111d02140b308e0e0ceb8e0ba3170590
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 18:28:05 2007 +0000
+
+    Removed reference to without-packages in deprecated-interface.lisp.
+
+commit c1089494a9e348ea1eda9218279b148a27ebc178
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 16:46:06 2007 +0000
+
+    Added a more informative print-object method for script-package.
+
+commit bbea4c83be3d0312a6471e62ad60a1551718ff20
+Author: Red Daly <reddaly@gmail.com>
+Date:   Fri Aug 3 18:11:04 2007 +0000
+
+    keyword/optional fixes, slot-value accepts many slot names
+    
+    I also fixed some problems with nil serialization and decomposed the
+    compile-parenscript-form function into a generic function with
+    different behavior depending on the type of form.
+
+commit 8723dc34b267f1641dcadec3eb716cedb562c625
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 02:01:33 2007 +0000
+
+    Fixed handling of uninterned symbols.
+
+commit 905f534e8b422e3833bb913b8f281ceb386dcaef
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Aug 3 01:18:57 2007 +0000
+
+    Changed package system so that symbols in parenscript, javascript and parenscript-user are non-prefixed. Made symbols in unknown packages be treated as though they were in parenscript-user by default. Added a prefix string preference to PS packages. Removed all *enable-package-system* stuff.
+
+commit 72332f2acf81dc6d08a46b04a0a3134d3d82b2ea
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 2 22:19:26 2007 +0000
+
+    Added defsetf long-form.
+
+commit a9dd0664c4f62832683513a7125e67d45eb61b6d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Aug 2 22:17:05 2007 +0000
+
+    Disabled Boyer-Moore matching for cl-ppcre in js normalization code.
+    
+    (breaks on Unicode lisps, on by default in PPCRE)
+
+commit 0e41d6f4d029e0e4d263a5bc51f2c079d97f6945
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 1 22:42:45 2007 +0000
+
+    Slightly more informative error messages for symbol-abuse.
+
+commit 8d14a2d4c4952d17b70a08e59df8a4675260d0a1
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 1 18:31:43 2007 +0000
+
+    Removed manual.pdf from source control.
+
+commit 481ef87d740bafbe8424bf5266d8c4f1950bbec0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Aug 1 18:29:54 2007 +0000
+
+    Fixed ps* not being found when special-form-symbol assertion is triggered.
+
+commit 49f6ae23fddd1ec5b5b741cc047dafb27032d124
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 22:59:10 2007 +0000
+
+    UNDO: Added functions to set up and tear down a persistent compilation environment.
+
+commit 46f794a491442f289426af2d328f2f68c072aab3
+Author: Red Daly <reddaly@gmail.com>
+Date:   Wed Aug 1 05:52:12 2007 +0000
+
+    fixed minor issues with advanced lambda lists, additional quoted-nil hack
+
+commit 700ff11ce64917b1ac1183b89fbf03a7822f1ee9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 22:59:10 2007 +0000
+
+    Added functions to set up and tear down a persistent compilation environment.
+
+commit 727a0288bdcc1d5dcdafcb78d0923018f2157aa7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 22:43:58 2007 +0000
+
+    Unexported ps-to-string.
+
+commit dc20626db665a888c8a7947d04c216ee4f6f875d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 21:24:10 2007 +0000
+
+    UNDO: Changed "Lisp package already has corresponding script package" error to warning.
+
+commit e9ad96eef69af2739279a12208ba3c2f4456721a
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 18:28:39 2007 +0000
+
+    UNDO: Setup *compilation-environment* to have a working default value.
+
+commit 62b4a8670ebac510f147f56afbed21606a9a1eef
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 21:27:42 2007 +0000
+
+    Added tests for 'nil and slot-value nil patches.
+
+commit a2196375c986b567d567f60a4559e2c6e70ee8bf
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 21:26:52 2007 +0000
+
+    Changed slot-value so that (slot-value foo nil) is now "foo" instead of "foo.null"
+
+commit 4240fb5504b0e5153b99360da23ecd69e8042851
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 21:26:09 2007 +0000
+
+    Fixed handling of quoted nil.
+    
+    'nil should be the same as nil, however ''nil isn't.
+
+commit 59af0566558d638cdbf2e8f82f20c879eaaa62d8
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 21:24:10 2007 +0000
+
+    Changed "Lisp package already has corresponding script package" error to warning.
+    
+    Besides being annoying for users, it prevented package tests from
+    being idempotent.
+
+commit 3393fbcead5cd2ef3d5fdcf21f34152cb5ddab4d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 18:47:14 2007 +0000
+
+    Started work on implementing deprecated compatibility interface by Attila Lendvai's idea.
+
+commit 53dc14c73aead32b666f19acb5e1b5c26bd002ff
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 18:28:39 2007 +0000
+
+    Setup *compilation-environment* to have a working default value.
+
+commit 2e51aff57b05d46b02f094a14209a2f4b37930ba
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 18:24:06 2007 +0000
+
+    Added null macro.
+    
+    Thanks to Daniel Gackle for suggestion.
+
+commit a19d2bdea3539a468d45d44595228142e93248bd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 31 18:20:56 2007 +0000
+
+    Corrected export of defmacro+/ps names.
+
+commit 71089439a477ea3a0da0d3538185d2cc3aa18239
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Jul 31 17:10:52 2007 +0000
+
+    make deprecation warning a only a style-warning
+
+commit 34896dae785d61ec1b70bf016d1d4f294465c35f
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Jul 31 11:16:37 2007 +0000
+
+    fix rebind
+
+commit 1b2da35c70f8df6aa900b5ab7bd96d78cd01d09c
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Jul 31 11:12:23 2007 +0000
+
+    prefix ( in a comment
+
+commit b5be3f5778fb24149f12b8abd88bbae57585de52
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 30 21:52:54 2007 +0000
+
+    Revised PS interface and deprecated function list based on user input.
+
+commit 245d0fbd534463796b6f1fcac88e17e880bac44c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 30 21:36:15 2007 +0000
+
+    Added tests for previous script* eval bug.
+
+commit 4b5d1808866be4ba1fd96ced56a35bbf67bcc5bb
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 30 21:32:59 2007 +0000
+
+    Fixed bug where script* wasn't evaluating its arguments as promised.
+
+commit f016e033a22ad3f94d4cc8ded35fcb398e6f5a3c
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 30 21:03:51 2007 +0000
+
+    Changed names of defmacro+/js forms to ps, made the special-form compilation error message be more informative.
+
+commit d5ede10122749eec476b6e7edb8ded0ee0a26881
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 30 21:02:19 2007 +0000
+
+    Changed tutorial to reflect factoring out of the HTML generation code of Portable Allegroserve, addition of PS package system.
+
+commit b5369cb1bcdc9aeeeb54a19ebcc34bf82d5e0901
+Author: Red Daly <reddaly@gmail.com>
+Date:   Sat Jul 28 17:49:20 2007 +0000
+
+    define-script-symbol-macro added
+
+commit 0b37e317b0e48de3a9da4a71a8fb158e66f266a3
+Author: Daniel Gackle <danielgackle@gmail.com>
+Date:   Sat Jul 28 17:33:03 2007 +0000
+
+    defscriptmacro single string body fix
+    
+    A js macro that evaluates to a string literal can't be used:
+    
+      (defjsmacro blah () "abc")
+      (js (blah)) =>
+         "null;"
+    
+    This seems wrong. For one thing, other literals work fine:
+    
+      (defjsmacro blah () 123)
+      (js (blah)) =>
+         "123"
+    
+    For another, Lisp behaves differently:
+    
+      (defmacro blah () "abc")
+      (blah) =>
+          "abc"
+    
+    Actually, I'd rather use a symbol macro but it appears there is no
+    define-symbol-macro in Parenscript and in this case symbol-macrolet is
+    not convenient.
+    
+    Signed-off-by: Red Daly <reddaly@gmail.com>
+
+commit 3199f8b6b03a7337297a1ef4c6d127271e7528fe
+Author: Red Daly <reddaly@gmail.com>
+Date:   Fri Jul 27 03:43:24 2007 +0000
+
+    paren-asdf hack to make parenscript-compile-op use load-op's dependencies
+
+commit a9fce0a7d69161c9cf74450a5737f34db90ff291
+Author: Red Daly <reddaly@gmail.com>
+Date:   Fri Jul 27 02:33:26 2007 +0000
+
+    ASDF interaction for Parenscript files
+    
+    see the new paren-asdf.lisp and updated compilation-interface.lisp
+    files for implementation details.  The function COMPILE-SCRIPT-SYSTEM
+    compiles all the system's files and outputs them to a single stream.
+    Currently it compiles each file separately; in the future we will
+    probably need to compile the whole program and then translate it.
+
+commit eb0befe2b6802bdf33d54bd9e1d2c37a9944cbc5
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jul 26 21:21:53 2007 +0000
+
+    Fixed slot-value-conditional bug.
+    
+    (slot-value object slot) should now handle cases where object is an
+    arbitrary expression correctly.
+
+commit 7590646c235e00a07b693400a46c27119c2f27ef
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jul 26 20:40:22 2007 +0000
+
+    Cleaned up deprecated interface, added Lisp/ParenScript macro-defining macros back to parser.lisp.
+
+commit 1fc430554a58e5bd7c692c92d7ab10a4769981bd
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jul 26 19:37:14 2007 +0000
+
+    Removed redundant math library functions.
+    
+    (more comprehensive ones are in lib/js-utils.lisp)
+
+commit 171bbab39318f270e4ee20c0b6822898e8ddffb8
+Author: Red Daly <reddaly@gmail.com>
+Date:   Wed Jul 25 04:06:30 2007 +0000
+
+    usable package system
+    
+    The package system is now fairly usable.  package.lisp and
+    builtin-packages.lisp now intelligently share symbols.  It is also
+    possible to completely ignore any package system functionality.
+
+commit 5aa100057fa73a5c3121c81366d2d0062a3d1cfc
+Author: Red Daly <reddaly@gmail.com>
+Date:   Tue Jul 24 04:08:56 2007 +0000
+
+    bulk of package system, reader, and other refactoring
+
+commit a98e58eea2e3516e5c9f2f5b2d38f96ea0f7c03f
+Author: Red Daly <reddaly@gmail.com>
+Date:   Fri Jul 20 20:35:32 2007 +0000
+
+    eval-when special form
+    
+    Added the EVAL-WHEN special form to the Parenscript language.  It
+    works similarly to the EVAL-WHEN form in Lisp.  It has the following
+    form:
+    
+    (eval-when body-forms-language? (situation*) body-forms*)
+    
+    SITUATION is either :compile-toplevel or :execute.
+    
+    BODY-FORMS-LANGUAGE is optional and either :parenscript or :lisp.  It
+    defaults to :lisp when :COMPILE-TOPLEVEL is specified and :parenscript
+    when :EXECUTE is specified.
+    
+    Parenscript's EVAL-WHEN is relevant when loading toplevel forms,
+    either from Parenscript files or from within Lisp.
+
+commit 9da682ca74e58c7a40c0a5db0399b10ad6eb29ac
+Author: Red Daly <reddaly@gmail.com>
+Date:   Fri Jul 20 00:34:31 2007 +0000
+
+    renaming and refactoring
+    
+    Changed the names of many functions and macros to get rid of the
+    symbols with "js" in them--its not Javascript, it's Parenscript!  Most
+    of those symbols were renamed with "script" replacing "js".
+    
+    Also changed the main compilation interfaces to use the function
+    COMPILE-SCRIPT and the macro SCRIPT from JS-COMPILE and JS
+    respectively.
+    
+    Additionally, the first steps of the package system are included (with
+    the addition of a the SCRIPT-PACKAGE and COMPILATION-ENVIRONMENT
+    classes).  These are integrated into the current compiler, though they
+    probably break a few "traditional" serialization methods, specifically
+    because macro and special form names are stored as symbols rather than
+    strings and EQL comparisons are used rather than STRING-EQUAL
+    comparisons of the strings.
+    
+    I have also split parser.lisp into parser.lisp and macrology.lisp.
+    Parser.lisp contains mechanisms for parsing Parenscript given an input
+    s-expression while macrology.lisp contains language definitions that
+    make use of the parsing mechanisms.
+    
+    All tests now pass, though the documentation has gone slightly out of
+    date with the symbol renaming.  This will be fixed shortly.  More
+    tests and functionality need to be added to make the current
+    Parenscript compatable with the older semantics (as dicussed,
+    comparing macro/special form names based on their string values is the
+    main thing).
+
+commit 9090e43cae5ce790bf54729a7fcb43fe8ed93a2b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jul 16 18:13:40 2007 +0000
+
+    Re-introduced 'with' special form.
+    
+    (it got lost somewhere along the way)
+
+commit cf460f9313ab46b0bb310b6aec6ae5feab1fb339
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Jul 14 00:28:54 2007 +0000
+
+    Improved formatting/whitespace removing code in tests.  Added slot-value-setf test.
+    
+    Now all ps-tests pass.
+
+commit 1d9f472adeb67d57c0ac489f34b99c28dca5abcf
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Jul 13 21:11:09 2007 +0000
+
+    Added documentation of new macro facilities.
+
+commit 4d9e9dbd6fed993bdbbe3b76f7de652661555e81
+Author: Viktor Leis <viktor.leis@googlemail.com>
+Date:   Thu Jul 12 23:19:07 2007 +0000
+
+    Added warnings when attempting to use reserved Javascript keywords as variable or functions names.
+    
+    Signed-off-by: Vladimir Sedach <vsedach@gmail.com>
+
+commit 30135005259c5e593733c7b30d3cd131f8d5aa4f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 10 21:18:21 2007 +0000
+
+    Added oddp, evenp utility functions, added explanatory error message to js-compile-to-symbol.
+
+commit e0f0d1529e8fbf807320397a97c6c1b7a6981eb0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jul 3 19:45:56 2007 +0000
+
+    Improved symbol-to-js to handle more complicated Javascript-like symbols.
+
+commit e29323478ba306ce8bebf51dc226be6c57f358e3
+Author: Luca Capello <luca@pca.it>
+Date:   Tue Jul 3 18:29:37 2007 +0000
+
+    Factor out misc tests into their own test file.
+    
+    Signed-off-by: Vladimir Sedach <vsedach@gmail.com>
+
+commit bc9630afcd3cf247239fc2a9118d15087ba05741
+Author: Red Daly <reddaly@gmail.com>
+Date:   Mon Jul 2 21:43:07 2007 +0000
+
+    character encoding fixes in test.lisp
+
+commit 1f453942a201d8aab9a861c35cc533e006c5d889
+Author: Luca Capello <luca@pca.it>
+Date:   Sun Jul 1 17:04:19 2007 +0000
+
+    t/test.lisp: typo, remove colon at line 82
+
+commit 86cb6d9849772d4e6e963f991c0dc5f830859440
+Author: Luca Capello <luca@pca.it>
+Date:   Sun Jul 1 17:00:21 2007 +0000
+
+    add an (eval-when ...) when defining a test suite
+
+commit 31ad390eea173789f9e79474491e7f96f352bbd6
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jun 28 19:28:23 2007 +0000
+
+    Added divisors to ceiling, floor, round.
+
+commit 0f9372d5744e0811a7475c4a8ad6817a7e41f623
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jun 26 23:13:07 2007 +0000
+
+    Added Red Daly to contributors file.
+
+commit cc4f15510a65fb5cf27c7f210b833cd8f278e83c
+Author: Red Daly <reddaly@gmail.com>
+Date:   Tue Jun 26 21:30:27 2007 +0000
+
+    js.lisp breakup
+    
+    Broke the js.lisp file up into several three files: source-model.lisp,
+    js-translation.lisp, and parser.lisp.
+    
+    source-model.lisp: class definitions that correspond to the Javascript
+    AST.  (defjsclass forms for the most part)
+    
+    js-translation.lisp: functions for converting AST objects to
+    Javascript source code
+    
+    parser.lisp: macro definitions and the mechanisms for processing
+    Parenscript forms into AST objects.
+    
+    See also: http://common-lisp.net/pipermail/parenscript-devel/2007-June/000035.html
+
+commit 97eb9b754ae4cb7cae36937de3ddbc363ddd37c0
+Author: Red Daly <reddaly@gmail.com>
+Date:   Tue Jun 26 17:43:20 2007 +0000
+
+    package rename
+
+commit f50aa58f60778d05b0b99fcbad919c1e20bb664d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jun 26 19:24:52 2007 +0000
+
+    Refactored macro-related code, changed "compiler macros" to special forms, added separate namespaces for macros and symbol-macros, added full macro lambda lists to macrolet, added support for docstrings to defjsmacro.
+
+commit 1798d1ddffcd746908813b3d19cff6cc6e06d19f
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jun 25 19:42:00 2007 +0000
+
+    Added contributors file.
+
+commit 90af317547cca8bcdbefa88e390e06c956d83125
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Mon Jun 25 19:17:27 2007 +0000
+
+    Added js-expander.el
+
+commit 29a52cef7a4e0dfa4932fa447aabb9f7e0afb4a0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Jun 22 20:46:40 2007 +0000
+
+    Added defmacro to ParenScript.
+
+commit 854b1c7e662527f839ec3040d9b5bab0208a6e7d
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Thu Jun 21 17:54:16 2007 +0000
+
+    Renamed with-timeout to do-set-timeout, added ignore errors.
+    
+    Thanks to: John Fremlin <john@fremlin.org>
+
+commit 765a54bf6a6f76558822a35f8eb7daca151284a9
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Wed Jun 20 20:48:00 2007 +0000
+
+    Added defmacro+js
+
+commit c1d930f23d52810bf15608017087e28e87c4ba48
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jun 19 21:34:16 2007 +0000
+
+    Exported defmacro/js
+
+commit 3eb7802d714c09ec7b51659549a71e300d831a0b
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jun 19 19:37:48 2007 +0000
+
+    Added js-utils file.
+
+commit 8a80babd85405d68709b4030c0ac37a41695f3c0
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Tue Jun 19 18:44:51 2007 +0000
+
+    Added the defmacro/js macro-defining macro.
+
+commit 25a074ff578e4dedc3011e2ad5807ec0cff41682
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Sat Jun 16 04:59:12 2007 +0000
+
+    Added binary negation ~ operator.
+
+commit a9c0e6dfb15addd2af20c2e4b12e65d56b6d67b7
+Author: Vladimir Sedach <vsedach@gmail.com>
+Date:   Fri Jun 15 19:29:16 2007 +0000
+
+    setf slot-value patch
+
+commit 484846dd3af04bfda6dc7b67ef5ead2917397afa
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Wed Jun 6 19:45:25 2007 +0000
+
+    Fix: add parens around instanceof to make it work in all situations
+
+commit 4019ed1c2bba0ba84d700f27f44152f772035ca0
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Thu May 3 14:40:28 2007 +0000
+
+    Bah, speed up list-to-string by a few factors...
+
+commit 17d8b931afbb7f54946f7658f87de9442253727d
+Author: Ray Myers <ray.myers@gmail.com>
+Date:   Fri Apr 27 07:39:17 2007 +0000
+
+    Fix (- 1) and (incf/decf x 5)
+    
+    Fix the following incorrect (or at least unexpected) behavior in
+    ParenScript.
+    
+    (js (- 1))  =>  "1;"
+    (js (incf x 5))   => an error
+    (js (decf x 5))   => an error
+    
+    Signed-off-by: Attila Lendvai <attila.lendvai@gmail.com>
+
+commit 6737164346e957a756b5f9b9704855f5184685a1
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Wed Apr 25 14:58:06 2007 +0000
+
+    Note in the warning that we are redefining a _js_ compiler macro
+
+commit 27b2e19e0d841bed3d02aeea4ad5bacce1b7d5e9
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Mon Apr 16 14:36:03 2007 +0000
+
+    Follow quote changes in SLOT-VALUE
+
+commit 32a59cfe83624996891d01b7bb3b51cd29936b7a
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Mon Apr 16 13:11:33 2007 +0000
+
+    Fixed (?) quoting mechanism
+    
+    (js:js (+ 42 '"FoooFFFOFOFooo")) => "42 + FoooFFFOFOFooo;"
+    
+    IOW, quote inside a parenscript form means to simply print the quoted
+    value as-is.  Among other things, this is useful for inserting literal
+    javascript into parenscript.  I hope it will not break anything.
+
+commit 7abef5d4832485e9e9c21f2615b472164a7c7094
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Mon Jan 15 14:19:48 2007 +0000
+
+    conditional attributes in html-generator
+
+commit 0584c8f3805b1dc9a8d7470795bd4d2711724008
+Author: Marijn Haverbeke <marijnh@gmail.com>
+Date:   Wed Nov 15 07:38:22 2006 +0000
+
+    add proper cond construct
+
+commit b8fa1a274400209fcfdc92855c081b74d7ce0e6e
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 22 19:30:27 2006 +0000
+
+    Possible to make attributes conditionally rendered with js-html generator
+
+commit 8dcd51d2725abede41987501cde8eaf210b8479e
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 23:54:41 2006 +0000
+
+    docs updated for new setf optimization
+
+commit 9f017083e452d4e1454aef24b81a98a84aa90c8d
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 23:41:44 2006 +0000
+
+    bugfix method-call problem
+
+commit 047be2b74fb34dd46e0ff6d29eb0662e46815e19
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 22:40:45 2006 +0000
+
+    moretests for method-call (dot-notation) syntax
+
+commit 5801feb8cb39973d86f6abdca7474eed2ce2db4e
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 21:35:02 2006 +0000
+
+    bugfix commutative plus and minus
+
+commit edc8cc52f8c5f8aa1cd74601f4ae15b9c74e3558
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 20:44:56 2006 +0000
+
+    tests for some bugs
+    
+    Reported by: Marijn Haverbeke <marijnh@gmail.com>
+
+commit 16317044413021d678b526aa92ee8d8f0cf1827e
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 19:27:20 2006 +0000
+
+    asdf test-op added
+    
+    (asdf:operate 'asdf:test-op :parenscript)
+
+commit eb89256653bb17d5e3c7b68942a55e39f0d6b960
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 16:46:03 2006 +0000
+
+    updated pdf manual for new with syntax
+
+commit 6ca9fab8c6066552b555cf434771e861d22a58c8
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 16:43:39 2006 +0000
+
+    build.sh for documentation
+
+commit 5d9cdcad4b609fcf1f174f988f2fb833249ae385
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 16:13:03 2006 +0000
+
+    Updated documentation to reflect the new syntax of the with statement
+
+commit f98cb20f9355ef9402c0eea0e1a2dd9052a9743c
+Author: Henrik Hjelte <henrik@evahjelte.com>
+Date:   Wed Nov 15 15:58:46 2006 +0000
+
+    make the test escape-sequences-in-string work again
+
+commit c96aecc0f6c5906825ab0966ca971fa4f71c3e22
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Oct 3 13:49:55 2006 +0000
+
+    Added evenp and oddp
+
+commit 2c65adb7c99397f34ac255aeeba2ec996c9b29b0
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Oct 3 13:49:23 2006 +0000
+
+    Added assert for simple catch forms
+
+commit f276bab6ceb7813a016fbf3a7210bbf583bbd577
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Fri Sep 1 16:02:49 2006 +0000
+
+    Killed the feature (js:js* '(let (a b) (+ a b))) => "var a = b; a + b;"
+
+commit 9d5ab9335266debb0988c137803fcc3528f11545
+Author: Luca Capello <luca@pca.it>
+Date:   Mon Oct 2 21:55:16 2006 +0000
+
+    docs/pbook.py: correct faulty check for PDF output
+    
+    Frank K[_\c3_][_\bc_]ster discovered that docs/pbook.py produces buggy
+    LaTeX code, a faulty check for PDF output.  It doesn't show up if you
+    only try to create PDF.
+    
+    But if you want to go the traditional route and produce dvi files (and
+    from that PostScript and maybe finally again PDF), this will fail and
+    still produce PDF.  The script itself doesn't do that (or rather, it
+    does that in fact but ignores the output in this first run), but it's
+    still an uglyness.
+    
+    Moreover, it's completely useless, because the only package that uses
+    the information, graphicx, will detect the output format itself (and
+    in a proper way).
+    
+      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=390629
+
+commit aea55c1b007b15b590b5e77c4558aaef6f14f530
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Mon Aug 21 09:57:00 2006 +0000
+
+    Use symbol-name for op matching to fix various bugs/surprises
+    
+    (e.g. `(foo::% 4 2))
+
+commit 87aae3e866551e7b57099c42ec5e0c35912ca1d4
+Author: Marijn Haverbeke <marijnh@gmail.com>
+Date:   Fri Jul 21 07:50:06 2006 +0000
+
+    Allow strings and numbers as slot names in object literals
+
+commit f05919771d15bbc1259756f6794cc7171007e811
+Author: Marco Baringer <mb@bese.it>
+Date:   Sun Jul 16 17:07:49 2006 +0000
+
+    Drop unused js2.lisp
+
+commit 24ac3d156b3dd10f107108fe2f808ab5f2dd45f9
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Sun Jul 16 16:47:17 2006 +0000
+
+    Fix compilation of (.call (lambda () ...) arg1 ...), add missing ()'s around the lambda
+
+commit 21519ac49c199fb8ab5fd81fd184c2a761d57770
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Sun Jul 16 16:46:30 2006 +0000
+
+    Fix compilation of ((foo) bar) -> foo()(bar)
+
+commit 574296549a1b671c84f8a6de4463c8af8db8ff48
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Sun Jul 16 16:39:46 2006 +0000
+
+    Fixed js-with
+    
+    WARNING: this involves syntax change
+    
+    Previously the syntax of with was this:
+      (with (object)
+        body)
+    
+    now it's:
+      (with object
+        body)
+    
+    It was also broken when 'object' was an expression...
+
+commit 379978f8c3be944428a093f1e1f1b0ceb504773d
+Author: Henrik Hjelte <henrik.hjelte@evahjelte.com>
+Date:   Sat Jul 15 20:13:44 2006 +0000
+
+    bugfix sometimes missing semicolons when joining js-body
+
+commit 9f95ea9f2ed63defffbe5f8e66d3f24cd4aa1765
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Jul 11 21:17:50 2006 +0000
+
+    Rebind var in dolist to make also clisp happy
+    
+    import-macros-from-lisp was broken due to this.
+
+commit ca4fb7622804d5e5d35fdb7f4161f355422a3dc2
+Author: Henrik Hjelte <henrik.hjelte@evahjelte.com>
+Date:   Tue Jul 11 13:47:05 2006 +0000
+
+    regex patch
+    
+    Suggested by: Lou Vanek <vanek@acd.net>
+
+commit 3b23804866bd02bddc8998b53272a8449f10a17c
+Author: Henrik Hjelte <henrik.hjelte@evahjelte.com>
+Date:   Tue Jul 11 10:09:52 2006 +0000
+
+    documentation updated about dollar char
+
+commit d14ed6e3e1a1f739bef57c55aa62cd8d60708cc6
+Author: Henrik Hjelte <henrik.hjelte@evahjelte.com>
+Date:   Tue Jul 11 08:49:15 2006 +0000
+
+    Made ref2test work with cl-launch
+
+commit f1b03319e12a1e90490aff6b6ca0e5d13c205d52
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Fri Jul 7 22:37:11 2006 +0000
+
+    Fix screwed-up asd file
+
+commit 0e6af97425185c98c05e5060ec879bc6cd4f6106
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Fri Jul 7 15:18:26 2006 +0000
+
+    Fixed instanceof
+
+commit 8b6fe8339abe6d7b81206d5cc691bf24222ade97
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Fri Jul 7 15:13:21 2006 +0000
+
+    Added src/lib/functional.lisp
+    
+    This is a first element of an parenscript library. The contents of
+    this file is to be compiled with parenscript and the result js
+    included in the host environment in one way or another.
+
+commit 30e42c9b5322622056cc0d3ff4377237b4f699cc
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Fri Jul 7 15:12:31 2006 +0000
+
+    Added :eval-forms-p to compile-parenscript-file
+
+commit 5b156bc88ff69800f8b7807a1cbeb37b60b43865
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Thu Jul 6 22:55:47 2006 +0000
+
+    Fix the return value of map-into
+
+commit 784b9242c2666ae9e949abc1604823c1eb973672
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Thu Jul 6 22:51:47 2006 +0000
+
+    Moved some macros towards the top of the file due to dependencies
+    
+    In the long run we should cut js.lisp into several files. One dealing
+    with the basic infrastructure like macro expansion, and the rest
+    implementing the compiler based on this infrastructure/utilities.
+
+commit 55b5a16d23b9a9bffd1c5415c50e892fac0e16a7
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Wed Jul 5 18:23:51 2006 +0000
+
+    Added map and map-into
+
+commit 5f16302b3632f45852f17c856a06ffc7b636b7b9
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Wed Jul 5 18:20:46 2006 +0000
+
+    Shortened default gensym constant
+
+commit 56b02825db4135dc4625d2ec756b70012cc0471a
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Tue Jul 4 00:33:15 2006 +0000
+
+    Don't use loop's initially clause to avoid a clisp bug
+    
+    For details see: http://sourceforge.net/tracker/index.php?func=detail&aid=1516684&group_id=1355&atid=101355
+
+commit e79676f5511e287fcd0788277d270cc929b5df72
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat May 27 09:31:59 2006 +0000
+
+    Make defjsmacro rend's docstring a comment so clisp will stop complaining
+
+commit b5b0fae36ac0d42d19af7b38af6d011e4d095cb0
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Sat May 13 09:30:31 2006 +0000
+
+    Move undefine-js-compiler-macro into an eval-when.
+    
+    Reported by: William Halliburton <whalliburton@gmail.com>
+
+commit ca493d55e25a47fb9ac07a35bd926b5fba139c78
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Fri May 12 15:29:54 2006 +0000
+
+    Added import-macros-from-lisp that bring lisp macros into the js macroexpansion
+
+commit 6427c388455a36fa860e5fe71a825cd6d83a45c2
+Author: Marco Baringer <mb@bese.it>
+Date:   Wed May 10 12:54:47 2006 +0000
+
+    Move compile-parenscript code into a separate file so that it complies cleanly
+    
+    The problew is that compile-parenscript-file-to-string contains a call
+    to the macro js:js* this macro needs to be defined before we compile
+    the compile-parenscript-file-to-string function.
+
+commit 754b8dbb750dab55fe62797dffe7a8f0b58f5ca7
+Author: Marco Baringer <mb@bese.it>
+Date:   Wed May 10 12:54:22 2006 +0000
+
+    Use an explicit asdf:perform :after method instead of :perform (load-op :after ...)
+
+commit c67704f3d97238b36701874eb8d905cdd0361298
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Mon May 8 11:08:34 2006 +0000
+
+    Added compile-parenscript-file
+
+commit 2e40c0945eeb78cef1329a6489e752713982deb9
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Mon May 8 11:06:11 2006 +0000
+
+    Added character type conversion
+
+commit 94bde1c438e059e1e3c035aefd2300c652ca3611
+Author: Attila Lendvai <attila.lendvai@gmail.com>
+Date:   Sun Apr 16 18:18:25 2006 +0000
+
+    Added a rebind js macro that rebinds variables on the js side
+
+commit 0b7a1d2f9b436ff1c9b81625e8a4d56225425125
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Apr 1 11:39:18 2006 +0000
+
+    Export defjsmacro
+
+commit 0ef142d6ccd1c801c901fa2ff8211440460d29f0
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Apr 1 11:35:03 2006 +0000
+
+    Added docstring for *js-quote-char*
+
+commit ec8df470055984bd6f0e6ea6f8f2b9e2db702707
+Author: Xan Lopez <xan.lopez@gmail.com>
+Date:   Sat Apr 1 11:28:58 2006 +0000
+
+    Add variable *js-quote-char*
+    
+    Signed-off-by: Marco Baringer <mb@bese.it>
+
+commit e6544c7a973c5d9cd317a9f26b50b5ec98da346a
+Author: Marco Baringer <mb@bese.it>
+Date:   Sun Feb 26 17:05:27 2006 +0000
+
+    Implement js-to-strings for the regex class
+
+commit 73c5c3e06deac6a1629437274ca60fb52c093742
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Feb 25 17:07:51 2006 +0000
+
+    #\$ is not a special javascript character.
+    
+    Reported by: Richard Morse <pukku@mac.com>
+
+commit fa3475df47ad887d46f61ba2b18bc53821624e15
+Author: Luca Capello <luca@pca.it>
+Date:   Thu Feb 16 08:42:59 2006 +0000
+
+    remove docs/images and relative references in tutorial.lisp
+
+commit 7397f08fa06fddffa0d55ce1de7c504f4415c670
+Author: Luca Capello <luca@pca.it>
+Date:   Fri Jan 27 13:25:11 2006 +0000
+
+    remove docs/reference.pdf, already included in manual.pdf
+
+commit a89b3fb8b813c0cb20e9594654125eb54069c000
+Author: Marco Baringer <mb@bese.it>
+Date:   Sun Feb 5 16:04:44 2006 +0000
+
+    The #\Form is not a standard character name, use #.(code-char 12) instead.
+
+commit 72fcbf8928f1dd1e078d8b51f10f979961f8a76b
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Thu Feb 2 12:39:12 2006 +0000
+
+    proper escape sequences in strings
+
+commit 3c393e09ad7379d35bef16f6e4b13d6b2a6c5052
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Wed Feb 1 11:17:12 2006 +0000
+
+    ref2test finds reference.lisp in docs dir
+
+commit f1d71c7a04a4cbae45172f9a17d4e1033fa39960
+Author: Luca Capello <luca@pca.it>
+Date:   Fri Jan 27 08:57:09 2006 +0000
+
+    merge parenscript-test.asd into parenscript.asd
+
+commit 9f6df4306aa50b074faa60bb1e019a72d65d03f7
+Author: Luca Capello <luca@pca.it>
+Date:   Mon Jan 23 22:25:48 2006 +0000
+
+    move doc files to docs/
+
+commit 6bd862632bfdee4705d476d3172897d1935001a1
+Author: Luca Capello <luca@pca.it>
+Date:   Mon Jan 23 21:50:26 2006 +0000
+
+    move test files to t/ and modify parenscript-test.asd as well
+
+commit c2faa6a0dcd28bdd0680b195ba8c76eafc905c47
+Author: Luca Capello <luca@pca.it>
+Date:   Mon Jan 23 21:31:52 2006 +0000
+
+    move source files to src/ and modify parenscript.asd as well
+
+commit 94a05cdf5081d188e017353da4690eab8808a44a
+Author: Luca Capello <luca@pca.it>
+Date:   Mon Jan 23 21:19:27 2006 +0000
+
+    remove trailing spaces at endlines in *.lisp
+
+commit 551080b729b642c80b8e299249fc9135d3218a04
+Author: Luca Capello <luca@pca.it>
+Date:   Sun Jan 22 21:57:42 2006 +0000
+
+    remove trailing spaces at empty lines in *.lisp
+
+commit c8f2587090f9343a4228fbc2c5bc7f06c5fea15f
+Author: Luca Capello <luca@pca.it>
+Date:   Sun Jan 22 21:17:04 2006 +0000
+
+    pbook.py: convert endlines to Unix format
+
+commit 87c3fc96825f7f3f01ebfce9650f1dbfba5be30e
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Mon Jan 9 11:36:02 2006 +0000
+
+    css-inline compiles with cmucl
+
+commit 513e5ba06a2227098fd64689856b1a727bfd6893
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Dec 19 16:04:35 2005 +0000
+
+    New function gen-js-name-string
+    
+    This allows you to get a unique javascript name as a string and not
+    just as a symbol.
+
+commit 0c659e808337d3c616c2ff6ca5e321775f524e11
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Mon Dec 19 13:19:01 2005 +0000
+
+    bugfix slot-value
+
+commit 711dd89ea35ff5163127b6046e2873b3512ee980
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Sun Dec 18 17:17:24 2005 +0000
+
+    bug in dwim-join
+
+commit 28967ee49b69b2dd651fc727b6a39959fd8f75e6
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Sun Dec 18 11:14:26 2005 +0000
+
+    css-inline generator
+
+commit 7a7d6c7370fc50a861f304074f8276368f63ae86
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Sat Dec 17 09:52:57 2005 +0000
+
+    cleaned reference
+
+commit eb17f15c94cd1c784c0783d17255022e1681a220
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Fri Dec 16 18:08:44 2005 +0000
+
+    tests from the reference
+
+commit 1e92094a6878bfc2e209c3b62c1ddfc495e64f48
+Author: Henrik Hjelte <henrik.hjelte@poboxes.com>
+Date:   Fri Dec 16 15:39:49 2005 +0000
+
+    quotes in introduction
+
+commit dcc29d49ceed867639bdedcc91969d3a597d71aa
+Author: Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+Date:   Thu Dec 1 19:17:09 2005 +0000
+
+    Added defgenerics for all the defmethods
+    
+    Ze style warnings! Zey drive me craaaazy.
+
+commit 9a1fad810fd64ca7b4a570f4f335d1caf00a0c82
+Author: Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+Date:   Tue Nov 15 23:53:51 2005 +0000
+
+    enable #+parenscript
+    
+    To integrate Parenscript with Araneida without requiring Parenscript,
+    I had to do some compile conditionals. This would make it much easier.
+    
+    Marco, eventually I am going to add this to every last one of your
+    projects.  ;-p
+
+commit f84579bb1533f31ae954dbfab77259a9ae9d614a
+Author: Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+Date:   Tue Nov 15 23:52:33 2005 +0000
+
+    need a function for css-inlining
+    
+    If you have code that needs to inline CSS across an array, it's
+    difficult to use the current macro.  Having a function helps - mapping
+    the macro to the function only completes things.
+
+commit 7186f9423230ba589c48445e44277a227e377a25
+Author: Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+Date:   Tue Nov 15 23:48:12 2005 +0000
+
+    Proper concatenation of inline CSS
+    
+    CSS-INLINE does a simple concatenation of the results of CSS
+    directives.
+    
+    This looks like:
+    
+    	color:blacksize:200%
+    
+    Unfortunately, it should look like this:
+    
+    	color:black;size:200%
+    
+    It now does.
+
+commit 9c77b8ddb96777cc95fe547bfee83eccca221024
+Author: Luca Capello <luca@pca.it>
+Date:   Mon Nov 7 12:30:47 2005 +0000
+
+    added COPYING file
+
+commit 73fb8b1711befbec7c45eb38f0df03eb497f659c
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Nov 7 10:21:18 2005 +0000
+
+    Escape { and } chars in boring regexps
+
+commit 8e8162b6bd3c5bd319e5f021aa4c797bdf219b4e
+Author: Marco Baringer <mb@bese.it>
+Date:   Wed Oct 5 09:09:42 2005 +0000
+
+    Need to escape #\' in javascript strings
+
+commit d66981b925b08a7f6c05fec2b61dc635a5d99ce1
+Author: Marco Baringer <mb@bese.it>
+Date:   Wed Oct 5 08:29:00 2005 +0000
+
+    Fix buf in JS-INLINE causing infinite macro expansion
+
+commit 992d307b5b7f351c0a316a4289f0e12e601e3b4b
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Sep 12 08:17:00 2005 +0000
+
+    Add in checks to deal with functions/macros whose names aren't symbols
+
+commit 3549e19d6aceaaf9e000ec66863f1c27969f8eae
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Sep 5 08:27:35 2005 +0000
+
+    Use strings, and not symbols, to name javascript functions/macros
+    
+    This effectivly flattens the namespace of javascript code. While this
+    change makes js similar to javascript, and removes the need to export
+    symbols from the JS package, it may break previous code which depended
+    on, for expample, js:and not being equivalent to js:and.
+
+commit c95a06f8d3889ae1d0df6b2ed438fc8e75ab10bc
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Sep 5 08:17:02 2005 +0000
+
+    Added support for literal objects ( "{ ... }" syntax)
+
+commit 1319e8176e655039df55c30c236071025eabf8a9
+Author: Marco Baringer <mb@bese.it>
+Date:   Wed Aug 31 11:58:20 2005 +0000
+
+    Export cen-js-names and with-unique-js-names
+
+commit 2175ad099e980bca77f31372a013a881f14949d3
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 15 13:51:28 2005 +0000
+
+    Added docstrings to previous patch
+
+commit 37e52bad8f6de208453cc89ad211b17a45731218
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 15 13:49:40 2005 +0000
+
+    Added GEN-JS-NAME and WITH-UNIQUE-JS-NAMES
+
+commit 807be2bc8494bbd04a665e5291824d60ba2c61ba
+Author: Ivan Toshkov <itoshkov@gmail.com>
+Date:   Mon Aug 15 08:09:06 2005 +0000
+
+    Fixes the infinite loop problems of `dotimes' and `dolist'.
+
+commit 83cb67fdd8af8952e1859ae24b9b8d4f88c26d07
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 15 08:00:53 2005 +0000
+
+    Parenscript, documentation not withstandanding, does not depend on htmlgen
+
+commit 5ae77c6e872d18ca6afbf98b7ae94977f8738a3e
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 15 07:49:02 2005 +0000
+
+    Attempt to improve the conversion of (js ((lambda ...) ...))
+
+commit d3694c571829ae62d113d9960c9e61f8d7da70ed
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 15 07:48:36 2005 +0000
+
+    Introduce the JS-LAMBDA class. Make JS-DEFUN a subclass of JS-LAMBDA
+
+commit f0b5d9e0916d4eb16ed276bf37305ac446aa1eb9
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 15 06:39:21 2005 +0000
+
+    Implement JS and JS-INLINE in terms of JS* and JS-INLINE*
+
+commit bcf5db4dea651c2691408243665af399ab8c7e37
+Author: Marco Baringer <mb@bese.it>
+Date:   Sun Aug 14 14:16:29 2005 +0000
+
+    Symbols starting with #\: are left as is, no case conversion or other mangling
+
+commit d006f5363b4d3e185499aa269a6c52a836dc4745
+Author: Marco Baringer <mb@bese.it>
+Date:   Sun Aug 14 13:45:34 2005 +0000
+
+    Added JS* and JS-INLINE*.
+
+commit 0274760548e23f79a723aeb25b710a0cbe65baf5
+Author: Marco Baringer <mb@bese.it>
+Date:   Sun Aug 14 13:43:44 2005 +0000
+
+    Javascript strings need to be quated with ' and not " to avoid interfering with the surrounding HTML.
+
+commit 12ac1f256bf0549c2eaf66ad9ecff930a74f016a
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Aug 13 14:20:23 2005 +0000
+
+    Ugly hack to support ((lambda ...) ...)
+
+commit a93c7fb46f0e9d9457e04470900deecb1e6bc271
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Aug 13 13:52:38 2005 +0000
+
+    Mention that I'm maintaining this version of parenscript
+
+commit 5fc9bcb36ca1dce5377d02c194d8bb5ac5c73229
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Aug 13 13:51:07 2005 +0000
+
+    Rename the system/package in the system definition.
+    
+    Just renaming the file doesn't cut it :(.
+
+commit bf524ec7afe42be21ed005c3c80afdb3ae268f0c
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Aug 13 13:44:41 2005 +0000
+
+    Added images used in documentation
+
+commit dc06e06323d76b2b1a814adba8ee22b95807eb7d
+Author: Marco Baringer <mb@bese.it>
+Date:   Sat Aug 13 13:37:32 2005 +0000
+
+    Added the pbook.py file used to generate the documentation
+
+commit 30b3e3eb0348f99855b2b5636ff9d2f2fa42a6c1
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 8 15:48:43 2005 +0000
+
+    Added declare ignore forms for unused function arguments
+
+commit 5b6443ee57ddcf5057621cc063b1f939a0cd7fd7
+Author: Marco Baringer <mb@bese.it>
+Date:   Mon Aug 8 15:48:36 2005 +0000
+
+    Rename system def
+
+commit aea3a6a9b7956f07649e75ceb8787c83011b7c13
+Author: Marco Baringer <mb@bese.it>
+Date:   Tue Jul 26 10:05:49 2005 +0000
+
+    Setup boringfile
+
+commit 8e198a086d17c473ff77e4adb50e4523fd5f899d
+Author: Marco Baringer <mb@bese.it>
+Date:   Tue Jul 26 10:04:16 2005 +0000
+
+    Added files from parenscript 0.1.0 as distributed by Manuel Odendahl
+
+commit 2510d0d94fcee5604c219a295524c1d389b9491c
+Author: Travis Cross <tc@traviscross.com>
+Date:   Tue Jul 26 10:04:16 2005 +0000
+
+    Initial commit.

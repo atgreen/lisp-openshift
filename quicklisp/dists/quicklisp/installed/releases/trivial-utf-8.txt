@@ -1,0 +1,1 @@
+dists/quicklisp/software/trivial-utf-8-20111001-darcs/

@@ -1,0 +1,19 @@
+Source: cl-md5
+Section: lisp
+Priority: optional
+Maintainer: Debian Common Lisp Team <pkg-common-lisp-devel@lists.alioth.debian.org>
+Uploaders: Kevin M. Rosenberg <kmr@debian.org>
+Build-Depends-Indep: dh-lisp
+Build-Depends: debhelper (>= 7.0.0)
+Standards-Version: 3.8.2.0
+Homepage: http://files.b9.com/md5/
+Vcs-Git: git://git.b9.com/md5.git
+Vcs-Browser: http://git.b9.com/?p=md5.git
+
+Package: cl-md5
+Architecture: all
+Depends: ${misc:Depends}
+Description: Common Lisp package for MD5 Message Digests
+ This package is a library of Common Lisp programs that
+ compute the MD5 message digest value. This library can
+ perform MD5 computations for strings, streams, and files.

@@ -1,0 +1,14 @@
+.bin
+*.fasl
+*.fasla16
+*.faslmt
+*.faslm16
+*.fasla8
+*.faslm8
+*.x86f
+*.sparcf
+*.ufsl
+*.fas
+*.pfsl
+*.dfsl
+*.cfsl

@@ -1,0 +1,1 @@
+dists/quicklisp/software/usocket-0.5.5/usocket.asd
