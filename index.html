@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="lisp-openshift : Run sbcl-powered lisp-based web apps on Red Hat's OpenShift" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>lisp-openshift</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/atgreen/lisp-openshift">Fork Me on GitHub</a>
+
+          <h1 id="project_title">lisp-openshift</h1>
+          <h2 id="project_tagline">Run sbcl-powered lisp-based web apps on Red Hat's OpenShift</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/atgreen/lisp-openshift/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/atgreen/lisp-openshift/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>lisp-openshift</h1>
+
+<p>This package provides everything you need to start hosting Common
+Lisp-based web applications on OpenShift, Red Hat's free, auto-scaling
+Platform as a Service (PaaS) cloud solution.</p>
+
+<p>The default app template uses SBCL and a quicklisp-based dev platform
+with the hunchentoot web server.</p>
+
+<p>lisp-openshift will auto-provision a lisp environment into your DIY
+OpenShift project.  It does this by downloading and extracting the
+contents of the SBCL RPM package from the Fedora Project's Extra
+Packages for Enterprise Linux (EPEL) repository.  This package is
+installed in your application's persistent <code>data</code> directory.</p>
+
+<h2>Running on OpenShift</h2>
+
+<p>Create an account at <a href="http://openshift.redhat.com/">http://openshift.redhat.com/</a></p>
+
+<p>Create a DIY application</p>
+
+<pre><code>rhc app create -a myapp -t diy-0.1
+</code></pre>
+
+<p>Add this upstream lisp-openshift repo</p>
+
+<pre><code>cd myapp
+git remote add upstream -m master git://github.com/atgreen/lisp-openshift.git
+git pull -s recursive -X theirs upstream master
+</code></pre>
+
+<p>Then push the repo upstream</p>
+
+<pre><code>git push
+</code></pre>
+
+<p>That's it!  You can now have a look at your application here:</p>
+
+<pre><code>http://myapp-$namespace.rhcloud.com
+</code></pre>
+
+<p>To see it in action, check out <a href="http://lisp2-atgreen.rhcloud.com">http://lisp2-atgreen.rhcloud.com</a>.</p>
+
+<h2>Using Quicklisp</h2>
+
+<p>Quicklisp is a library manager for Common Lisp.  This project contains
+a Quicklisp repository of core packages for simple web applications,
+however, the upstream Quicklisp project hosts over 700 libraries.</p>
+
+<p>To install more libraries into your project's repository, simply <code>cd</code>
+into the top level of your project (this directory), start sbcl with
+your <code>HOME</code> set to the current directory, and use <code>ql:quickload</code> as
+usual.</p>
+
+<pre><code>$ HOME=`pwd` sbcl
+This is SBCL 1.0.51-1.fc16, an implementation of ANSI Common Lisp.
+More information about SBCL is available at &lt;<a href="http://www.sbcl.org/">http://www.sbcl.org/</a>&gt;.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* (ql:quickload :cl-mongo)
+</code></pre>
+
+<p>This would add the cl-mongo package to your application.</p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="http://openshift.redhat.com">http://openshift.redhat.com</a></li>
+<li><a href="http://www.quicklisp.org">http://www.quicklisp.org</a></li>
+<li><a href="http://www.sbcl.org">http://www.sbcl.org</a></li>
+<li><a href="http://weitz.de/hunchentoot">http://weitz.de/hunchentoot</a></li>
+<li><a href="http://www.fedoraproject.org/wiki/EPEL">http://www.fedoraproject.org/wiki/EPEL</a></li>
+<li><a href="http://linkedin.com/in/green">http://linkedin.com/in/green</a></li>
+</ul><p><strong>Happy hacking!</strong></p>
+
+<p>Anthony Green</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">lisp-openshift maintained by <a href="https://github.com/atgreen">atgreen</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-30894283-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
