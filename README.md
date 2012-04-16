@@ -8,19 +8,18 @@ Platform as a Service (PaaS) cloud solution.
 The default app template uses SBCL and a quicklisp-based dev platform
 with the hunchentoot web server.
 
-lisp-openshift is configured to auto-provision a lisp environment into
-your DIY openshift project.  It does this by downloading and
-extracting the contents of the SBCL RPM package from the Fedora
-Project's Extra Packages for Enterprise Linux (EPEL) repository.  This
-package is installed in your applications's persistant `data`
-directory.
+lisp-openshift will auto-provision a lisp environment into your DIY
+OpenShift project.  It does this by downloading and extracting the
+contents of the SBCL RPM package from the Fedora Project's Extra
+Packages for Enterprise Linux (EPEL) repository.  This package is
+installed in your application's persistent `data` directory.
 
 Running on OpenShift
 --------------------
 
 Create an account at http://openshift.redhat.com/
 
-Create a DIY appliction
+Create a DIY application
 
     rhc app create -a myapp -t diy-0.1
 
@@ -40,12 +39,12 @@ That's it, you can now check out your application at:
  
 To see it in action, check out http://lisp2-atgreen.rhcloud.com.
 
-Using QuickLisp
+Using Quicklisp
 ---------------
 
 Quicklisp is a library manager for Common Lisp.  This project contains
 a Quicklisp repository of core packages for simple web applications,
-however, the upstream Quicklisp project hosts over 700 libaries.
+however, the upstream Quicklisp project hosts over 700 libraries.
 
 To install more libraries into your project's repository, simply `cd`
 into the top level of your project (this directory), start sbcl with
@@ -71,7 +70,6 @@ Links
 * http://www.sbcl.org
 * http://weitz.de/hunchentoot
 * http://www.fedoraproject.org/wiki/EPEL
-
 * http://linkedin.com/in/green
 
 
