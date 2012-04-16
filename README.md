@@ -33,7 +33,7 @@ Then push the repo upstream
 
     git push
 
-That's it, you can now check out your application at:
+That's it!  You can now have a look at your application here:
 
     http://myapp-$namespace.rhcloud.com
  
@@ -48,7 +48,8 @@ however, the upstream Quicklisp project hosts over 700 libraries.
 
 To install more libraries into your project's repository, simply `cd`
 into the top level of your project (this directory), start sbcl with
-HOME set to your current directory, and use ql:quickload as usual.
+your `HOME` set to the current directory, and use `ql:quickload` as
+usual.
 
     $ HOME=`pwd` sbcl
     This is SBCL 1.0.51-1.fc16, an implementation of ANSI Common Lisp.
@@ -73,7 +74,7 @@ Links
 * http://linkedin.com/in/green
 
 
-Happy hacking!
+__Happy hacking!__
 
 Anthony Green
 
