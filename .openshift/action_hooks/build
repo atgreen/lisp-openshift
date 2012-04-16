@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd ${OPENSHIFT_REPO_DIR}
+
+export XDG_CACHE_HOME=${OPENSHIFT_TMP_DIR}
+export HOME=${OPENSHIFT_REPO_DIR}
+export SBCL_HOME=${OPENSHIFT_DATA_DIR}
+
+${OPENSHIFT_DATA_DIR}/usr/bin/sbcl \
+    --core ${OPENSHIFT_DATA_DIR}/usr/lib/sbcl/sbcl-dist.core \
+    --eval "(require :webapp)" \
+    --eval "(quit)"
+
