@@ -21,6 +21,6 @@
 (defpackage #:webapp
   (:use #:hunchentoot #:cl)
   (:shadow #:package)
-  (:export #:start-webapp))
+  (:export #:start-webapp #:stop-webapp))
 
 (in-package #:webapp)
