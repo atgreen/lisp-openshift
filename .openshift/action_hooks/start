@@ -6,7 +6,12 @@ export XDG_CACHE_HOME=${OPENSHIFT_TMP_DIR}
 export HOME=${OPENSHIFT_REPO_DIR}
 export SBCL_HOME=${OPENSHIFT_DATA_DIR}
 
+LOG_DIR=${OPENSHIFT_LOG_DIR}
+if test x$LOG_DIR = 'x'; then
+  LOG_DIR=${OPENSHIFT_DIY_LOG_DIR};
+fi
+
 nohup ${OPENSHIFT_DATA_DIR}/usr/bin/sbcl \
     --core ${OPENSHIFT_DATA_DIR}/usr/lib/sbcl/sbcl-dist.core \
     --eval "(require :webapp)" \
-    --eval "(webapp:start-webapp)" > ${OPENSHIFT_LOG_DIR}/webapp.log 2>&1 &
+    --eval "(webapp:start-webapp)" > ${LOG_DIR}/webapp.log 2>&1 &
