@@ -6,5 +6,6 @@
     (load quicklisp-init)))
 
 ;;; this is supposed to run on devel machine only    
-(require 'swank)
-(swank:create-server :port 4005)
+(unless (sb-ext:posix-getenv "OPENSHIFT_INTERNAL_IP")
+  (require 'swank)
+  (swank:create-server :port 4005))
