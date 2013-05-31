@@ -41,17 +41,11 @@ That's it!  You can now have a look at your application here:
  
 To see it in action, check out http://lisp2-atgreen.rhcloud.com.
 
-Using Quicklisp
----------------
 
-Quicklisp is a library manager for Common Lisp.  This project contains
-a Quicklisp repository of core packages for simple web applications,
-however, the upstream Quicklisp project hosts over 700 libraries.
+Using SBCL and Emacs
+--------------------
 
-To install more libraries into your project's repository, simply `cd`
-into the top level of your project (this directory), start sbcl with
-your `HOME` set to the current directory, and use `ql:quickload` as
-usual.
+Start SBCL with HOME set to application's current directory.
 
     $ HOME=`pwd` sbcl
     This is SBCL 1.0.51-1.fc16, an implementation of ANSI Common Lisp.
@@ -61,6 +55,21 @@ usual.
     It is mostly in the public domain; some portions are provided under
     BSD-style licenses.  See the CREDITS and COPYING files in the
     distribution for more information.
+
+I have modified application's .sbclrc to start swank server at port 4005,
+so when you start Emacs you need to do M-x slime-connect and confirm default values.
+Now you can use your Emacs' REPL to talk to your application.
+
+Using application's own Quicklisp
+---------------------------------
+
+Quicklisp is a library manager for Common Lisp.  This project contains
+a Quicklisp repository of core packages for simple web applications,
+however, the upstream Quicklisp project hosts over 700 libraries.
+
+To install more libraries into your project's repository, simply use 
+`ql:quickload` as usual.
+
     * (ql:quickload :cl-mongo)
 
 This would add the cl-mongo package to your application.
