@@ -4,3 +4,7 @@
                                        (user-homedir-pathname))))
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
+
+;;; this is supposed to run on devel machine only    
+(require 'swank)
+(swank:create-server :port 4005)
