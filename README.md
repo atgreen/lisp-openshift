@@ -19,7 +19,7 @@ Running on OpenShift
 
 Create an account at http://openshift.redhat.com/
 
-Install your commant line tools as instructed at https://www.openshift.com/get-started#cli
+Install your command line tools as instructed at https://www.openshift.com/get-started#cli
 
 Create a DIY application
 
