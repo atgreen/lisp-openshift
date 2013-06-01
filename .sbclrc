@@ -5,7 +5,10 @@
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
 
-;;; this is supposed to run on devel machine only    
+
+;;; this is supposed to run on devel machine only   
 (unless (sb-ext:posix-getenv "OPENSHIFT_INTERNAL_IP")
-  (require 'swank)
+  (require 'swank))
+
+(unless (sb-ext:posix-getenv "OPENSHIFT_INTERNAL_IP")
   (swank:create-server :port 4005))
