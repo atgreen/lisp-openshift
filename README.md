@@ -28,7 +28,7 @@ Create a DIY application
 Add this upstream lisp-openshift repo
 
     cd myapp
-    git remote add upstream -m master git://github.com/atgreen/lisp-openshift.git
+    git remote add upstream -m master git://github.com/bigos/lisp-openshift
     git pull -s recursive -X theirs upstream master
 
 Then push the repo upstream
