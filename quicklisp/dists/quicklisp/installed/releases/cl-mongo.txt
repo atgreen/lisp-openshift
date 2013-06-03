@@ -1,1 +1,0 @@
-dists/quicklisp/software/cl-mongo-20120208-git/

@@ -1,1 +1,0 @@
-dists/quicklisp/software/cl-base64-20101006-git/cl-base64.asd

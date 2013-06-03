@@ -1,1 +1,0 @@
-dists/quicklisp/software/cl-fad-0.7.1/cl-fad.asd

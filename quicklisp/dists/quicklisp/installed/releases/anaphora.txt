@@ -1,1 +1,0 @@
-dists/quicklisp/software/anaphora-0.9.4/
