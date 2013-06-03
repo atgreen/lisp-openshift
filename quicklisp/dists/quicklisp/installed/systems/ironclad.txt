@@ -1,1 +1,1 @@
-dists/quicklisp/software/ironclad_0.30/ironclad.asd
+dists/quicklisp/software/ironclad_0.32.1/ironclad.asd

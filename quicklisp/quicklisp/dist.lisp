@@ -543,7 +543,8 @@ the given NAME."
   (when (installedp dist)
     (dolist (system (provided-systems dist))
       (asdf:clear-system (name system)))
-    (ql-impl-util:delete-directory-tree (base-directory dist))))
+    (ql-impl-util:delete-directory-tree (base-directory dist))
+    t))
 
 
 (defun make-release-from-line (line dist)
@@ -787,7 +788,8 @@ the given NAME."
       (delete-file (install-metadata-file system)))
     (delete-file (install-metadata-file release))
     (delete-file (local-archive-file release))
-    (ql-impl-util:delete-directory-tree (base-directory release))))
+    (ql-impl-util:delete-directory-tree (base-directory release))
+    t))
 
 
 (defun call-for-each-index-entry (file fun)
@@ -1033,7 +1035,8 @@ FUN."
     (dolist (system (provided-systems t))
       (when (or (search term (name system))
                 (search term (name (release system))))
-        (format t "~A~%" system)))))
+        (format t "~A~%" system)))
+    (values)))
 
 
 ;;;

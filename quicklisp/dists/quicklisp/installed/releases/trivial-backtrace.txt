@@ -1,1 +1,1 @@
-dists/quicklisp/software/trivial-backtrace-20101006-git/
+dists/quicklisp/software/trivial-backtrace-20120909-git/

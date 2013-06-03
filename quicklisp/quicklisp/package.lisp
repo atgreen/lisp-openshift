@@ -48,6 +48,7 @@
            #:ecl
            #:gcl
            #:lispworks
+           #:mkcl
            #:scl
            #:sbcl))
 
@@ -262,6 +263,8 @@
            #:*quickload-prompt*
            #:*quickload-verbose*
            #:*quickload-explain*
+           #:system-not-found
+           #:system-not-found-name
            #:uninstall
            #:uninstall-dist
            #:qmerge
@@ -284,7 +287,9 @@
            #:register-local-projects
            #:local-projects-searcher
            #:*local-project-directories*
-           #:list-local-projects))
+           #:list-local-projects
+           #:list-local-systems
+           #:who-depends-on))
 
 (in-package #:quicklisp-client)
 

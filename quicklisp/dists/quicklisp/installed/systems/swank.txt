@@ -1,1 +1,1 @@
-dists/quicklisp/software/slime-20120407-cvs/swank.asd
+dists/quicklisp/software/slime-20130420-cvs/swank.asd

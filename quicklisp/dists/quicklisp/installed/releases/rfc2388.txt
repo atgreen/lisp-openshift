@@ -1,1 +1,1 @@
-dists/quicklisp/software/rfc2388-20120107-http/
+dists/quicklisp/software/rfc2388-20130312-git/

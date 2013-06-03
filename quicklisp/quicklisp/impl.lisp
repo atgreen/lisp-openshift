@@ -143,11 +143,11 @@
 
 ;;; Armed Bear Common Lisp
 
-(define-implementation-package :abcl #:qlb-abcl
+(define-implementation-package :abcl #:ql-abcl
   (:documentation
    "Armed Bear Common Lisp - http://common-lisp.net/project/armedbear/")
   (:class abcl)
-  (:reexport-from #:system
+  (:reexport-from #:ext
                   #:make-socket
                   #:get-socket-stream))
 
@@ -227,6 +227,24 @@
 (define-implementation-package :ecl #:ql-ecl
   (:documentation "ECL - http://ecls.sourceforge.net/")
   (:class ecl)
+  (:prep
+   (require 'sockets))
+  (:intern #:host-network-address)
+  (:reexport-from #:si
+                  #:rmdir
+                  #:file-kind)
+  (:reexport-from #:sb-bsd-sockets
+                  #:get-host-by-name
+                  #:host-ent-address
+                  #:inet-socket
+                  #:socket-connect
+                  #:socket-make-stream))
+
+;;; MKCL
+
+(define-implementation-package :mkcl #:ql-mkcl
+  (:documentation "ManKai Common Lisp - http://common-lisp.net/project/mkcl/")
+  (:class mkcl)
   (:prep
    (require 'sockets))
   (:intern #:host-network-address)
