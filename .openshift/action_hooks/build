@@ -8,6 +8,7 @@ export SBCL_HOME=${OPENSHIFT_DATA_DIR}
 
 ${OPENSHIFT_DATA_DIR}/usr/bin/sbcl \
     --core ${OPENSHIFT_DATA_DIR}/usr/lib/sbcl/sbcl-dist.core \
+    --eval "(setf sb-impl::*default-external-format* :UTF-8)" \
     --eval "(require :webapp)" \
     --eval "(quit)"
 

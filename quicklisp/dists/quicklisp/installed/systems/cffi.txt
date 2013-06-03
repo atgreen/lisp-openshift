@@ -1,1 +1,0 @@
-dists/quicklisp/software/cffi_0.11.1/cffi.asd

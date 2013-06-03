@@ -28,7 +28,7 @@ Create a DIY application
 Add this upstream lisp-openshift repo
 
     cd myapp
-    git remote add upstream -m master git://github.com/bigos/lisp-openshift
+    git remote add upstream -m master git://github.com/bigos/lisp-openshift.git
     git pull -s recursive -X theirs upstream master
     
 Set up quicklisp
@@ -72,8 +72,8 @@ a Quicklisp repository of core packages for simple web applications,
 however, the upstream Quicklisp project hosts over 700 libraries.
 
 To install more libraries into your project's repository, simply 
-set HOME to your application's current directory 
-`ql:quickload` as usual
+set HOME to your application's current directory like this HOME=`pwd` sbcl
+and use `ql:quickload` as usual.
 
     * (ql:quickload :cl-mongo)
 
