@@ -52,6 +52,7 @@ Start Lisp like this
     HOME=`pwd` sbcl
 
 When you see the Lisp prompt eval following
+
     (ql:quickload :hunchentoot)
 
 Add quicklisp files to git repo
