@@ -34,9 +34,11 @@ Add this upstream lisp-openshift repo
 Set up quicklisp
 
   download quicklisp
+  
     curl -O http://beta.quicklisp.org/quicklisp.lisp
     
   install quicklisp
+  
     HOME=`pwd` sbcl --load quicklisp.lisp
     
   and follow instructions at:
@@ -46,12 +48,14 @@ Install Hunchentoot
 -------------------
 
 Start Lisp like this
+
     HOME=`pwd` sbcl
 
 When you see the Lisp prompt eval following
     (ql:quickload :hunchentoot)
 
 Add quicklisp files to git repo
+
     git add .
     git commit -am "installed Hunchentoot"
     
