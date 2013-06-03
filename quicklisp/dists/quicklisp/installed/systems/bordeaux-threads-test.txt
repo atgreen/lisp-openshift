@@ -1,0 +1,1 @@
+dists/quicklisp/software/bordeaux-threads-0.8.2/bordeaux-threads-test.asd
