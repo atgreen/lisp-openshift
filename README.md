@@ -1,3 +1,10 @@
+** THIS OBSOLETE PROJECT WAS FOR OPENSHIFT 2 **
+=================================================
+
+** FOR OPENSHIFT 3 GO TO https://github.com/atgreen/container-lisp/s2i-lisp **
+================================================================================
+
+
 lisp-openshift
 ==============
 
