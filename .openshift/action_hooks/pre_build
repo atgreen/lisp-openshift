@@ -6,6 +6,6 @@ RPM=sbcl-1.0.38-3.el6.x86_64.rpm
 cd $OPENSHIFT_DATA_DIR
 if ! test -f usr/bin/sbcl; then
     # It's not here.  Let's download and unpack it.
-    curl -0 http://dl.fedoraproject.org/pub/epel/6/x86_64/$RPM > $RPM
+    curl -0 http://kojipkgs.fedoraproject.org//work/tasks/3105/5463105/sbcl-1.1.2-1.el6.x86_64.rpm > $RPM
     rpm2cpio $RPM | cpio -idmv
 fi

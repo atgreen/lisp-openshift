@@ -1,1 +1,0 @@
-dists/quicklisp/software/parenscript-2.4/parenscript.test.asd
